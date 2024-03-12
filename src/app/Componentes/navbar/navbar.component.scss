@@ -1,0 +1,47 @@
+/*Estilo del texto Anuario*/
+.tituloAnuario{
+  position: absolute;
+  background-color: #1BC075;
+  height: 30px;
+  width: 1366px;
+  box-shadow: 7px 7px 7px 0 rgba(97, 83, 83, 0.3);
+}
+.anuario{
+  color: #ffff;
+  font: bold 1rem "Open Sans", serif;
+  text-align: center;
+  padding-top: 0.2rem;
+  letter-spacing: .2rem;
+}
+/*Estilo texto Felicidades*/
+
+.tituloFelicidades{
+  height: 130px;
+  width: 1366px;
+  background: rgb(35,204,123);
+  background: linear-gradient(90deg, rgba(35,204,123,1) 0%, rgba(30,172,104,1) 100%);
+  box-shadow: 7px 7px 7px 0 rgba(20, 20, 20, 0.3);
+}
+.felicidades{
+  color: #ffff;
+  font: bold 1.3rem "Open Sans", serif;
+  text-align: center;
+  padding-top: 2.3rem;
+  letter-spacing: .9rem;
+}
+.btn-principal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5px;
+  .btn-70, .btn-71{
+    margin: 0 40px;
+  }
+}
+
+
+
+
+
+
+

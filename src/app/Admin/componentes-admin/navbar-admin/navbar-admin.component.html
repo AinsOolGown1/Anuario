@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <mat-toolbar color="primary">
+    <span>Admin Anuario</span>
+    <span class="example-spacer"></span>
+    <button routerLink="ver-lista-graduados" mat-button>Inicio</button>
+    <button routerLink="ingresar-graduados" mat-button>Añadir Graduados</button>
+    <button routerLink="ingresar-colec-fotos" mat-button>Añadir Colección de Fotos</button>
+    <span class="example-spacer"></span>
+    <button (click)="signOut()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+</body>
+</html>
+
+
+
+
+

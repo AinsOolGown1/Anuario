@@ -1,0 +1,27 @@
+.container{
+display: grid;
+}
+.imagen1{
+  width: 48%;
+  place-self: center;
+  margin-top: 10px;
+}
+.filtro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.btn-consultar{
+  margin-bottom: 0px;
+  margin-left: 30px;
+}
+
+.campus{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: solid 2px #1EAF6A;
+  padding: 4px;
+  border-radius: 8px;
+  margin-right: 4px;
+  display: inline-block;
+}
