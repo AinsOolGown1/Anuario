@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {FormsModule} from '@angular/forms';
+
 
 
 
@@ -23,7 +25,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatToolbarModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule
   ],
   exports: [
     CommonModule,
@@ -34,6 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatToolbarModule,
     MatTableModule,
     MatPaginatorModule,
+    FormsModule
   ]
 })
 export class SharedModule { }
