@@ -5,15 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<mat-toolbar class="ancho-tool">
+  <span class="example-spacer"></span>
+  <span class="list">Agregar graduados</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 <body>
+
   <div class="cuerpo">
     <div class="añadir-graduado">
   <table>
     <tr>
     <!--Input carnet-->
+    <label>No. Carnet</label>
     <th>
       <mat-form-field class="example-form-field">
-        <mat-label>No. Carnet</mat-label>
+        <mat-label></mat-label>
         <input matInput type="text" [(ngModel)]="valueCarnet">
         <button *ngIf="valueCarnet" matSuffix mat-icon-button aria-label="Clear" (click)="valueCarnet= ''">
           <mat-icon>close</mat-icon>
