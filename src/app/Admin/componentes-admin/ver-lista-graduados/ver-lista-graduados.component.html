@@ -6,9 +6,14 @@
   <title>Document</title>
 </head>
 <body>
+  <mat-toolbar class="ancho-tool">
+    <span class="example-spacer"></span>
+    <span class="list">Ver listado de graduados</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
   <div class="vista-graduados">
     <mat-form-field>
-      <mat-label>Buqueda por filtro</mat-label>
+      <mat-label>Buqueda por filtro <mat-icon>search</mat-icon></mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Graduado" #input>
     </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
