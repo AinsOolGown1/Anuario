@@ -27,6 +27,7 @@ import { VerListaGraduadosComponent } from './Admin/componentes-admin/ver-lista-
 //Autentificacion google
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { SharedModule } from './Shared/shared.module';
+import { EditarGraduadoComponent } from './Admin/componentes-admin/editar-graduado/editar-graduado.component';
 
 
 
@@ -44,7 +45,8 @@ import { SharedModule } from './Shared/shared.module';
     IngresarGraduadosComponent,
     IngresarColecFotosComponent,
     NavbarAdminComponent,
-    VerListaGraduadosComponent
+    VerListaGraduadosComponent,
+    EditarGraduadoComponent
   ],
   imports: [
     BrowserModule,

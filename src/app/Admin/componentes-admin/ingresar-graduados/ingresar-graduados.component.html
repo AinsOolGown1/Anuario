@@ -5,94 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<mat-toolbar class="ancho-tool">
-  <span class="example-spacer"></span>
-  <span class="list">Agregar graduados</span>
-  <span class="example-spacer"></span>
-</mat-toolbar>
 <body>
-
-  <div class="cuerpo">
-    <div class="añadir-graduado">
-  <table>
+  <mat-toolbar class="ancho-tool2">
+    <span class="example-spacer"></span>
+    <span class="list">AGREGAR GRADUADOS</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+    <table>
     <tr>
-    <!--Input carnet-->
-    <label>No. Carnet</label>
-    <th>
-      <mat-form-field class="example-form-field">
-        <mat-label></mat-label>
-        <input matInput type="text" [(ngModel)]="valueCarnet">
-        <button *ngIf="valueCarnet" matSuffix mat-icon-button aria-label="Clear" (click)="valueCarnet= ''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-    </th>
-    <!--Input Nombre-->
-    <th>
-      <mat-form-field class="example-form-field">
-        <mat-label>Nombres</mat-label>
-        <input matInput type="text" [(ngModel)]="valueNombre">
-        <button *ngIf="valueNombre" matSuffix mat-icon-button aria-label="Clear" (click)="valueNombre = ''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-    </th>
-    <!--Input Apelllido-->
-    <th>
-      <mat-form-field class="example-form-field">
-        <mat-label>Apellidos</mat-label>
-        <input matInput type="text" [(ngModel)]="valueApellido">
-        <button *ngIf="valueApellido" matSuffix mat-icon-button aria-label="Clear" (click)="valueApellido = ''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-    </th>
-    <!--Input Carrera-->
-    <th>
-      <mat-form-field class="example-form-field">
-        <mat-label>Carrera</mat-label>
-        <input matInput type="text" [(ngModel)]="valueCarrera">
-        <button *ngIf="valueCarrera" matSuffix mat-icon-button aria-label="Clear" (click)="valueCarrera = ''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-    </th>
-    </tr>
-    <!--Seguna fila-->
-    <tr>
-          <!--Input Facultad-->
-    <th>
-      <mat-form-field class="example-form-field">
-        <mat-label>Facultad</mat-label>
-        <input matInput type="text" [(ngModel)]="valueFacultad">
-        <button *ngIf="valueFacultad" matSuffix mat-icon-button aria-label="Clear" (click)="valueFacultad = ''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      </th>
-      <!--Input Campus-->
-      <th>
-        <mat-form-field class="example-form-field">
-          <mat-label>Campus</mat-label>
-          <input matInput type="text" [(ngModel)]="valueCampus">
-          <button *ngIf="valueCampus" matSuffix mat-icon-button aria-label="Clear" (click)="valueCampus = ''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-      </th>
-            <!--Textarea Frase Emotiva-->
-            <th>
-              <mat-form-field class="example-full-width">
-                <mat-label>Frase Emotiva</mat-label>
-                <textarea matInput [(ngModel)]="valueFrase_Emotiva"></textarea>
-                <button *ngIf="valueFrase_Emotiva" matSuffix mat-icon-button aria-label="Clear" (click)="valueFrase_Emotiva = ''">
-                  <mat-icon>close</mat-icon>
-                </button>
-              </mat-form-field>
-            </th>
-  </tr>
-  </table>
-</div>
-</div>
+    <th>          <!--Numero de carnet-->
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">No. Carnet</label>
+      </div>
+      <div class="col-auto">
+        <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+      </div>
+    </div>
+  </th>
+</tr>
+<tr>
+  <th>
+              <!--Nombres del graduado-->
+    <div class="row g-3 align-items-center mt-1">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">Nombres</label>
+      </div>
+      <div class="col-auto">
+        <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+      </div>
+    </div>
+  </th>
+</tr>
+</table>
 </body>
 </html>
