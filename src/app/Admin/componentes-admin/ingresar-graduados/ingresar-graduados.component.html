@@ -6,37 +6,108 @@
   <title>Document</title>
 </head>
 <body>
-  <mat-toolbar class="ancho-tool2">
+  <mat-toolbar class="ancho-tool2 mt-3">
     <span class="example-spacer"></span>
     <span class="list">AGREGAR GRADUADOS</span>
     <span class="example-spacer"></span>
   </mat-toolbar>
-    <table>
-    <tr>
-    <th>          <!--Numero de carnet-->
-    <div class="row g-3 align-items-center">
-      <div class="col-auto">
-        <label for="inputPassword6" class="col-form-label">No. Carnet</label>
-      </div>
-      <div class="col-auto">
-        <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
-      </div>
-    </div>
-  </th>
-</tr>
-<tr>
-  <th>
-              <!--Nombres del graduado-->
-    <div class="row g-3 align-items-center mt-1">
-      <div class="col-auto">
-        <label for="inputPassword6" class="col-form-label">Nombres</label>
-      </div>
-      <div class="col-auto">
-        <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
-      </div>
-    </div>
-  </th>
-</tr>
+<table class="mt-1">
+  <tr>
+        <!--Numero de carnet-->
+    <td>
+      <label class="form-label fw-bold">No. de Carnet</label>
+      <input class="form-control" type="text" placeholder="2024100110">
+    </td>
+        <!--Subir foto del graduado-->
+    <td>
+      <label class="form-label fw-bold">Subir foto</label>
+      <input class="form-control" type="file">
+    </td>
+        <!--Estado del graduado-->
+    <td>
+      <label class="form-label fw-bold" style="width: 220px;">Estado del graduado</label>
+      <select class="form-select">
+      </select>
+    </td>
+  </tr>
+  <!--
+  //////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////
+-->
+  <tr>
+        <!--Nombres del graduado-->
+    <td>
+      <label class="form-label fw-bold">Nombres</label>
+      <input class="form-control" type="text" placeholder="Agregar los dos nombres del graduado">
+    </td>
+        <!--Apellidos del graduado-->
+    <td>
+      <label class="form-label fw-bold">Apellidos</label>
+      <input class="form-control" type="text" placeholder="Agregar los dos apellidos del graduado" >
+    </td>
+            <!--Destaque del graduado-->
+    <td>
+      <label class="form-label fw-bold">Graduado destacado</label>
+      <select class="form-select">
+      </select>
+    </td>
+  </tr>
+  <!--
+  //////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////
+-->
+  <tr>
+        <!--Seleccion de la carrera-->
+    <td>
+      <label class="form-label fw-bold">Carrera</label>
+      <select class="form-select">
+      </select>
+    </td>
+        <!--Seleccion de la facultad-->
+    <td>
+      <label class="form-label fw-bold">Facultad</label>
+      <select class="form-select">
+      </select>
+    </td>
+    <td>
+      <label class="form-label fw-bold">Año de graduación</label>
+      <input class="form-control" type="text" placeholder="Agregar año de graduación">
+    </td>
+  </tr>
+  <!--
+  //////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////
+-->
+  <tr>
+        <!--Frase emotiva-->
+    <td>
+      <label class="form-label fw-bold">Frase emotiva</label>
+      <textarea class="form-control" style="width: 320px; height: 20px;"
+      placeholder="Solo la persona que arriesga es verdaderamente libre."></textarea>
+    </td>
+        <!--Seleccion del campus-->
+    <td>
+      <label class="form-label fw-bold">Campus</label>
+      <select class="form-select">
+      </select>
+    </td>
+        <!--QR del graduado-->
+    <td>
+      <label class="form-label fw-bold">QR del graduado</label>
+      <input class="form-control" type="url" placeholder="http://www.example.com">
+    </td>
+  </tr>
+  <tr>
+
+
+  </tr>
+
+  <tr>
+  </tr>
+
 </table>
 </body>
 </html>
