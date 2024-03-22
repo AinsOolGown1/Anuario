@@ -14,5 +14,29 @@
   letter-spacing: .3rem;
 }
 
-//Estilo de la tabla
+//Estilo cuerpo
+.cuerpo{
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
 
+//Estilo de la tabla
+tr, td{
+  padding: 10px;
+}
+
+//Estilo botones
+.botones{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}
+//Estilo boton Agregar y cancelar
+.btn-agregar
+{
+  margin-left: 50px;
+}

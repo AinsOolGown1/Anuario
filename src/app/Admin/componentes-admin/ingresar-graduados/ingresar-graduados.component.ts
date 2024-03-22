@@ -7,11 +7,5 @@ import { Component } from '@angular/core';
 })
 export class IngresarGraduadosComponent {
 
-  valueCarnet = '';
-  valueNombre = '';
-  valueApellido = '';
-  valueCarrera = '';
-  valueFacultad = '';
-  valueCampus = '';
-  valueFrase_Emotiva = '';
+
 }
