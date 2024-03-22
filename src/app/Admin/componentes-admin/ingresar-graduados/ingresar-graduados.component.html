@@ -136,7 +136,7 @@
     </table>
     <div class="botones">
       <button mat-raised-button color="warn">LIMPIAR</button>
-      <button type="submit" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
+      <button type="submit" [disabled]="ingre_graduadoForm.invalid" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
     </div>
   </form>
 </div>
