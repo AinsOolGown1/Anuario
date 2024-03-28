@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { HttpClientModule } from '@angular/common/http';
 
 //Vista publica
@@ -22,12 +21,13 @@ import { InicioAdminRoutingModule } from './Admin/componentes-admin/inicio-admin
 import { NavbarAdminComponent } from './Admin/componentes-admin/navbar-admin/navbar-admin.component';
 import { VerListaGraduadosComponent } from './Admin/componentes-admin/ver-lista-graduados/ver-lista-graduados.component';
 
-
+//Shared
+import { SharedModule } from './Shared/shared.module';
 
 //Autentificacion google
 import { OAuthModule } from 'angular-oauth2-oidc';
-import { SharedModule } from './Shared/shared.module';
 
+//Formularios reactivos
 import { ReactiveFormsModule } from '@angular/forms';
 
 
