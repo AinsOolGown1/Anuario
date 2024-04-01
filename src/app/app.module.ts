@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 //Vista publica
 import { ColeccionFotosComponent } from './Componentes/coleccion-fotos/coleccion-fotos.component';
@@ -56,7 +57,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     InicioAdminRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

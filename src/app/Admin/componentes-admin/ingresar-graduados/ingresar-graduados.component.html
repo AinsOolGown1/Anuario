@@ -26,13 +26,15 @@
         </td>
           <!--Subir foto del graduado-->
         <td>
-          <label class="form-label fw-bold">Subir foto</label>
-          <input class="form-control" type="file">
+          <label for="formFile" class="form-label fw-bold">Subir foto</label>
+          <input formControlName="foto_graduado" class="form-control" type="file" id="formFile">
         </td>
           <!--Estado del graduado-->
         <td>
           <label class="form-label fw-bold" style="width: 220px;">Estado del graduado</label>
           <select formControlName="estado_graduado" class="form-select">
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
           </select>
           <div class="text_danger" *ngIf="ingre_graduadoForm.get('estado_graduado')?.hasError('required') && ingre_graduadoForm.get('estado_graduado')?.touched">
             <span>El estado <strong>es obligatorio</strong></span>
@@ -65,6 +67,8 @@
         <td>
           <label class="form-label fw-bold">Graduado destacado</label>
           <select formControlName="destacado_graduado" class="form-select">
+            <option value="true">Si</option>
+            <option value="false">No</option>
           </select>
           <div class="text_danger" *ngIf="ingre_graduadoForm.get('destacado_graduado')?.hasError('required') && ingre_graduadoForm.get('destacado_graduado')?.touched">
             <span>Campo destacado <strong>es obligatorio</strong></span>
@@ -81,6 +85,8 @@
         <td>
           <label class="form-label fw-bold">Carrera</label>
           <select formControlName="carrera" class="form-select">
+            <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+            <option value="Mercadotecnia">Mercadotecnia</option>
           </select>
           <div class="text_danger" *ngIf="ingre_graduadoForm.get('carrera')?.hasError('required') && ingre_graduadoForm.get('carrera')?.touched">
             <span>La carrera del graduado <strong>es obligatorio</strong></span>
@@ -90,6 +96,8 @@
         <td>
           <label class="form-label fw-bold">Facultad</label>
           <select formControlName="facultad" class="form-select">
+            <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+            <option value="Ciencias Adminisrativas">Ciencias Adminisrativas</option>
           </select>
           <div class="text_danger" *ngIf="ingre_graduadoForm.get('facultad')?.hasError('required') && ingre_graduadoForm.get('facultad')?.touched">
             <span>El campo facultad <strong>es obligatorio</strong></span>
@@ -112,13 +120,17 @@
           <!--Frase emotiva-->
         <td>
           <label class="form-label fw-bold">Frase emotiva</label>
-          <textarea class="form-control" style="width: 320px; height: 20px;"
+          <textarea formControlName="frase_emotiva" class="form-control" style="width: 320px; height: 20px;"
             placeholder="Solo la persona que arriesga es verdaderamente libre."></textarea>
         </td>
           <!--Seleccion del campus-->
         <td>
           <label class="form-label fw-bold">Campus</label>
           <select formControlName="campus" class="form-select">
+            <option value="Central">Central</option>
+            <option value="Jinotepe">Jinotepe</option>
+            <option value="Doral">Doral</option>
+            <option value="Extensión Esteli">Extensión Esteli</option>
           </select>
           <div class="text_danger" *ngIf="ingre_graduadoForm.get('campus')?.hasError('required') && ingre_graduadoForm.get('campus')?.touched">
             <span>La opción campus <strong>es obligatorio</strong></span>
@@ -135,7 +147,6 @@
       </tr>
     </table>
     <div class="botones">
-      <button mat-raised-button color="warn">LIMPIAR</button>
       <button type="submit" [disabled]="ingre_graduadoForm.invalid" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
     </div>
   </form>
