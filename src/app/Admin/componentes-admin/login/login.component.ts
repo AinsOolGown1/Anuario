@@ -35,8 +35,10 @@ export class LoginComponent implements OnInit {
     if(response){
       //Decodificar el token
       const payload = this.decodeToken(response.credential);
+
       //Almacenarlo en la sesion
-      sessionStorage.setItem("loggedUser", JSON.stringify(payload) );
+      sessionStorage.setItem("loggedUser", JSON.stringify(payload));
+
       //Navegar en la pagina inicio del administrador
       this.router.navigate(['inicio-admin'])
     }

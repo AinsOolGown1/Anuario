@@ -1,8 +1,12 @@
+body{
+  background-color: #f8f8f8ce;
+  height: 100vh;
+}
 .container{
 display: grid;
 }
 .imagen1{
-  width: 48%;
+  width: 60%;
   place-self: center;
   margin-top: 10px;
 }
@@ -17,7 +21,7 @@ display: grid;
   margin-left: 30px;
 }
 
-.campus{
+.campus, .years, .facultad, .carrera{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: solid 2px #1EAF6A;
   padding: 4px;
@@ -25,3 +29,4 @@ display: grid;
   margin-right: 4px;
   display: inline-block;
 }
+

@@ -49,4 +49,5 @@ export class VerListaGraduadosComponent implements OnInit {
       this._snackBar.open("Error al eliminar el graduado", "Aceptar", { duration: 3000 });
     });
   }
+
 }

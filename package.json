@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@techiediaries/ngx-qrcode": "^9.1.0",
     "@types/toastr": "^2.1.43",
     "angular-oauth2-oidc": "^17.0.1",
     "bcrypt": "^5.1.1",
