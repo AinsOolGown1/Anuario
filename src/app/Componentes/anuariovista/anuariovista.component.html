@@ -1,3 +1,12 @@
 <app-filtro-anuario></app-filtro-anuario>
-<h1>Listado de Anuarios</h1>
+<div class="anuario">
+  <div class="lista-universitarios">
+    <div class="universitario" *ngFor="let universitario of listGraduados">
+      <p>{{ universitario.nombres }}</p>
+      <p>{{ universitario.apellidos }}</p>
+      <p>{{ universitario.carrera }}</p>
+    </div>
+  </div>
+</div>
+
 

@@ -1,0 +1,18 @@
+.anuario {
+  margin-top: 20px;
+  text-align: start;
+
+  .lista-universitarios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .universitario {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+      max-width: 200px;
+    }
+  }
+}
