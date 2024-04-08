@@ -6,12 +6,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
+
+import { FlipBookModule } from '@labsforge/flipbook';
+
 //Vista publica
 import { ColeccionFotosComponent } from './Componentes/coleccion-fotos/coleccion-fotos.component';
 import { DashboardComponent } from './Componentes/dashboard/dashboard.component';
 import { NavbarComponent } from './Componentes/navbar/navbar.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
-import { VistAnuarioComponent } from './Componentes/vist-anuario/vist-anuario.component';
+import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anuario.component';
+import { AnuariovistaComponent } from './Componentes/anuariovista/anuariovista.component';
+
 
 //Vista Admin
 import { LoginComponent } from './Admin/componentes-admin/login/login.component';
@@ -30,7 +35,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 
 //Formularios reactivos
 import { ReactiveFormsModule } from '@angular/forms';
-import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anuario.component';
 
 
 
@@ -44,13 +48,13 @@ import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anua
     NavbarComponent,
     ColeccionFotosComponent,
     LoginComponent,
-    VistAnuarioComponent,
     InicioAdminComponent,
     IngresarGraduadosComponent,
     IngresarColecFotosComponent,
     NavbarAdminComponent,
     VerListaGraduadosComponent,
-    FiltroAnuarioComponent
+    FiltroAnuarioComponent,
+    AnuariovistaComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anua
     InicioAdminRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FlipBookModule
   ],
   providers: [],
   bootstrap: [AppComponent]
