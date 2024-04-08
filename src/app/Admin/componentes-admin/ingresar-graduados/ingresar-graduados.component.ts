@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
 import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
 import { MatSnackBar } from '@angular/material/snack-bar'; // Importa MatSnackBar
-import { Router } from '@angular/router'; // Importa Router
+import { ActivatedRoute, Router } from '@angular/router'; // Importa Router
 
 @Component({
   selector: 'app-ingresar-graduados',
@@ -12,11 +12,14 @@ import { Router } from '@angular/router'; // Importa Router
 })
 export class IngresarGraduadosComponent {
   ingre_graduadoForm: FormGroup;
+  titulo = 'Agregar graduado';
+  id: string;
 
   constructor(private fb: FormBuilder,
               private _graduadoService: GraduadosService,
               private _snackBar: MatSnackBar,
-              private router: Router) {
+              private router: Router,
+              private aRouter: ActivatedRoute) {
     this.ingre_graduadoForm = this.fb.group({
       carnet:['', Validators.required],
       nombres:['', Validators.required],
@@ -31,7 +34,12 @@ export class IngresarGraduadosComponent {
       foto_graduado: ['', Validators.required],
       qr_graduado:['', Validators.required]
     })
+    this.id = this.aRouter.snapshot.paramMap.get('id')!;
   }
+  ngOnInit(){
+    this.esEditar();
+  }
+
   agregar_graduado() {
     const estado_graduado: boolean = this.ingre_graduadoForm.get('estado_graduado')?.value === 'true';
     const destacado_graduado: boolean = this.ingre_graduadoForm.get('destacado_graduado')?.value === 'true';
@@ -51,19 +59,59 @@ export class IngresarGraduadosComponent {
       qr_graduado: this.ingre_graduadoForm.get('qr_graduado')?.value
     };
 
-    console.log(GRADUADO);
-
-    this._graduadoService.guardarGraduado(GRADUADO).subscribe(data => {
-      this._snackBar.open('Graduado agregado correctamente', 'Graduado Guardado', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
+    if(this.id !== null){
+      //Editamos graduado
+      this._graduadoService.editarGraduado(this.id,GRADUADO).subscribe(() =>{
+        this._snackBar.open('Graduado editado correctamente', 'Graduado Guardado', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
       });
-      this.router.navigate(['/ver-lista-graduados']); // Redirige a la página principal después de guardar
-
+      this.router.navigate(['/ver-lista-graduados']);
     }, error => {
-      this._snackBar.open("Error al guardar el graduado", "Error", { duration: 3000 });
+      this._snackBar.open("Error al editar el graduado", "Error", { duration: 3000 });
       this.ingre_graduadoForm.reset();
-    });
+    })
+  }
+    else{
+      //Agregamos graduado
+      console.log(GRADUADO);
+
+      this._graduadoService.guardarGraduado(GRADUADO).subscribe(data => {
+        this._snackBar.open('Graduado agregado correctamente', 'Graduado Editado', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+        this.router.navigate(['/ver-lista-graduados']); // Redirige a la página principal después de guardar
+
+      }, error => {
+        this._snackBar.open("Error al guardar el graduado", "Error", { duration: 3000 });
+        this.ingre_graduadoForm.reset();
+      });
+    }
+
+  }
+
+  esEditar(){
+    if (this.id !== null){
+      this.titulo = "EDITAR GRADUADO";
+      this._graduadoService.obtenerGraduado(this.id).subscribe( data=>{
+        this.ingre_graduadoForm.setValue({
+            carnet: data.carnet,
+            nombres: data.nombres,
+            apellidos: data.apellidos,
+            carrera: data.carrera,
+            facultad: data.facultad,
+            frase_emotiva: data.frase_emotiva,
+            campus: data.campus,
+            year_graduado: data.year_graduado,
+            estado_graduado: data.estado_graduado,
+            destacado_graduado: data.destacado_graduado,
+            foto_graduado: data.foto_graduado,
+            qr_graduado: data.qr_graduado
+          })
+      })
+    }
   }
 }

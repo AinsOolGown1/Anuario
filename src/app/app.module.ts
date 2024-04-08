@@ -30,6 +30,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 
 //Formularios reactivos
 import { ReactiveFormsModule } from '@angular/forms';
+import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anuario.component';
+
 
 
 
@@ -47,7 +49,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     IngresarGraduadosComponent,
     IngresarColecFotosComponent,
     NavbarAdminComponent,
-    VerListaGraduadosComponent
+    VerListaGraduadosComponent,
+    FiltroAnuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -24,5 +24,13 @@ export class GraduadosService {
     return this.http.post(this.url, graduado);
   }
 
+  obtenerGraduado(id: string): Observable<any>{
+    return this.http.get(this.url + id);
+  }
+
+  editarGraduado(id: string, graduado: IngresarGraduados): Observable<any>{
+    return  this.http.put(this.url + id , graduado );
+  }
+
 }
 

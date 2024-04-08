@@ -5,6 +5,7 @@ import { DashboardComponent } from './Componentes/dashboard/dashboard.component'
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { ColeccionFotosComponent } from './Componentes/coleccion-fotos/coleccion-fotos.component';
 import { LoginComponent } from './Admin/componentes-admin/login/login.component';
+import { VistAnuarioComponent } from './Componentes/vist-anuario/vist-anuario.component';
 //Rutas modulo vista admin
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
     {path: '', component: InicioComponent},
     {path:'inicio', component:InicioComponent},
     {path: 'coleccion-fotos', component: ColeccionFotosComponent},
+    {path: 'inicio/vist-anuario', component: VistAnuarioComponent}
   ]}
 ];
 
