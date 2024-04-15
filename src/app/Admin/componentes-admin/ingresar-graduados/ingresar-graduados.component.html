@@ -13,7 +13,7 @@
   </mat-toolbar>
 
 <div class="cuerpo">
-  <form [formGroup]="ingre_graduadoForm" (ngSubmit)="agregar_graduado()" >
+  <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregar_graduado()" >
     <table>
       <tr>
           <!--Numero de carnet-->
@@ -27,7 +27,7 @@
           <!--Subir foto del graduado-->
         <td>
           <label for="formFile" class="form-label fw-bold">Foto</label>
-          <input formControlName="foto_graduado" class="form-control" type="file" id="formFile">
+          <input (change)="capturarFile($event)" formControlName="foto_graduado" class="form-control" type="file" id="formFile">
         </td>
           <!--Estado del graduado-->
         <td>

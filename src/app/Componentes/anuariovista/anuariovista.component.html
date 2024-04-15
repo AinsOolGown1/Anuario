@@ -1,12 +1,12 @@
-<app-filtro-anuario></app-filtro-anuario>
-<div class="anuario">
-  <div class="lista-universitarios">
-    <div class="universitario" *ngFor="let universitario of listGraduados">
-      <p>{{ universitario.nombres }}</p>
-      <p>{{ universitario.apellidos }}</p>
-      <p>{{ universitario.carrera }}</p>
-    </div>
+<div class="body">
+  <app-filtro-anuario></app-filtro-anuario>
+  <div class="card" *ngFor="let universitario of listGraduados">
+    <img [src]="universitario.foto_graduado">
+    <h2>{{universitario.nombres}} {{universitario.apellidos}}</h2>
+    <h2>{{universitario.carrera}}</h2>
   </div>
 </div>
+
+
 
 
