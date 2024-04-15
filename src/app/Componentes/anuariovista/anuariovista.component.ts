@@ -14,16 +14,16 @@ export class AnuariovistaComponent {
   constructor(private _graduadoService: GraduadosService) {}
 
   ngOnInit(): void {
-    this.vistaAbuario();
+    this.vistaAnuario();
   }
 
-  vistaAbuario(): void {
+  vistaAnuario(): void {
     this._graduadoService.getGraduados().subscribe((data: IngresarGraduados[]) => {
       console.log(data);
       this.listGraduados = data;
 
     }, (error: any) => {
-      console.log(error);
+      console.log('Error la obtener el graduado',error);
     });
   }
 

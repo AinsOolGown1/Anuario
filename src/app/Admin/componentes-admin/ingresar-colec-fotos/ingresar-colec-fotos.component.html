@@ -1,1 +1,53 @@
-<p>ingresar-colec-fotos works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <mat-toolbar class="ancho-tool2 mt-3">
+    <span class="example-spacer"></span>
+    <span class="list">{{titulo | uppercase}}</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+
+<div class="cuerpo">
+  <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregar_graduado()" >
+    <table>
+      <tr>
+          <!--Subir foto del graduado-->
+        <td>
+          <label for="formFile" class="form-label fw-bold">Foto</label>
+          <input (change)="capturarFile($event)" formControlName="foto_graduado" class="form-control" type="file" id="formFile">
+      </tr>
+<!--
+  //////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////
+-->
+      <tr>
+          <!--Seleccion del campus-->
+        <td>
+          <label class="form-label fw-bold">Campus</label>
+          <select formControlName="campus" class="form-select">
+            <option value="Central">Central</option>
+            <option value="Jinotepe">Jinotepe</option>
+            <option value="Doral">Doral</option>
+            <option value="Extensión Esteli">Extensión Esteli</option>
+          </select>
+          <div class="text_danger" *ngIf="ingre_graduadoForm.get('campus')?.hasError('required') && ingre_graduadoForm.get('campus')?.touched">
+            <span>La opción campus <strong>es obligatorio</strong></span>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div class="botones">
+      <button type="submit" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
+    </div>
+  </form>
+</div>
+<!--[disabled]="ingre_graduadoForm.invalid"-->
+</body>
+</html>
+

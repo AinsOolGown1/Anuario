@@ -1,0 +1,56 @@
+
+//Estilo Agregar graduado
+.example-spacer{
+  flex: 1 1 auto;
+}
+.ancho-tool2{
+  width: 99%;
+  margin-right: auto;
+  margin-left: auto;
+  //border: 0.7px solid rgba(63, 81, 181, 0.425);
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 5px 5px 2px rgba(63, 81, 181, 0.514);
+}
+.list{
+  letter-spacing: .3rem;
+}
+
+//Estilo cuerpo
+.cuerpo{
+  display: flex;
+  align-items: center; // Centra verticalmente
+  justify-content: center; // Centra horizontalmente
+  flex-direction: column; // Alinea los elementos en columna
+  width: 50%;
+  margin-top: 30px;
+  margin-left: auto; // Centra horizontalmente
+  margin-right: auto; // Centra horizontalmente
+  box-shadow: 0 5px 5px 2px rgba(63, 81, 181, 0.418);
+}
+
+//Estilo de la tabla
+tr, td{
+  padding: 10px;
+}
+
+//Estilo botones
+.botones{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+//Estilo boton Agregar y cancelar
+.btn-agregar
+{
+  margin-left: 50px;
+}
+
+//Estilo texto de emergencia
+.text_danger{
+  font-size: 13px;
+  text-align: start;
+  margin-left: 3px;
+  color: red
+}
