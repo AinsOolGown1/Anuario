@@ -1,27 +1,50 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'; // Importa map para transformar la respuesta JSON
 import { IngresarGraduados } from '../model/ingresar-graduados';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class GraduadosService {
 
   url = 'http://localhost:4000/api/agregar_graduados/';
 
   constructor(private http: HttpClient) { }
 
-  getGraduados(): Observable<any>{
-    return this.http.get(this.url);
+  getGraduados(): Observable<IngresarGraduados[]> {
+    return this.http.get<any[]>(this.url).pipe(
+      map(response => response.map(graduado => this.mapGraduado(graduado)))
+    );
   }
 
-  eliminarGraduado(id: string):Observable<any> {
+  // Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
+  private mapGraduado(graduado: any): IngresarGraduados {
+    return {
+      carnet: graduado.carnet,
+      nombres: graduado.nombres,
+      apellidos: graduado.apellidos,
+      carrera: graduado.carrera,
+      facultad: graduado.facultad,
+      frase_emotiva: graduado.frase_emotiva,
+      campus: graduado.campus,
+      year_graduado: graduado.year_graduado,
+      estado_graduado: graduado.estado_graduado,
+      destacado_graduado: graduado.destacado_graduado,
+      foto_graduado: graduado.foto_graduado,
+      qr_graduado: graduado.qr_graduado
+    };
+  }
+
+  eliminarGraduado(id: string): Observable<any> {
     return this.http.delete(this.url + id);
   }
 
-  guardarGraduado(graduado: IngresarGraduados): Observable<any>{
+  guardarGraduado(graduado: IngresarGraduados): Observable<any> {
     const formData = new FormData();
+    // Agregar los campos al FormData
     formData.append('carnet', graduado.carnet);
     formData.append('nombres', graduado.nombres);
     formData.append('apellidos', graduado.apellidos);
@@ -38,17 +61,18 @@ export class GraduadosService {
     return this.http.post(this.url, formData);
   }
 
-  agregarArchivo(uri: string, formdata: FormData ): Observable<any>{
+  agregarArchivo(uri: string, formdata: FormData): Observable<any> {
     return this.http.post(uri, formdata);
   }
 
-  obtenerGraduado(id: string): Observable<any>{
-    return this.http.get(this.url + id);
+  obtenerGraduado(id: string): Observable<IngresarGraduados> {
+    return this.http.get<any>(this.url + id).pipe(
+      map(graduado => this.mapGraduado(graduado))
+    );
   }
 
-  editarGraduado(id: string, graduado: IngresarGraduados): Observable<any>{
-    return  this.http.put(this.url + id , graduado );
+  editarGraduado(id: string, graduado: IngresarGraduados): Observable<any> {
+    return this.http.put(this.url + id, graduado);
   }
 
 }
-
