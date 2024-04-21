@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-
+import {DialogModule} from '@angular/cdk/dialog'
 
 import { FlipBookModule } from '@labsforge/flipbook';
 
@@ -35,10 +35,10 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 
 //Formularios reactivos
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalanuarioComponent } from './Componentes/modalanuario/modalanuario.component';
 
-
-
-
+//Angular Material
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarAdminComponent,
     VerListaGraduadosComponent,
     FiltroAnuarioComponent,
-    AnuariovistaComponent
+    AnuariovistaComponent,
+    ModalanuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +67,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    FlipBookModule
+    FlipBookModule,
+    DialogModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

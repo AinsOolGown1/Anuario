@@ -1,12 +1,10 @@
 <div class="body">
   <app-filtro-anuario></app-filtro-anuario>
-  <div class="card" *ngFor="let universitario of listGraduados">
-    <img [src]="universitario.foto_graduado">
+  <div (click)="abrirModalAnuario()" class="card" *ngFor="let universitario of listGraduados">
+    <!-- Verificar si hay una foto antes de mostrarla -->
+    <img *ngIf="universitario.foto_graduado" [src]="universitario.foto_graduado">
     <h2>{{universitario.nombres}} {{universitario.apellidos}}</h2>
     <h2>{{universitario.carrera}}</h2>
   </div>
 </div>
-
-
-
 

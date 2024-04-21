@@ -12,6 +12,11 @@
     <span class="example-spacer"></span>
   </mat-toolbar>
 
+  <div>
+    <label class="form-label fw-bold">Seleccionar archivo Excel</label>
+    <input type="file" (change)="onFileChange($event)" class="form-control" accept=".xlsx">
+  </div>
+
 <div class="cuerpo">
   <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregar_graduado()" >
     <table>
@@ -147,7 +152,7 @@
       </tr>
     </table>
     <div class="botones">
-      <button type="submit" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
+      <button type="submit" class="btn-agregar" mat-raised-button color="primary" [disabled]="guardandoDesdeExcel">AGREGAR</button>
     </div>
   </form>
 </div>

@@ -1,0 +1,10 @@
+<mat-dialog-content class="mat-typography">
+  <ng-container *ngIf="graduadoSeleccionado">
+    <h2>{{ graduadoSeleccionado.nombres }} {{ graduadoSeleccionado.apellidos }}</h2>
+    <h2>{{ graduadoSeleccionado.carrera }}</h2>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

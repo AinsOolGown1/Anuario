@@ -78,11 +78,12 @@
           <td mat-cell *matCellDef="let graduado"> {{graduado.destacado_graduado }} </td>
         </ng-container>
 
-        <!-- Columna foto del graduado -->
         <ng-container matColumnDef="foto_graduado">
           <th mat-header-cell *matHeaderCellDef>Foto</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.foto_graduado}} </td>
-        </ng-container>
+          <td mat-cell *matCellDef="let graduado">
+              <img [src]="graduado.foto_graduado" alt="Foto de graduado" style="max-width: 100px;">
+          </td>
+      </ng-container>
 
         <!-- Columna QR del graduado -->
         <ng-container matColumnDef="qr_graduado">

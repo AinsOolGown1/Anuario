@@ -39,15 +39,17 @@ export class VerListaGraduadosComponent implements OnInit {
 
   eliminarGraduado(id: any): void {
     this._graduadoService.eliminarGraduado(id).subscribe(data => {
-      this._snackBar.open('Graduado eliminado correctamente', 'Graduado Eliminado', {
-        duration: 5000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      });
-      this.obtenerGraduados(); // Esto debería ir fuera del objeto de configuración de MatSnackBar
+        this._snackBar.open('Graduado eliminado correctamente', 'Graduado Eliminado', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+        });
+        // Actualizar la lista de graduados después de eliminar uno
+        this.obtenerGraduados();
     }, error => {
-      this._snackBar.open("Error al eliminar el graduado", "Aceptar", { duration: 3000 });
+        this._snackBar.open("Error al eliminar el graduado", "Aceptar", { duration: 3000 });
     });
-  }
+}
+
 
 }

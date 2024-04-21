@@ -20,6 +20,10 @@ export class GraduadosService {
     );
   }
 
+  guardarDatosExcel(datos: any[]): Observable<any> {
+    return this.http.post(this.url, datos);
+  }
+
   // Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
   private mapGraduado(graduado: any): IngresarGraduados {
     return {
@@ -61,14 +65,8 @@ export class GraduadosService {
     return this.http.post(this.url, formData);
   }
 
-  agregarArchivo(uri: string, formdata: FormData): Observable<any> {
-    return this.http.post(uri, formdata);
-  }
-
-  obtenerGraduado(id: string): Observable<IngresarGraduados> {
-    return this.http.get<any>(this.url + id).pipe(
-      map(graduado => this.mapGraduado(graduado))
-    );
+  obtenerUngraduado(id: string): Observable<IngresarGraduados> {
+    return this.http.get<IngresarGraduados>(`${this.url}${id}`); // Especificamos el tipo de datos esperado como IngresarGraduados
   }
 
   editarGraduado(id: string, graduado: IngresarGraduados): Observable<any> {

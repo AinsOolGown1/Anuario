@@ -128,7 +128,7 @@ export class IngresarColecFotosComponent {
   esEditar(){
     if (this.id !== null){
       this.titulo = "EDITAR GRADUADO";
-      this._graduadoService.obtenerGraduado(this.id).subscribe( data=>{
+      this._graduadoService.obtenerUngraduado(this.id).subscribe( data=>{
         this.ingre_graduadoForm.setValue({
             carnet: data.carnet,
             nombres: data.nombres,
