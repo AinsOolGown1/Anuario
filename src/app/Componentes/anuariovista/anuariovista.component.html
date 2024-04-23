@@ -1,10 +1,17 @@
-<div class="body">
-  <app-filtro-anuario></app-filtro-anuario>
-  <div (click)="abrirModalAnuario()" class="card" *ngFor="let universitario of listGraduados">
-    <!-- Verificar si hay una foto antes de mostrarla -->
-    <img *ngIf="universitario.foto_graduado" [src]="universitario.foto_graduado">
-    <h2>{{universitario.nombres}} {{universitario.apellidos}}</h2>
-    <h2>{{universitario.carrera}}</h2>
-  </div>
+<app-filtro-anuario></app-filtro-anuario>
+<div id="app" (click)="abrirModalAnuario()" >
+    <div *ngFor="let universitario of listGraduados">
+        <div class="card">
+            <div class="card_image">
+                <img src="../../../assets/Fotos/hombre-de-negocios.png" class="picture">
+            </div>
+            <div class="card_body">
+                <h2>{{universitario.nombres}}</h2> <h2>{{universitario.apellidos}}</h2>
+                <p>{{universitario.facultad}}</p>
+            </div>
+            <script src="../../../estilocardanuario.js"></script>
+        </div>
+    </div>
 </div>
+
 

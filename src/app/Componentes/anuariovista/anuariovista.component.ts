@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
 import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
 import { MatDialog } from '@angular/material/dialog'
@@ -17,7 +17,8 @@ export class AnuariovistaComponent implements OnInit {
 
   constructor(private _graduadoService: GraduadosService,
     private _matDialog: MatDialog,
-  private aRouter: ActivatedRoute,
+    private aRouter: ActivatedRoute,
+    private elRef: ElementRef
 
   ) {
     this.id = this.aRouter.snapshot.paramMap.get('id')!;
@@ -47,6 +48,4 @@ export class AnuariovistaComponent implements OnInit {
       console.log('Error al obtener el graduado', error);
     });
   }
-
-
 }

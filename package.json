@@ -32,6 +32,7 @@
     "express": "^4.18.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.0",
+    "ngx-pagination": "^6.0.3",
     "ngx-toastr": "^18.0.0",
     "nodemon": "^3.1.0",
     "page-flip": "^2.0.7",

@@ -11,20 +11,10 @@
       <th>
         <label>Campus</label>
         <select class="campus" id="camp">
-          <option value=""></option>
+          <option value="" disabled selected></option>
           <option value="">Central</option>
           <option value="">Jinotepe</option>
           <option value="">Doral</option>
-        </select>
-      </th>
-      <th>
-        <label>Año</label>
-        <select class="years" id="year">
-          <option value=""></option>
-          <option value="">2024</option>
-          <option value="">2023</option>
-          <option value="">2022</option>
-          <option value="">2021</option>
         </select>
       </th>
       <th>
@@ -41,10 +31,21 @@
       <th>
         <label>Carrera</label>
         <select class="carrera" id="carreras">
+          <option value="" disabled selected></option>
           <option value="">Ingenieria en Sistemas</option>
           <option value="">Medicina Cirugia</option>
           <option value="">Marketing</option>
           <option value="">Psicología</option>
+        </select>
+      </th>
+      <th>
+        <label>Año</label>
+        <select class="years" id="year">
+          <option value="" disabled selected></option>
+          <option value="">2024</option>
+          <option value="">2023</option>
+          <option value="">2022</option>
+          <option value="">2021</option>
         </select>
       </th>
       <th><button routerLink="/inicio/anuariovista" class="btn-consultar">Consultar</button></th>

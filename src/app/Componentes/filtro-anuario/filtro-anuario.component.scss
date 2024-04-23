@@ -3,11 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .btn-consultar{
   margin-bottom: 0px;
   margin-left: 30px;
+}
+
+label{
+  margin-right: 5px;
+  color: #535353;
 }
 
 .campus, .years, .facultad, .carrera{

@@ -1,10 +1,13 @@
 .container{
   display: flex;
+  justify-content: center;
+  place-items: center;
+  flex-wrap: wrap;
+  margin-right: 70px;
 }
-
 .foto{
-  width: 25%;
-  margin: 0 5px;
+  margin-right: 35px;
+  width: 30%;
   margin-top: 20px;
 }
 

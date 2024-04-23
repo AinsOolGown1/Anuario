@@ -12,9 +12,12 @@
     <span class="example-spacer"></span>
   </mat-toolbar>
 
-  <div>
-    <label class="form-label fw-bold">Seleccionar archivo Excel</label>
-    <input type="file" (change)="onFileChange($event)" class="form-control" accept=".xlsx">
+  <div class="agregar-excel">
+    <label style="margin-right: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;" class="form-label fw-bold">Subir archivo Excel</label>
+    <input type="file" style="width: 30%;" (change)="onFileChange($event)" class="form-control" accept=".xlsx">
   </div>
 
 <div class="cuerpo">
