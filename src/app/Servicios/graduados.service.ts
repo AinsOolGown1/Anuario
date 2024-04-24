@@ -65,6 +65,10 @@ export class GraduadosService {
     return this.http.post(this.url, formData);
   }
 
+  obtenerEstudiantePorCarnet(carnet: string): Observable<IngresarGraduados> {
+    return this.http.get<IngresarGraduados>(`${this.url}buscar/${carnet}`);
+  }
+
   obtenerUngraduado(id: string): Observable<IngresarGraduados> {
     return this.http.get<IngresarGraduados>(`${this.url}${id}`); // Especificamos el tipo de datos esperado como IngresarGraduados
   }

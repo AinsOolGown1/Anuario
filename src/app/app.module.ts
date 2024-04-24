@@ -39,6 +39,7 @@ import { ModalanuarioComponent } from './Componentes/modalanuario/modalanuario.c
 
 //Angular Material
 import { MatDialogModule } from '@angular/material/dialog';
+import { EventosComponent } from './Componentes/eventos/eventos.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     VerListaGraduadosComponent,
     FiltroAnuarioComponent,
     AnuariovistaComponent,
-    ModalanuarioComponent
+    ModalanuarioComponent,
+    EventosComponent
   ],
   imports: [
     BrowserModule,

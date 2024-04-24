@@ -29,15 +29,15 @@ export class AnuariovistaComponent implements OnInit {
     this.vistaAnuario();
   }
 
-  abrirModalAnuario(): void {
-    if (!this.id || this.id.length !== 24) {
-      console.error("ID de graduado no válido:", this.id);
+  abrirModalAnuario(carnet: string): void {
+    if (!carnet) {
+      console.error("Carnet de graduado no válido:", carnet);
       return;
     }
     this._matDialog.open(ModalanuarioComponent, {
-        data: { id: this.id }
+        data: { carnet: carnet }
     });
-}
+  }
 
   vistaAnuario(): void {
     this._graduadoService.getGraduados().subscribe((data: IngresarGraduados[]) => {
