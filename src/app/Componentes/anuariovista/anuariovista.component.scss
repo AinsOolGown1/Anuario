@@ -1,3 +1,4 @@
+/*
 #app{
   height: 100vh;
   display: flex;
@@ -41,6 +42,7 @@
   margin-top: 5px;
 }
         /* ANIMACIONES CSS */
+/*
 @keyframes _in {
   0%{ border-radius: 50%}
   100%{ border-radius: 0%; transform: scale(1.2);}
@@ -49,4 +51,56 @@
 @keyframes _out {
   0%{ border-radius: 0%;transform: scale(1.2);}
   100%{ border-radius: 50%; transform: scale(1);}
+}
+*/
+#app{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  flex-wrap: wrap;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 285px;
+  margin: 0 auto;
+  background:linear-gradient(rgb(30 176 106) 29%, rgb(255, 255, 255) 30%);
+  box-shadow: 0 0 25px rgba(0, 139, 63, 0.63) ;
+  border-radius: 10px;
+  padding: 50px 16px;
+  margin-right: 30px;
+  margin-top: 20px;
+}
+.card_image{
+  position: relative;
+  margin-top: -40px;
+  height: 120px;
+  width: 120px;
+  backdrop-filter: blur(2px);
+
+}
+.card_image .picture{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2%;
+  box-shadow: 0 5px 20px rgba(100, 255, 170, 0.4);
+}
+.card_body{ text-align: center;}
+.card_body h2{ color: #1FB16B; margin-bottom: 5px;}
+.card_body p{font: bold;
+  color: rgb(255, 170, 0);
+  margin-top: 5px;
+}
+.card > .card_image > .picture{
+  transition: all 0.7s;
+}
+
+.card:hover > .card_image > .picture{
+  border-radius: 5%;
+  box-shadow: 0 0px 40px var(--colorDark);
+  transform: translateY(-20%) scale(1.1);
 }

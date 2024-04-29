@@ -48,4 +48,5 @@ export class AnuariovistaComponent implements OnInit {
       console.log('Error al obtener el graduado', error);
     });
   }
+
 }
