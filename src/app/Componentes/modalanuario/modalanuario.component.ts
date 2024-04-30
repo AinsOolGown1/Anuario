@@ -1,10 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
 import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
-import { catchError, map } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-modalanuario',
@@ -16,7 +13,6 @@ export class ModalanuarioComponent implements OnInit {
 
   constructor(public _matDialogRef: MatDialogRef<ModalanuarioComponent>,
     private _graduadoService: GraduadosService,
-    private aRouter: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public data: { carnet: string }
   ){
     console.log('Datos recibidos en el constructor:', data);
