@@ -24,6 +24,7 @@
     "@techiediaries/ngx-qrcode": "^9.1.0",
     "@types/toastr": "^2.1.43",
     "angular-oauth2-oidc": "^17.0.1",
+    "angularx-qrcode": "^16.0.2",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
     "cookie-parser": "^1.4.6",

@@ -10,17 +10,19 @@ import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
 })
 export class ModalanuarioComponent implements OnInit {
   graduadoSeleccionado: IngresarGraduados | null = null
+  imagen_graduado: any;
 
   constructor(public _matDialogRef: MatDialogRef<ModalanuarioComponent>,
     private _graduadoService: GraduadosService,
     @Inject(MAT_DIALOG_DATA) public data: { carnet: string }
   ){
-    console.log('Datos recibidos en el constructor:', data);
+    //console.log('Datos recibidos en el constructor:', data);
   }
 
   ngOnInit(): void {
     if (this.data && this.data.carnet) {
       this.vistaAnuario(this.data.carnet);
+      this.obtenerFoto(this.data.carnet)
     } else {
       console.error('El objeto de datos es nulo o no tiene una propiedad "carnet" válida.');
     }
@@ -31,6 +33,7 @@ export class ModalanuarioComponent implements OnInit {
       (estudiante: IngresarGraduados) => {
         if (estudiante) {
           this.graduadoSeleccionado = estudiante;
+          console.log(estudiante)
         } else {
           console.error('No se encontró ningún estudiante con el carnet proporcionado.');
         }
@@ -40,4 +43,27 @@ export class ModalanuarioComponent implements OnInit {
       }
     );
   }
+
+  obtenerFoto(carnet:string){
+    this._graduadoService.obtenerFotoGraduado(carnet).subscribe({
+    next: (value) =>{
+      this.convertirBase64(value)
+    },
+    error: (err: any)=>{
+      console.log('Error al obtener la foto'+err.message)
+    }
+  })
+  }
+
+  convertirBase64(archivo:any){
+    if(['image/jpeg','image/jpg','image/png'].includes(archivo.type)){
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagen_graduado = reader.result as string;
+      }
+      reader.readAsDataURL(archivo);
+    }else{
+      console.log('Esto no es una imagen')
+    }
+  };
 }

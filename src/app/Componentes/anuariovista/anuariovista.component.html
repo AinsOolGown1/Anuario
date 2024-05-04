@@ -10,7 +10,7 @@
     <div *ngFor="let universitario of listGraduados">
         <div class="card" (click)="abrirModalAnuario(universitario.carnet)">
             <div class="card_image">
-                <img src="../../../assets/Fotos/FOTOGRADUADOMEN.jpg" class="picture">
+                <img [src]="universitario.ruta_foto" class="picture">
             </div>
             <div class="card_body">
                 <h2>{{universitario.nombres}}</h2> <h2>{{universitario.apellidos}}</h2>

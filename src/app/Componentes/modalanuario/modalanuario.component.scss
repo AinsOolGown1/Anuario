@@ -5,7 +5,7 @@
   align-items: center;
   width: 500px;
   height: 600px;
-  background:linear-gradient(rgba(243, 243, 243, 0.815) 29%, rgb(30 176 106) 30%);
+  background:linear-gradient(rgba(30 176 106) 29%, rgb(255, 255, 255) 30%);
   box-shadow: 0 0 25px rgba(41, 44, 43, 0.63) ;
 }
 .card_image{
@@ -29,9 +29,10 @@
 .card_body{ text-align: justify;}
 h2{
   margin-top: -20px;
-  color: #ffffff;
+  color: rgba(30 176 106) 29%;
   margin-bottom: 5px;
-  letter-spacing: .2rem;}
+  letter-spacing: .2rem;
+}
 .card_body p{
   color: rgb(255, 170, 0);
   margin-top: -5px;

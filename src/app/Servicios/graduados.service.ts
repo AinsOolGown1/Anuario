@@ -14,14 +14,14 @@ export class GraduadosService {
 
   constructor(private http: HttpClient) { }
 
-  getGraduados(): Observable<IngresarGraduados[]> {
+  getGraduados(): Observable<any[]> {
     return this.http.get<any[]>(this.url).pipe(
       map(response => response.map(graduado => this.mapGraduado(graduado)))
     );
   }
 
   guardarDatosExcel(datos: any[]): Observable<any> {
-    return this.http.post(this.url, datos);
+    return this.http.post(`${this.url}/guardar-desde-excel`,{datos});
   }
 
   // Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
@@ -69,12 +69,24 @@ export class GraduadosService {
     return this.http.get<IngresarGraduados>(`${this.url}buscar/${carnet}`);
   }
 
+  obtenerFotoGraduado(carnet: string): Observable<any> {
+    return this.http.get(`${this.url}buscar/imagen/${carnet}`, {responseType: 'blob'});
+  }
+
   obtenerUngraduado(id: string): Observable<IngresarGraduados> {
     return this.http.get<IngresarGraduados>(`${this.url}${id}`); // Especificamos el tipo de datos esperado como IngresarGraduados
   }
 
   editarGraduado(id: string, graduado: IngresarGraduados): Observable<any> {
     return this.http.put(this.url + id, graduado);
+  }
+
+  filtrarGraduados(campus: string, facultad: string, carrera: string, year: string): Observable<IngresarGraduados[]> {
+    const queryParams = `?campus=${campus}&facultad=${facultad}&carrera=${carrera}&year=${year}`;
+    const filterUrl = `${this.url}filtrar${queryParams}`;
+    return this.http.get<any[]>(filterUrl).pipe(
+      map(response => response.map(graduado => this.mapGraduado(graduado)))
+    );
   }
 
 }

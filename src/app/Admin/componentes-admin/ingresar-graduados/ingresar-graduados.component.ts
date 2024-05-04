@@ -160,7 +160,6 @@ guardarDatos(datos: any[]): void {
   }
 }
 
-
   capturarFile(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
 
