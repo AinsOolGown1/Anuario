@@ -5,7 +5,7 @@ import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import * as XLSX from 'xlsx'; // Importar la biblioteca XLSX
+import * as XLSX from 'xlsx'; //* Importar la biblioteca XLSX
 
 @Component({
   selector: 'app-ingresar-graduados',
@@ -19,7 +19,7 @@ export class IngresarGraduadosComponent {
   titulo = 'Agregar graduado';
   id: string;
   public archivos: any = [];
-  guardandoDesdeExcel: boolean = false; // Bandera para indicar si se están guardando datos desde un archivo Excel
+  guardandoDesdeExcel: boolean = false; //* Bandera para indicar si se están guardando datos desde un archivo Excel
 
 
   constructor(private fb: FormBuilder,
@@ -64,99 +64,109 @@ export class IngresarGraduadosComponent {
       year_graduado: this.ingre_graduadoForm.get('year_graduado')?.value,
       estado_graduado: estado_graduado,
       destacado_graduado: destacado_graduado,
-      foto_graduado: this.archivos[0], // Se envía el archivo en lugar de la URL
+      foto_graduado: this.archivos[0], //* Se envía el archivo en lugar de la URL
       qr_graduado: this.ingre_graduadoForm.get('qr_graduado')?.value
     };
 
+    //*Editar graduado
     if(this.id !== null){
-      // Editar graduado
-      this._graduadoService.editarGraduado(this.id, GRADUADO).subscribe(() =>{
-        this._snackBar.open('Graduado editado correctamente', 'Graduado Guardado', {
+      this._graduadoService.editarGraduado(this.id, GRADUADO).subscribe({
+        next: ()=>{
+          this._snackBar.open('Graduado editado correctamente','Aceptar', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+        });
+        this.router.navigate(['/ver-lista-graduados']);
+        }, error: () =>{
+          this._snackBar.open('No se logro editar el graduado','Aceptar',{
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          });
+          this.ingre_graduadoForm.reset();
+        }
+      })
+  }
+  else {
+    //* Agregar graduado
+    this._graduadoService.guardarGraduado(GRADUADO).subscribe({
+      next: (data)=>{
+        this._snackBar.open('Graduado agregado correctamente', 'Aceptar', {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
-      });
-      this.router.navigate(['/ver-lista-graduados']);
-    }, error => {
-      this._snackBar.open("Error al editar el graduado", "Error", { duration: 3000 });
-      this.ingre_graduadoForm.reset(error);
-    });
-  } else {
-    // Agregar graduado
-    this._graduadoService.guardarGraduado(GRADUADO).subscribe(data => {
-      this._snackBar.open('Graduado agregado correctamente', 'Graduado Editado', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      });
-      this.router.navigate(['/ver-lista-graduados']);
-    }, error => {
-      this._snackBar.open("Error al guardar el graduado", "Error", { duration: 3000 });
-      this.ingre_graduadoForm.reset(error);
-    });
+        });
+        this.router.navigate(['/ver-lista-graduados']);
+      }, error: ()=>{
+        this._snackBar.open('Error al guardar el graduado', 'Aceptar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom' });
+        this.ingre_graduadoForm.reset();
+      }
+    })
   }
-
 }
- // Función para manejar el cambio de archivo Excel seleccionado
-  onFileChange(event: any): void {
-  this.guardandoDesdeExcel = true; // Activar la bandera cuando se cargue un archivo Excel
+onFileChange(event: any): void {
+  this.guardandoDesdeExcel = true; //* Activar la bandera cuando se cargue un archivo Excel
   const file = event.target.files[0];
 
   const reader = new FileReader();
-  reader.readAsBinaryString(file);
+  reader.readAsArrayBuffer(file); // Cambio a readAsArrayBuffer
+
   reader.onload = (event: any) => {
-    const binaryData = event.target.result;
-    const workbook = XLSX.read(binaryData, { type: 'binary' });
+    const arrayBuffer = event.target.result;
+    const binaryData = new Uint8Array(arrayBuffer);
+    const workbook = XLSX.read(binaryData, { type: 'array' }); // Cambio a 'array'
     const sheetName = workbook.SheetNames;
     this.ExcelData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName[0]]);
     console.log(this.ExcelData);
     this.guardarDatos(this.ExcelData);
-    this.guardandoDesdeExcel = false; // Desactivar la bandera después de procesar el archivo Excel
+    this.guardandoDesdeExcel = false; //* Desactivar la bandera después de procesar el archivo Excel
   };
 }
 
-// Función para enviar los datos al servicio y guardarlos en MongoDB
+
+//* Función para enviar los datos de excel al servicio y guardarlos en MongoDB
 guardarDatos(datos: any[]): void {
   if (Array.isArray(datos) && datos.length > 0) {
-    this._graduadoService.guardarDatosExcel(datos).subscribe(
-      (response) => {
-        this._snackBar.open('Datos guardados correctamente desde el archivo Excel', 'Aceptar', {
+    this._graduadoService.guardarDatosExcel(datos).subscribe({
+      next: (response)=>{
+        this._snackBar.open('Graduado guardados desde el archivo .XLS', 'Aceptar',{
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
-        });
-      },
-      (error) => {
-        console.error('Error al guardar datos desde el archivo Excel:', error);
-        this._snackBar.open('Error al guardar datos desde el archivo Excel', 'Aceptar', {
+        })
+      }, error: (err: any) => {
+        this._snackBar.open('Error al guardar graduados desde el archivo .XLS', 'Aceptar',{
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
-        });
+        })
       }
-    );
+    })
   } else {
-    // Guardar desde el formulario
+    //* Guardar desde el formulario
     const formData = this.ingre_graduadoForm.value;
-    this._graduadoService.guardarGraduado(formData).subscribe(
-      (response) => {
+    this._graduadoService.guardarGraduado(formData).subscribe({
+      next: (response) =>{
         this._snackBar.open('Graduado agregado correctamente desde el formulario', 'Aceptar', {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
-        // Limpiar el formulario después de guardar
+        //* Limpiar el formulario después de guardar
         this.ingre_graduadoForm.reset();
-      },
-      (error) => {
-        console.error('Error al guardar graduado desde el formulario:', error);
+      }, error:(err: any) => {
+        console.error('Error al guardar graduado desde el formulario:' +err);
         this._snackBar.open('Error al guardar graduado desde el formulario', 'Aceptar', {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
       }
-    );
+    })
   }
 }
 
@@ -165,10 +175,10 @@ guardarDatos(datos: any[]): void {
 
     if (inputElement && inputElement.files && inputElement.files.length > 0) {
       const archivoCapturado = inputElement.files[0];
-      this.archivos = []; // Limpiar el array de archivos antes de agregar uno nuevo
+      this.archivos = []; //* Limpiar el array de archivos antes de agregar uno nuevo
       this.archivos.push(archivoCapturado);
       this.extraerBase64(archivoCapturado).then((imagenBase64) => {
-        console.log(imagenBase64); // Puedes usar esta imagen en una vista previa
+        console.log(imagenBase64); //* Puedes usar esta imagen en una vista previa
       });
     } else {
       console.log('No se seleccionó ningún archivo.');

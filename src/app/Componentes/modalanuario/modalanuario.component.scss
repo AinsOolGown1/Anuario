@@ -1,53 +1,45 @@
-.card{
+.card {
   font: bold 1rem "Open Sans", serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 500px;
-  height: 600px;
-  background:linear-gradient(rgba(30 176 106) 29%, rgb(255, 255, 255) 30%);
-  box-shadow: 0 0 25px rgba(41, 44, 43, 0.63) ;
-}
-.card_image{
-  position: relative;
-  margin-top: 10px;
-  height: 200px;
-  width: 200px;
-  backdrop-filter: blur(2px);
-}
-.card_image .picture{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  box-shadow: 0 5px 20px rgba(100, 255, 170, 0.4);
-}
-.card_body{
-  text-align: justify;
-  margin-top: 5px;
-  margin-left: 20px;
-}
-.card_body{ text-align: justify;}
-h2{
-  margin-top: -20px;
-  color: rgba(30 176 106) 29%;
-  margin-bottom: 5px;
-  letter-spacing: .2rem;
-}
-.card_body p{
-  color: rgb(255, 170, 0);
-  margin-top: -5px;
-}
-.qr{
-margin-right: 50px;
-  width: 10%;
-}
-        /* ANIMACIONES CSS */
-@keyframes _in {
-  0%{ border-radius: 50%}
-  100%{ border-radius: 0%; transform: scale(1.2);}
+  display: grid;
+  grid-template-columns: 1fr 300px; /* 1fr para el contenido y 300px para la imagen */
+  width: 800px; /* Ajustado para acomodar la imagen más grande y el contenido */
+  height: 90vh; /* Ajustado para la altura de la imagen */
 }
 
-@keyframes _out {
-  0%{ border-radius: 0%;transform: scale(1.2);}
-  100%{ border-radius: 50%; transform: scale(1);}
+.card_body {
+  margin-left: 20px;
+}
+.card_image {
+  display: flex;
+  position: relative;
+  height: 100%; /* Ajustado para que ocupe toda la altura del contenedor */
+  width: 100%; /* Ajustado para que ocupe toda la anchura del contenedor */
+  justify-content: center;
+  align-items: center;
+}
+
+.card_image .picture {
+  width: 100%; /* Ancho fijo de la imagen */
+  height: 100%; /* Altura fija de la imagen */
+  mask-image: linear-gradient(
+    to right,
+    black 87%,
+    transparent
+  );
+}
+
+.titulo_contenido {
+  font-size: 18px;
+  color: #1BC075;
+  margin-bottom: -7px;
+}
+
+.contenido_graduado {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: -3px;
+}
+
+.qrCode_graduado {
+  display: flex;
 }

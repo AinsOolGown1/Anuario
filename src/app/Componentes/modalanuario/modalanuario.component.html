@@ -6,20 +6,20 @@
               <img [src]="imagen_graduado" class="picture">
           </div>
           <div class="card_body">
-            <p>Nombres</p>
-            <h2>{{graduadoSeleccionado.nombres}}</h2>
-            <p>Apellidos</p>
-            <h2>{{graduadoSeleccionado.apellidos}}</h2>
-            <p>Carrera</p>
-            <h2>{{graduadoSeleccionado.carrera}}</h2>
-            <p>Facultad</p>
-            <h2>{{graduadoSeleccionado.facultad}}</h2>
-            <p>Palabras emotivas</p>
-            <h2>{{graduadoSeleccionado.frase_emotiva}}</h2>
-            <p>Graduado en el año</p>
-            <h2>{{graduadoSeleccionado.year_graduado}}</h2>
-            <p>Ver info</p>
-            <img src="../../../assets/Fotos/escaneo-de-codigo-qr.png" class="qr" alt="">
+            <h2 class="titulo_contenido">Nombres</h2>
+            <h2 class="contenido_graduado">{{graduadoSeleccionado.nombres}}</h2>
+            <h2 class="titulo_contenido">Apellidos</h2>
+            <h2 class="contenido_graduado">{{graduadoSeleccionado.apellidos}}</h2>
+            <h2 class="titulo_contenido">Carrera</h2>
+            <h2 class="contenido_graduado">{{graduadoSeleccionado.carrera}}</h2>
+            <h2 class="titulo_contenido">Facultad</h2>
+            <h2 class="contenido_graduado">{{graduadoSeleccionado.facultad}}</h2>
+            <h2 class="titulo_contenido">Palabras emotivas</h2>
+            <h2 class="contenido_graduado">{{graduadoSeleccionado.frase_emotiva}}</h2>
+            <h2 class="titulo_contenido">Graduado en el año</h2>
+            <h2 class="contenido_graduado">{{graduadoSeleccionado.year_graduado}}</h2>
+            <h2 class="titulo_contenido">Ver info</h2>
+            <qrcode class="qrCode_graduado" [qrdata]="graduadoSeleccionado.qr_graduado" [width]="120"></qrcode>
           </div>
       </div>
   </div>

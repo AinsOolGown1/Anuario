@@ -21,10 +21,10 @@ export class GraduadosService {
   }
 
   guardarDatosExcel(datos: any[]): Observable<any> {
-    return this.http.post(`${this.url}/guardar-desde-excel`,{datos});
+    return this.http.post(`${this.url}guardar-desde-excel/`, datos);
   }
 
-  // Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
+  //* Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
   private mapGraduado(graduado: any): IngresarGraduados {
     return {
       carnet: graduado.carnet,
@@ -48,7 +48,7 @@ export class GraduadosService {
 
   guardarGraduado(graduado: IngresarGraduados): Observable<any> {
     const formData = new FormData();
-    // Agregar los campos al FormData
+    //* Agregar los campos al FormData
     formData.append('carnet', graduado.carnet);
     formData.append('nombres', graduado.nombres);
     formData.append('apellidos', graduado.apellidos);

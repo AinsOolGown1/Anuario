@@ -29,8 +29,8 @@ export class ModalanuarioComponent implements OnInit {
   }
 
   vistaAnuario(carnet: string): void {
-    this._graduadoService.obtenerEstudiantePorCarnet(carnet).subscribe(
-      (estudiante: IngresarGraduados) => {
+    this._graduadoService.obtenerEstudiantePorCarnet(carnet).subscribe({
+      next: (estudiante: IngresarGraduados) => {
         if (estudiante) {
           this.graduadoSeleccionado = estudiante;
           console.log(estudiante)
@@ -38,10 +38,10 @@ export class ModalanuarioComponent implements OnInit {
           console.error('No se encontró ningún estudiante con el carnet proporcionado.');
         }
       },
-      (error) => {
-        console.error('Error al obtener el estudiante:', error);
+      error: (err: any)=>{
+        console.log('Error al obtener el graduado'+err.message)
       }
-    );
+  });
   }
 
   obtenerFoto(carnet:string){
@@ -54,7 +54,6 @@ export class ModalanuarioComponent implements OnInit {
     }
   })
   }
-
   convertirBase64(archivo:any){
     if(['image/jpeg','image/jpg','image/png'].includes(archivo.type)){
       const reader = new FileReader();

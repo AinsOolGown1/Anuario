@@ -40,6 +40,8 @@ import { ModalanuarioComponent } from './Componentes/modalanuario/modalanuario.c
 //Angular Material
 import { MatDialogModule } from '@angular/material/dialog';
 import { EventosComponent } from './Componentes/eventos/eventos.component';
+import { QRCodeModule } from 'angularx-qrcode';
+
 
 @NgModule({
   declarations: [
@@ -71,7 +73,8 @@ import { EventosComponent } from './Componentes/eventos/eventos.component';
     ToastrModule.forRoot(),
     FlipBookModule,
     DialogModule,
-    MatDialogModule
+    MatDialogModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
