@@ -1,13 +1,12 @@
 .card {
-  font: bold 1rem "Open Sans", serif;
   display: grid;
   grid-template-columns: 1fr 300px; /* 1fr para el contenido y 300px para la imagen */
   width: 800px; /* Ajustado para acomodar la imagen más grande y el contenido */
   height: 90vh; /* Ajustado para la altura de la imagen */
 }
-
 .card_body {
   margin-left: 20px;
+  margin-top: 10px;
 }
 .card_image {
   display: flex;
@@ -17,7 +16,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .card_image .picture {
   width: 100%; /* Ancho fijo de la imagen */
   height: 100%; /* Altura fija de la imagen */
@@ -27,19 +25,25 @@
     transparent
   );
 }
-
 .titulo_contenido {
+  font-family: Arial, sans-serif;
   font-size: 18px;
   color: #1BC075;
   margin-bottom: -7px;
 }
-
 .contenido_graduado {
+  font-family: Arial, sans-serif;
   font-size: 16px;
   color: #333;
-  margin-bottom: -3px;
+  margin-bottom: -1px;
 }
-
+a{
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: #FFAA00;
+  margin-top: 10px;
+}
 .qrCode_graduado {
   display: flex;
+  margin-top: 10px;
 }

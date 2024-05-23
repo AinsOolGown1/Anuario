@@ -18,7 +18,7 @@
             <h2 class="contenido_graduado">{{graduadoSeleccionado.frase_emotiva}}</h2>
             <h2 class="titulo_contenido">Graduado en el año</h2>
             <h2 class="contenido_graduado">{{graduadoSeleccionado.year_graduado}}</h2>
-            <h2 class="titulo_contenido">Ver info</h2>
+            <a class="titulo_contenidoQr" [href]="graduadoSeleccionado.qr_graduado" target="_blank">Ver informoción</a>
             <qrcode class="qrCode_graduado" [qrdata]="graduadoSeleccionado.qr_graduado" [width]="120"></qrcode>
           </div>
       </div>
