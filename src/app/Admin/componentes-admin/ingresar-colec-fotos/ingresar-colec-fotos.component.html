@@ -1,65 +1,58 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <mat-toolbar class="ancho-tool2 mt-3">
-    <span class="example-spacer"></span>
-    <span class="list">{{titulo | uppercase}}</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
 
-  <div class="cuerpo">
-    <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregarColeccionFotos()">
-      <table>
-        <tr>
-          <td>
-            <label for="formFileMultiple" class="
-  form-label">Fotos</label>
-  <input formControlName="fotos_graduaciones" class="form-control" type="file" id="formFileMultiple" multiple>
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <label class="form-label">Campus</label>
-  <select formControlName="campus" class="form-select">
-  <option value="Central">Central</option>
-  <option value="Jinotepe">Jinotepe</option>
-  <option value="Doral">Doral</option>
-  <option value="Extensión Esteli">Extensión Esteli</option>
-  </select>
-  <div class="text_danger" *ngIf="ingre_graduadoForm.get('campus')?.hasError('required') && ingre_graduadoForm.get('campus')?.touched">
-  <span>La opción campus <strong>es obligatoria</strong></span>
-  </div>
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <label class="form-label">Año</label>
-  <input formControlName="year_graduacion" class="form-control" type="text" placeholder="Ingresar el año de graduación">
-  <div class="text_danger" *ngIf="ingre_graduadoForm.get('year_graduacion')?.hasError('required') && ingre_graduadoForm.get('year_graduacion')?.touched">
-  <span>El año de graduación <strong>es obligatorio</strong></span>
-  </div>
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <label class="form-label">Sesión</label><br>
-  <input formControlName="sesion" class="form-control" type="text" placeholder="Ingrese la sesión 1 o 2">
-  <div class="text_danger" *ngIf="ingre_graduadoForm.get('sesion')?.hasError('required') && ingre_graduadoForm.get('sesion')?.touched">
-  <span>La sesión <strong>es obligatoria</strong></span>
-  </div>
-  </td>
-  </tr>
-  </table>
-  <div class="botones">
-  <button type="submit" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
-  </div>
+<mat-toolbar class="ancho-tool2 mt-3">
+  <span class="example-spacer"></span>
+  <span class="list">{{titulo | uppercase}}</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 
-    </form>
-  </div>
-  </body>
-  </html>
+<div class="cuerpo">
+  <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregarColeccionFotos()">
+    <table>
+      <tr>
+        <td>
+          <label for="formFileMultiple" class="form-label">Fotos</label>
+          <input formControlName="fotos_graduaciones" class="form-control" type="file" id="formFileMultiple" multiple>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="form-label">Campus</label>
+          <select formControlName="campus" class="form-select">
+            <option value="Central">Central</option>
+            <option value="Jinotepe">Jinotepe</option>
+            <option value="Doral">Doral</option>
+            <option value="Extensión Esteli">Extensión Esteli</option>
+          </select>
+          <div class="text_danger"
+            *ngIf="ingre_graduadoForm.get('campus')?.hasError('required') && ingre_graduadoForm.get('campus')?.touched">
+            <span>La opción campus <strong>es obligatoria</strong></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="form-label">Año</label>
+          <input formControlName="year_graduacion" class="form-control" type="text"
+            placeholder="Ingresar el año de graduación">
+          <div class="text_danger"
+            *ngIf="ingre_graduadoForm.get('year_graduacion')?.hasError('required') && ingre_graduadoForm.get('year_graduacion')?.touched">
+            <span>El año de graduación <strong>es obligatorio</strong></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="form-label">Sesión</label><br>
+          <input formControlName="sesion" class="form-control" type="text" placeholder="Ingrese la sesión 1 o 2">
+          <div class="text_danger"
+            *ngIf="ingre_graduadoForm.get('sesion')?.hasError('required') && ingre_graduadoForm.get('sesion')?.touched">
+            <span>La sesión <strong>es obligatoria</strong></span>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div class="botones">
+      <button type="submit" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
+    </div>
+  </form>
+</div>

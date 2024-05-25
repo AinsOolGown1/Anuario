@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <mat-toolbar class="ancho-tool2 mt-3">
-    <span class="example-spacer"></span>
-    <span class="list">{{titulo | uppercase}}</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-  <div class="agregar-excel">
-    <label style="margin-right: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-end;" class="form-label fw-bold">Subir archivo Excel</label>
-    <input type="file" style="width: 30%;" (change)="onFileChange($event)" class="form-control" accept=".xlsx">
-  </div>
+
+<div class="agregar-excel">
+  <label style="margin-right: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;" class="form-label fw-bold">Subir archivo Excel</label>
+  <input type="file" style="width: 30%;" (change)="onFileChange($event)" class="form-control" accept=".xlsx">
+</div>
 
 <div class="cuerpo">
   <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregar_graduado()" >
@@ -158,6 +146,3 @@
     </div>
   </form>
 </div>
-<!--[disabled]="ingre_graduadoForm.invalid"-->
-</body>
-</html>

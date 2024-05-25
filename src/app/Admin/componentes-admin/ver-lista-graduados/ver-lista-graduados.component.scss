@@ -1,24 +1,3 @@
-
-.ancho-tool{
-  width: 99%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  //border: 0.7px solid rgba(63, 81, 181, 0.425);
-  border-radius: 6px 6px 0 0;
-  box-shadow: 0 5px 5px 2px rgba(63, 81, 181, 0.514);
-}
-.list{
-  letter-spacing: .3rem;
-}
-.example-spacer{
-  flex: 1 1 auto;
-}
-.contenedor-tabla{
-  margin-top: 30px;
-  overflow-x: auto;
-}
-
 th{
   text-align: center;
 }
@@ -28,3 +7,30 @@ th{
 
 }
 
+//*Estilos de tabla
+.contenedor-tabla{
+  margin-top: 64px;
+  height: calc(100vh - 64px);
+}
+
+.header-tabla{
+  background-color: rgb(214, 214, 214);
+  border-bottom: 1px solid #313131;
+}
+
+::ng-deep .mat-cell{
+  width: 150px;
+}
+
+#paginador-tabla{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #bbbbbb;
+}
+
+.contenedor-secundario {
+  overflow: auto;
+  white-space: nowrap;
+  height: 90%;
+}

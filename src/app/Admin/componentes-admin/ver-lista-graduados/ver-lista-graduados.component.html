@@ -1,115 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <mat-toolbar class="ancho-tool">
-    <span class="example-spacer"></span>
-    <span class="list">VER LISTADO DE GRADUADOS</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-  <div class="contenedor-tabla">
-    <div>
-      <table *ngIf="listGraduados.length > 0" mat-table [dataSource]="dataSource">
+<!-- <app-navbar-admin></app-navbar-admin> -->
+<div class="contenedor-tabla">
+  <div class="contenedor-secundario">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Columna Carnet -->
+      <ng-container matColumnDef="carnet">
+        <th mat-header-cell *matHeaderCellDef>Carnet</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.carnet}} </td>
+      </ng-container>
 
-        <!-- Columna Carnet -->
-        <ng-container matColumnDef="carnet">
-          <th mat-header-cell *matHeaderCellDef>Carnet</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.carnet}} </td>
-        </ng-container>
+      <!-- Columna nombres -->
+      <ng-container matColumnDef="nombres">
+        <th mat-header-cell *matHeaderCellDef>Nombres</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.nombres}} </td>
+      </ng-container>
 
-        <!-- Columna nombres -->
-        <ng-container matColumnDef="nombres">
-          <th mat-header-cell *matHeaderCellDef>Nombres</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.nombres}} </td>
-        </ng-container>
+      <!-- Columna apellidos -->
+      <ng-container matColumnDef="apellidos">
+        <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.apellidos}} </td>
+      </ng-container>
 
-        <!-- Columna apellidos -->
-        <ng-container matColumnDef="apellidos">
-          <th mat-header-cell *matHeaderCellDef>Apellidos</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.apellidos}} </td>
-        </ng-container>
+      <!-- Columna carrera -->
+      <ng-container matColumnDef="carrera">
+        <th mat-header-cell *matHeaderCellDef>Carrera</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.carrera}} </td>
+      </ng-container>
 
-        <!-- Columna carrera -->
-        <ng-container matColumnDef="carrera">
-          <th mat-header-cell *matHeaderCellDef>Carrera</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.carrera}} </td>
-        </ng-container>
+      <!-- Columna facultad -->
+      <ng-container matColumnDef="facultad">
+        <th mat-header-cell *matHeaderCellDef>Facultad</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.facultad}} </td>
+      </ng-container>
 
-        <!-- Columna facultad -->
-        <ng-container matColumnDef="facultad">
-          <th mat-header-cell *matHeaderCellDef>Facultad</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.facultad}} </td>
-        </ng-container>
+      <!-- Columna campus -->
+      <ng-container matColumnDef="campus">
+        <th mat-header-cell *matHeaderCellDef>Campus</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.campus}} </td>
+      </ng-container>
 
-        <!-- Columna campus -->
-        <ng-container matColumnDef="campus">
-          <th mat-header-cell *matHeaderCellDef>Campus</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.campus}} </td>
-        </ng-container>
+      <!-- Columna frase emotiva -->
+      <ng-container matColumnDef="frase_emotiva">
+        <th mat-header-cell *matHeaderCellDef style="width: 100px;">Frase Emotiva</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.frase_emotiva}} </td>
+      </ng-container>
 
-        <!-- Columna frase emotiva -->
-        <ng-container matColumnDef="frase_emotiva">
-          <th mat-header-cell *matHeaderCellDef style="width: 100px;">Frase Emotiva</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.frase_emotiva}} </td>
-        </ng-container>
+      <!-- Columna año del graduado -->
+      <ng-container matColumnDef="year_graduado">
+        <th mat-header-cell *matHeaderCellDef>Año</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.year_graduado}} </td>
+      </ng-container>
 
-        <!-- Columna año del graduado -->
-        <ng-container matColumnDef="year_graduado">
-          <th mat-header-cell *matHeaderCellDef>Año</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.year_graduado}} </td>
-        </ng-container>
+      <!-- Columna estado del graduado -->
+      <ng-container matColumnDef="estado_graduado">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td mat-cell *matCellDef="let graduado" [ngStyle]="{'color': graduado.estado_graduado === true ? 'green' : 'red'}">
+          <ng-container *ngIf="graduado.estado_graduado === true;
+        else graduadoInactivo">
+        Activo</ng-container><ng-template #graduadoInactivo>Inactivo</ng-template>  </td>
+      </ng-container>
 
-        <!-- Columna estado del graduado -->
-        <ng-container matColumnDef="estado_graduado">
-          <th mat-header-cell *matHeaderCellDef>Estado</th>
-          <td mat-cell *matCellDef="let graduado" [ngStyle]="{'color': graduado.estado_graduado === true ? 'green' : 'red'}">
-           <ng-container *ngIf="graduado.estado_graduado === true;
-          else graduadoInactivo">
-          Activo</ng-container><ng-template #graduadoInactivo>Inactivo</ng-template>  </td>
-        </ng-container>
+      <!-- Columna graduado destacado -->
+      <ng-container matColumnDef="destacado_graduado">
+        <th mat-header-cell *matHeaderCellDef>Destacado</th>
+        <td mat-cell *matCellDef="let graduado" [ngStyle]="{'color': graduado.destacado_graduado === true ? 'green' : 'red'}">
+          <ng-container *ngIf="graduado.destacado_graduado=== true;
+        else graduadoInactivo">
+        Si</ng-container><ng-template #graduadoInactivo>No</ng-template>  </td>
+      </ng-container>
 
-        <!-- Columna graduado destacado -->
-        <ng-container matColumnDef="destacado_graduado">
-          <th mat-header-cell *matHeaderCellDef>Destacado</th>
-          <td mat-cell *matCellDef="let graduado" [ngStyle]="{'color': graduado.destacado_graduado === true ? 'green' : 'red'}">
-            <ng-container *ngIf="graduado.destacado_graduado=== true;
-          else graduadoInactivo">
-          Si</ng-container><ng-template #graduadoInactivo>No</ng-template>  </td>
-        </ng-container>
+      <ng-container matColumnDef="foto_graduado">
+        <th mat-header-cell *matHeaderCellDef>Foto</th>
+        <td mat-cell *matCellDef="let graduado">
+            <img [src]="graduado.foto_graduado" alt="Foto de graduado" style="max-width: 100px;">
+        </td>
+    </ng-container>
 
-        <ng-container matColumnDef="foto_graduado">
-          <th mat-header-cell *matHeaderCellDef>Foto</th>
-          <td mat-cell *matCellDef="let graduado">
-              <img [src]="graduado.foto_graduado" alt="Foto de graduado" style="max-width: 100px;">
+      <!-- Columna QR del graduado -->
+      <ng-container matColumnDef="qr_graduado">
+        <th mat-header-cell *matHeaderCellDef>QR</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.qr_graduado}} </td>
+      </ng-container>
+
+      <!-- Columna acciones -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let graduado">
+            <mat-icon [routerLink]="['/editar-graduado', graduado._id ]" class="pointer" color="primary">edit</mat-icon>
+            <mat-icon (click)="eliminarGraduado(graduado._id)" class="pointer" color="warn">delete</mat-icon>
           </td>
       </ng-container>
 
-        <!-- Columna QR del graduado -->
-        <ng-container matColumnDef="qr_graduado">
-          <th mat-header-cell *matHeaderCellDef>QR</th>
-          <td mat-cell *matCellDef="let graduado"> {{graduado.qr_graduado}} </td>
-        </ng-container>
-
-        <!-- Columna acciones -->
-        <ng-container matColumnDef="acciones">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let graduado">
-              <mat-icon [routerLink]="['/editar-graduado', graduado._id ]" class="pointer" color="primary">edit</mat-icon>
-              <mat-icon (click)="eliminarGraduado(graduado._id)" class="pointer" color="warn">delete</mat-icon>
-            </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
-      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listGraduados.length == 0">No hay graduados que mostrar</h5>
-
-    </div>
+      <tr class="header-tabla" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true;">
+      </tr> -->
+    </table>
   </div>
-</body>
-</html>
+  <mat-paginator id="paginador-tabla" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>

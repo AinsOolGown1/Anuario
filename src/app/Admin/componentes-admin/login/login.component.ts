@@ -2,6 +2,7 @@ declare var google: any;
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/Shared/shared.module';
+import { environment } from 'src/environments/environment';
 //import { AuthGoogleService } from 'src/app/auth-google.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { SharedModule } from 'src/app/Shared/shared.module';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+
+  backgroundImage = environment.svg_background_login;
 
   private router = inject(Router);
 
