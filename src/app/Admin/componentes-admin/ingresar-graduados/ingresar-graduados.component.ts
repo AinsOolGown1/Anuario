@@ -111,68 +111,6 @@ export class IngresarGraduadosComponent {
     })
   }
 }
-onFileChange(event: any): void {
-  this.guardandoDesdeExcel = true; //* Activar la bandera cuando se cargue un archivo Excel
-  const file = event.target.files[0];
-
-  const reader = new FileReader();
-  reader.readAsArrayBuffer(file); // Cambio a readAsArrayBuffer
-
-  reader.onload = (event: any) => {
-    const arrayBuffer = event.target.result;
-    const binaryData = new Uint8Array(arrayBuffer);
-    const workbook = XLSX.read(binaryData, { type: 'array' }); // Cambio a 'array'
-    const sheetName = workbook.SheetNames;
-    this.ExcelData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName[0]]);
-    console.log(this.ExcelData);
-    this.guardarDatos(this.ExcelData);
-    this.guardandoDesdeExcel = false; //* Desactivar la bandera después de procesar el archivo Excel
-  };
-}
-
-
-//* Función para enviar los datos de excel al servicio y guardarlos en MongoDB
-guardarDatos(datos: any[]): void {
-  if (Array.isArray(datos) && datos.length > 0) {
-    this._graduadoService.guardarDatosExcel(datos).subscribe({
-      next: (response)=>{
-        this._snackBar.open('Graduado guardados desde el archivo .XLS', 'Aceptar',{
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-        })
-      }, error: (err: any) => {
-        this._snackBar.open('Error al guardar graduados desde el archivo .XLS', 'Aceptar',{
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-        })
-      }
-    })
-  } else {
-    //* Guardar desde el formulario
-    const formData = this.ingre_graduadoForm.value;
-    this._graduadoService.guardarGraduado(formData).subscribe({
-      next: (response) =>{
-        this._snackBar.open('Graduado agregado correctamente desde el formulario', 'Aceptar', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-        });
-        //* Limpiar el formulario después de guardar
-        this.ingre_graduadoForm.reset();
-      }, error:(err: any) => {
-        console.error('Error al guardar graduado desde el formulario:' +err);
-        this._snackBar.open('Error al guardar graduado desde el formulario', 'Aceptar', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-        });
-      }
-    })
-  }
-}
-
   capturarFile(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
 

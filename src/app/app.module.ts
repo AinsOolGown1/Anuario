@@ -41,6 +41,7 @@ import { ModalanuarioComponent } from './Componentes/modalanuario/modalanuario.c
 import { MatDialogModule } from '@angular/material/dialog';
 import { EventosComponent } from './Componentes/eventos/eventos.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir-excel.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     FiltroAnuarioComponent,
     AnuariovistaComponent,
     ModalanuarioComponent,
-    EventosComponent
+    EventosComponent,
+    SubirExcelComponent
   ],
   imports: [
     BrowserModule,
