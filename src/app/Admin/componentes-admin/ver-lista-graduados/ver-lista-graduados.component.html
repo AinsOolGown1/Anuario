@@ -41,7 +41,7 @@
       <!-- Columna frase emotiva -->
       <ng-container matColumnDef="frase_emotiva">
         <th mat-header-cell *matHeaderCellDef style="width: 100px;">Frase Emotiva</th>
-        <td mat-cell *matCellDef="let graduado"> {{graduado.frase_emotiva}} </td>
+        <td class="frase_emotiva" mat-cell *matCellDef="let graduado"> {{graduado.frase_emotiva}} </td>
       </ng-container>
 
       <!-- Columna año del graduado -->
@@ -68,17 +68,19 @@
         Si</ng-container><ng-template #graduadoInactivo>No</ng-template>  </td>
       </ng-container>
 
-      <ng-container matColumnDef="foto_graduado">
+      <!-- <ng-container matColumnDef="foto_graduado">
         <th mat-header-cell *matHeaderCellDef>Foto</th>
         <td mat-cell *matCellDef="let graduado">
             <img [src]="graduado.foto_graduado" alt="Foto de graduado" style="max-width: 100px;">
         </td>
-    </ng-container>
+      </ng-container> -->
 
       <!-- Columna QR del graduado -->
       <ng-container matColumnDef="qr_graduado">
         <th mat-header-cell *matHeaderCellDef>QR</th>
-        <td mat-cell *matCellDef="let graduado"> {{graduado.qr_graduado}} </td>
+        <td class="qr_graduado" mat-cell *matCellDef="let graduado"> 
+          <a title="enlaceQR" [href]="graduado.qr_graduado">{{graduado.qr_graduado}} </a>
+        </td>
       </ng-container>
 
       <!-- Columna acciones -->

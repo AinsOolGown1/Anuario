@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColeccionFotosGraduacionesService } from 'src/app/Servicios/coleccionfotos.service';
 import { ColeccionGraduacion } from 'src/app/model/interfaceColeccionfotos';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ingresar-colec-fotos',
@@ -12,6 +13,9 @@ import { ColeccionGraduacion } from 'src/app/model/interfaceColeccionfotos';
   styleUrls: ['./ingresar-colec-fotos.component.scss']
 })
 export class IngresarColecFotosComponent {
+
+  backgroundImage = environment.svg_background_login;
+
   ingre_graduadoForm: FormGroup;
   titulo = 'Agregar Colección de Fotos';
   id: string;

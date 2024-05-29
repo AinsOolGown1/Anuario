@@ -17,15 +17,19 @@
 
 //Estilo cuerpo
 .cuerpo{
+  background-color: #8d8d8d94;
+  border: 1px solid #f9f9f994;
+  border-radius: .5rem;
   display: flex;
+  padding: 2rem;
   align-items: center; // Centra verticalmente
   justify-content: center; // Centra horizontalmente
   flex-direction: column; // Alinea los elementos en columna
-  width: 50%;
+  width: fit-content;
   margin-top: 30px;
   margin-left: auto; // Centra horizontalmente
   margin-right: auto; // Centra horizontalmente
-  box-shadow: 0 5px 5px 2px rgba(63, 81, 181, 0.418);
+  //box-shadow: 0 5px 5px 2px rgba(158, 158, 158, 0.418);
 }
 
 //Estilo de la tabla
@@ -41,16 +45,31 @@ tr, td{
   margin-bottom: 30px;
   width: 100%;
 }
-//Estilo boton Agregar y cancelar
-.btn-agregar
-{
-  margin-left: 50px;
-}
+
 
 //Estilo texto de emergencia
 .text_danger{
   font-size: 13px;
   text-align: start;
   margin-left: 3px;
-  color: red
+  color: #ffbf00;
+  letter-spacing: 2px;
+}
+
+.form-label{
+  color: #f9f9f9;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+//*estilos nuevos
+
+.contenedor-principal{
+  height: 100vh;
+  display: flex;
+  /* margin-top: 8%; */
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }

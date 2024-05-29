@@ -2,35 +2,36 @@ th{
   text-align: center;
 }
 
-.pointer{
-  cursor: pointer;
-
+//*Estilos de tabla
+table{
+  white-space: nowrap;
 }
 
-//*Estilos de tabla
+.frase_emotiva, .qr_graduado{
+  max-width: 200px;
+}
+
 .contenedor-tabla{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-top: 64px;
   height: calc(100vh - 64px);
 }
 
+
 .header-tabla{
-  background-color: rgb(214, 214, 214);
+  background-color: rgb(81, 81, 81);
+  color: #efefef;
   border-bottom: 1px solid #313131;
 }
 
-::ng-deep .mat-cell{
-  width: 150px;
-}
-
 #paginador-tabla{
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  background-color: #bbbbbb;
+  background-color: #efefef;
 }
 
 .contenedor-secundario {
   overflow: auto;
-  white-space: nowrap;
-  height: 90%;
+  height:  -webkit-fill-available;
 }
