@@ -1,30 +1,37 @@
-
-.ancho-tool{
-  width: 99%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  //border: 0.7px solid rgba(63, 81, 181, 0.425);
-  border-radius: 6px 6px 0 0;
-  box-shadow: 0 5px 5px 2px rgba(63, 81, 181, 0.514);
-}
-.list{
-  letter-spacing: .3rem;
-}
-.example-spacer{
-  flex: 1 1 auto;
-}
-.contenedor-tabla{
-  margin-top: 30px;
-  overflow-x: auto;
-}
-
 th{
   text-align: center;
 }
 
-.pointer{
-  cursor: pointer;
-
+//*Estilos de tabla
+table{
+  white-space: nowrap;
 }
 
+.frase_emotiva, .qr_graduado{
+  max-width: 200px;
+}
+
+.contenedor-tabla{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 64px;
+  height: calc(100vh - 64px);
+}
+
+
+.header-tabla{
+  background-color: rgb(81, 81, 81);
+  color: #efefef;
+  border-bottom: 1px solid #313131;
+}
+
+#paginador-tabla{
+  width: 100%;
+  background-color: #efefef;
+}
+
+.contenedor-secundario {
+  overflow: auto;
+  height:  -webkit-fill-available;
+}

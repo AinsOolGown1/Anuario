@@ -1,163 +1,151 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <mat-toolbar class="ancho-tool2 mt-3">
-    <span class="example-spacer"></span>
-    <span class="list">{{titulo | uppercase}}</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-  <div class="agregar-excel">
-    <label style="margin-right: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-end;" class="form-label fw-bold">Subir archivo Excel</label>
-    <input type="file" style="width: 30%;" (change)="onFileChange($event)" class="form-control" accept=".xlsx">
-  </div>
-
-<div class="cuerpo">
-  <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregar_graduado()" >
-    <table>
-      <tr>
-          <!--Numero de carnet-->
-        <td>
-          <label class="form-label fw-bold">No. de Carnet</label>
-          <input formControlName="carnet" class="form-control" type="text" placeholder="2024100110">
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('carnet')?.hasError('required') && ingre_graduadoForm.get('carnet')?.touched">
-            <span>El numero de carnet <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-          <!--Subir foto del graduado-->
-        <td>
-          <label for="formFile" class="form-label fw-bold">Foto</label>
-          <input (change)="capturarFile($event)" formControlName="foto_graduado" class="form-control" type="file" id="formFile">
-        </td>
-          <!--Estado del graduado-->
-        <td>
-          <label class="form-label fw-bold" style="width: 220px;">Estado del graduado</label>
-          <select formControlName="estado_graduado" class="form-select">
-            <option value="true">Activo</option>
-            <option value="false">Inactivo</option>
-          </select>
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('estado_graduado')?.hasError('required') && ingre_graduadoForm.get('estado_graduado')?.touched">
-            <span>El estado <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-      </tr>
-<!--
-  //////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////
--->
-      <tr>
-          <!--Nombres del graduado-->
-        <td>
-          <label class="form-label fw-bold">Nombres</label>
-          <input formControlName="nombres" class="form-control" type="text" placeholder="Agregar los dos nombres del graduado">
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('nombres')?.hasError('required') && ingre_graduadoForm.get('nombres')?.touched">
-            <span>El nombre del graduado <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-          <!--Apellidos del graduado-->
-        <td>
-          <label class="form-label fw-bold">Apellidos</label>
-          <input formControlName="apellidos" class="form-control" type="text" placeholder="Agregar los dos apellidos del graduado" >
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('apellidos')?.hasError('required') && ingre_graduadoForm.get('apellidos')?.touched">
-            <span>El apellido del graduado <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-          <!--Destaque del graduado-->
-        <td>
-          <label class="form-label fw-bold">Graduado destacado</label>
-          <select formControlName="destacado_graduado" class="form-select">
-            <option value="true">Si</option>
-            <option value="false">No</option>
-          </select>
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('destacado_graduado')?.hasError('required') && ingre_graduadoForm.get('destacado_graduado')?.touched">
-            <span>Campo destacado <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-      </tr>
-<!--
-  //////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////
--->
-      <tr>
-          <!--Seleccion de la carrera-->
-        <td>
-          <label class="form-label fw-bold">Carrera</label>
-          <select formControlName="carrera" class="form-select">
-            <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
-            <option value="Mercadotecnia">Mercadotecnia</option>
-          </select>
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('carrera')?.hasError('required') && ingre_graduadoForm.get('carrera')?.touched">
-            <span>La carrera del graduado <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-          <!--Seleccion de la facultad-->
-        <td>
-          <label class="form-label fw-bold">Facultad</label>
-          <select formControlName="facultad" class="form-select">
-            <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
-            <option value="Ciencias Adminisrativas">Ciencias Adminisrativas</option>
-          </select>
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('facultad')?.hasError('required') && ingre_graduadoForm.get('facultad')?.touched">
-            <span>El campo facultad <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-        <td>
-          <label class="form-label fw-bold">Año de graduación</label>
-          <input formControlName="year_graduado" class="form-control" type="text" placeholder="Agregar año de graduación">
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('year_graduado')?.hasError('required') && ingre_graduadoForm.get('year_graduado')?.touched">
-            <span>El año de graduación <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-      </tr>
-<!--
-  //////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////
--->
-      <tr>
-          <!--Frase emotiva-->
-        <td>
-          <label class="form-label fw-bold">Frase emotiva</label>
-          <textarea formControlName="frase_emotiva" class="form-control" style="width: 320px; height: 20px;"
-            placeholder="Solo la persona que arriesga es verdaderamente libre."></textarea>
-        </td>
-          <!--Seleccion del campus-->
-        <td>
-          <label class="form-label fw-bold">Campus</label>
-          <select formControlName="campus" class="form-select">
-            <option value="Central">Central</option>
-            <option value="Jinotepe">Jinotepe</option>
-            <option value="Doral">Doral</option>
-            <option value="Extensión Esteli">Extensión Esteli</option>
-          </select>
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('campus')?.hasError('required') && ingre_graduadoForm.get('campus')?.touched">
-            <span>La opción campus <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-          <!--QR del graduado-->
-        <td>
-          <label class="form-label fw-bold">QR del graduado</label>
-          <input formControlName="qr_graduado" class="form-control" type="url" placeholder="http://www.example.com">
-          <div class="text_danger" *ngIf="ingre_graduadoForm.get('qr_graduado')?.hasError('required') && ingre_graduadoForm.get('qr_graduado')?.touched">
-            <span>El QR del graduado <strong>es obligatorio</strong></span>
-          </div>
-        </td>
-      </tr>
-    </table>
-    <div class="botones">
-      <button type="submit" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
+<div class="contenedor-principal" [ngStyle]="{'background-image':'url('+backgroundImage+')'}">
+  <div class="contenedor-secundario">
+    <div class="agregar-excel">
+      <label style="margin-right: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-end;" class="form-label fw-bold">Subir archivo Excel</label>
+      <input type="file" style="width: 30%;" (change)="onFileChange($event)" class="form-control" accept=".xlsx">
     </div>
-  </form>
+    
+    <div class="cuerpo">
+      <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregar_graduado()" >
+        <table>
+          <tr>
+              <!--Numero de carnet-->
+            <td>
+              <label class="form-label fw-bold">No. de Carnet</label>
+              <input formControlName="carnet" class="form-control" type="text" placeholder="2024100110">
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('carnet')?.hasError('required') && ingre_graduadoForm.get('carnet')?.touched">
+                <span>El numero de carnet <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+              <!--Subir foto del graduado-->
+            <td>
+              <label for="formFile" class="form-label fw-bold">Foto</label>
+              <input (change)="capturarFile($event)" formControlName="foto_graduado" class="form-control" type="file" id="formFile">
+            </td>
+              <!--Estado del graduado-->
+            <td>
+              <label class="form-label fw-bold" style="width: 220px;">Estado del graduado</label>
+              <select formControlName="estado_graduado" class="form-select">
+                <option value="true">Activo</option>
+                <option value="false">Inactivo</option>
+              </select>
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('estado_graduado')?.hasError('required') && ingre_graduadoForm.get('estado_graduado')?.touched">
+                <span>El estado <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+          </tr>
+    <!--
+      //////////////////////////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////
+    -->
+          <tr>
+              <!--Nombres del graduado-->
+            <td>
+              <label class="form-label fw-bold">Nombres</label>
+              <input formControlName="nombres" class="form-control" type="text" placeholder="Agregar los dos nombres del graduado">
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('nombres')?.hasError('required') && ingre_graduadoForm.get('nombres')?.touched">
+                <span>El nombre del graduado <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+              <!--Apellidos del graduado-->
+            <td>
+              <label class="form-label fw-bold">Apellidos</label>
+              <input formControlName="apellidos" class="form-control" type="text" placeholder="Agregar los dos apellidos del graduado" >
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('apellidos')?.hasError('required') && ingre_graduadoForm.get('apellidos')?.touched">
+                <span>El apellido del graduado <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+              <!--Destaque del graduado-->
+            <td>
+              <label class="form-label fw-bold">Graduado destacado</label>
+              <select formControlName="destacado_graduado" class="form-select">
+                <option value="true">Si</option>
+                <option value="false">No</option>
+              </select>
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('destacado_graduado')?.hasError('required') && ingre_graduadoForm.get('destacado_graduado')?.touched">
+                <span>Campo destacado <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+          </tr>
+    <!--
+      //////////////////////////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////
+    -->
+          <tr>
+              <!--Seleccion de la carrera-->
+            <td>
+              <label class="form-label fw-bold">Carrera</label>
+              <select formControlName="carrera" class="form-select">
+                <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+                <option value="Mercadotecnia">Mercadotecnia</option>
+              </select>
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('carrera')?.hasError('required') && ingre_graduadoForm.get('carrera')?.touched">
+                <span>La carrera del graduado <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+              <!--Seleccion de la facultad-->
+            <td>
+              <label class="form-label fw-bold">Facultad</label>
+              <select formControlName="facultad" class="form-select">
+                <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+                <option value="Ciencias Adminisrativas">Ciencias Adminisrativas</option>
+              </select>
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('facultad')?.hasError('required') && ingre_graduadoForm.get('facultad')?.touched">
+                <span>El campo facultad <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+            <td>
+              <label class="form-label fw-bold">Año de graduación</label>
+              <input formControlName="year_graduado" class="form-control" type="text" placeholder="Agregar año de graduación">
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('year_graduado')?.hasError('required') && ingre_graduadoForm.get('year_graduado')?.touched">
+                <span>El año de graduación <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+          </tr>
+    <!--
+      //////////////////////////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////
+    -->
+          <tr>
+              <!--Frase emotiva-->
+            <td>
+              <label class="form-label fw-bold">Frase emotiva</label>
+              <textarea formControlName="frase_emotiva" class="form-control" style="width: 320px; height: 20px;"
+                placeholder="Solo la persona que arriesga es verdaderamente libre."></textarea>
+            </td>
+              <!--Seleccion del campus-->
+            <td>
+              <label class="form-label fw-bold">Campus</label>
+              <select formControlName="campus" class="form-select">
+                <option value="Central">Central</option>
+                <option value="Jinotepe">Jinotepe</option>
+                <option value="Doral">Doral</option>
+                <option value="Extensión Esteli">Extensión Esteli</option>
+              </select>
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('campus')?.hasError('required') && ingre_graduadoForm.get('campus')?.touched">
+                <span>La opción campus <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+              <!--QR del graduado-->
+            <td>
+              <label class="form-label fw-bold">QR del graduado</label>
+              <input formControlName="qr_graduado" class="form-control" type="url" placeholder="http://www.example.com">
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('qr_graduado')?.hasError('required') && ingre_graduadoForm.get('qr_graduado')?.touched">
+                <span>El QR del graduado <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="botones">
+          <button type="submit" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-<!--[disabled]="ingre_graduadoForm.invalid"-->
-</body>
-</html>

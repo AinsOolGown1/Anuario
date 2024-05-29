@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-
-  <mat-toolbar color="primary">
-    <span>Admin Anuario</span>
-    <span class="example-spacer"></span>
-    <button routerLink="ver-lista-graduados" mat-button>Listado</button>
-    <button routerLink="ingresar-graduados" mat-button>Agregar Graduado</button>
-    <button routerLink="ingresar-colec-fotos" mat-button>Añadir Colección de Fotos</button>
-    <button routerLink="subir-datos-excel" mat-button>Subir Datos Excel</button>
-    <span class="example-spacer"></span>
-    <button (click)="signOut()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>logout</mat-icon>
-    </button>
-  </mat-toolbar>
-</body>
-</html>
+<mat-toolbar>
+  <!-- <span>Admin Anuario</span> -->
+  <div class="contenedor-botones">
+    <button routerLink="ver-lista-graduados" routerLinkActive="active-link" mat-button>Listado</button>
+    <button routerLink="ingresar-graduados" routerLinkActive="active-link" mat-button>Agregar Graduado</button>
+    <button routerLink="ingresar-colec-fotos" routerLinkActive="active-link" mat-button>Añadir Colección de Fotos</button>
+    <button routerLink="subir-datos-excel" routerLinkActive="active-link" mat-button>Subir Datos Excel</button>
+  </div>
+  <button (click)="signOut()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
 
 
 

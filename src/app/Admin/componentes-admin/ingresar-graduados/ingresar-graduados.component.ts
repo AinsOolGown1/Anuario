@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as XLSX from 'xlsx'; //* Importar la biblioteca XLSX
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ingresar-graduados',
@@ -13,6 +14,8 @@ import * as XLSX from 'xlsx'; //* Importar la biblioteca XLSX
   styleUrls: ['./ingresar-graduados.component.scss'],
 })
 export class IngresarGraduadosComponent {
+
+  backgroundImage = environment.svg_background_login;
 
   ExcelData: any;
   ingre_graduadoForm: FormGroup;

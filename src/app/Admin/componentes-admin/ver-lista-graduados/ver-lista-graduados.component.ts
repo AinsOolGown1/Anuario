@@ -13,9 +13,21 @@ import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-gradu
 export class VerListaGraduadosComponent implements OnInit {
 
   listGraduados: IngresarGraduados[] = [];
-  displayedColumns: string[] = ['carnet', 'nombres', 'apellidos', 'carrera', 'facultad', 'campus',
-    'frase_emotiva', 'year_graduado', 'estado_graduado', 'destacado_graduado', 'foto_graduado',
-    'qr_graduado', 'acciones'];
+  displayedColumns: string[] = [
+    'carnet',
+    'nombres',
+    'apellidos', 
+    'carrera', 
+    'facultad', 
+    'campus',
+    'frase_emotiva', 
+    'year_graduado', 
+    'estado_graduado', 
+    'destacado_graduado', 
+    //'foto_graduado',
+    'qr_graduado', 
+    'acciones'
+  ];
   dataSource = new MatTableDataSource<IngresarGraduados>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

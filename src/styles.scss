@@ -1,9 +1,5 @@
 
 body { margin: 0; }
-/*:root{
-  --primary-color: #605DC8;
-}
-*/
 
 //Estilo global de un boton principal dentro de un div
 .btn-principal {
@@ -20,6 +16,7 @@ body { margin: 0; }
     border-radius: 6px;
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: button;
+    appearance: button;
     background-color: #3498FF;
     background-image: none;
     color: #fff;
@@ -30,6 +27,7 @@ body { margin: 0; }
     line-height: 1.5;
     margin-bottom: 30px;
     -webkit-mask-image: -webkit-radial-gradient(#CEE6FF, #fff);
+    mask-image: -webkit-radial-gradient(#CEE6FF, #fff);
     padding: 0;
   }
   .btn-70:disabled {
@@ -40,7 +38,6 @@ body { margin: 0; }
   }
   .btn-70 svg {
     display: block;
-    vertical-align: middle;
   }
   .btn-70 [hidden] {
     display: none;
@@ -135,6 +132,7 @@ body { margin: 0; }
     border-radius: 6px;
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: button;
+    appearance: button;
     background-color: #FFAA00;
     background-image: none;
     color: #fff;
@@ -145,6 +143,7 @@ body { margin: 0; }
     line-height: 1.5;
     margin-bottom: 30px;
     -webkit-mask-image: -webkit-radial-gradient(#CEE6FF, #fff);
+    mask-image: -webkit-radial-gradient(#CEE6FF, #fff);
     padding: 0;
   }
   .btn-71:disabled {
@@ -155,7 +154,6 @@ body { margin: 0; }
   }
   .btn-71 svg {
     display: block;
-    vertical-align: middle;
   }
   .btn-71 [hidden] {
     display: none;
@@ -251,6 +249,7 @@ body { margin: 0; }
     border-radius: 6px;
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: button;
+    appearance: button;
     background-color: #3498FF;
     background-image: none;
     color: #fff;
@@ -261,6 +260,7 @@ body { margin: 0; }
     line-height: 1.5;
     margin-bottom: 30px;
     -webkit-mask-image: -webkit-radial-gradient(#CEE6FF, #fff);
+    mask-image: -webkit-radial-gradient(#CEE6FF, #fff);
     padding: 0;
   }
   .btn-consultar:disabled {
@@ -271,7 +271,6 @@ body { margin: 0; }
   }
   .btn-consultar svg {
     display: block;
-    vertical-align: middle;
   }
   .btn-consultar [hidden] {
     display: none;
