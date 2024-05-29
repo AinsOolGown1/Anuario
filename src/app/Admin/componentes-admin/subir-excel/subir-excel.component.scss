@@ -15,25 +15,9 @@
 
 // Vars and Reset
 //
-$theme:       #454cad;
+$theme:       #4b8b36;
 $dark-text:   #5f6982;
 
-html,body,* { box-sizing: border-box; font-size: 16px;}
-html,body   { height: 100%; text-align: center;}
-body        { padding: 2rem; background: #f8f8f8;}
-
-h2 {
-  font-family: "Roboto", sans-serif;
-  font-size: 26px;
-  line-height: 1;
-  color: $theme;
-  margin-bottom: 0;
-}
-p {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  color: $dark-text;
-}
 // Upload Demo
 //
 .uploader {
@@ -49,9 +33,9 @@ p {
     width: 100%;
     padding: 2rem 1.5rem;
     text-align: center;
-    background: #fff;
+    background: #ffffffa8;
     border-radius: 7px;
-    border: 3px solid #eee;
+    border: 3px solid #454cad;
     transition: all .2s ease;
     user-select: none;
 
@@ -153,6 +137,7 @@ p {
   div {
     margin: 0 0 .5rem 0;
     color: $dark-text;
+    font-size: 20px;
   }
   .btn {
     display: inline-block;
@@ -160,7 +145,7 @@ p {
     clear: both;
     font-family: inherit;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     text-decoration: none;
     text-transform: initial;
     border: none;

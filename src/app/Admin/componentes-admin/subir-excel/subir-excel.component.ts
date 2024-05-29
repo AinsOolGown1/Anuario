@@ -10,4 +10,6 @@ export class SubirExcelComponent {
 
   backgroundImage = environment.svg_background_login;
 
+
+
 }
