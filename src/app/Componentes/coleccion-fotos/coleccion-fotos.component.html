@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coleccion de fotos</title>
-</head>
-<body>
-  <app-filtro-anuario></app-filtro-anuario>
-  <div class="container">
-    <div class="coleccion">
-      <img class="foto" src="../../../assets/Fotos_coleccion/IMG_5664.JPG" alt="">
-      <img class="foto" src="../../../assets/Fotos_coleccion/IMG_5975.JPG" alt="">
-      <img class="foto" src="../../../assets/Fotos_coleccion/IMG_6378.JPG" alt="">
-      <img class="foto" src="../../../assets/Fotos_coleccion/IMG_6414.JPG" alt="">
-      <img class="foto" src="../../../assets/Fotos_coleccion/IMG_7439.JPG" alt="">
+<app-filtro-anuario></app-filtro-anuario>
+  <div class="gallery-container">
+    <div *ngFor="let src of array_base64_imagenes" class="gallery-item" [ngClass]="{ 'tall': isTallImage(src) }">
+      <img [src]="src" alt="imagen_graduacion" (load)="checkImageDimensions($event, src)" />
     </div>
   </div>
-</body>
-</html>
+
+

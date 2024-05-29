@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
-import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
+import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-graduados';
 
 @Component({
   selector: 'app-ver-lista-graduados',

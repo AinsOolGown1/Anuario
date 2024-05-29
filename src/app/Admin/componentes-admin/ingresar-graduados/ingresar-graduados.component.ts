@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
-import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
+import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-graduados';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';

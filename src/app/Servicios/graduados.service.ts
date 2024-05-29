@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'; // Importa map para transformar la respuesta JSON
-import { IngresarGraduados } from '../model/ingresar-graduados';
+import { IngresarGraduados } from '../model/AnuarioGraduados/ingresar-graduados';
 
 @Injectable({
   providedIn: 'root'

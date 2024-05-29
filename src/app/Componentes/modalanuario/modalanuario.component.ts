@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
-import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
+import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-graduados';
 
 @Component({
   selector: 'app-modalanuario',

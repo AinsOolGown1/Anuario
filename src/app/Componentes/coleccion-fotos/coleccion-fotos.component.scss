@@ -1,13 +1,21 @@
-.container{
-  display: flex;
-  justify-content: center;
-  place-items: center;
-  flex-wrap: wrap;
-  margin-right: 70px;
-}
-.foto{
-  margin-right: 35px;
-  width: 30%;
-  margin-top: 20px;
+.gallery-container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
+.gallery-item {
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item.tall {
+  grid-row: span 2;
+}

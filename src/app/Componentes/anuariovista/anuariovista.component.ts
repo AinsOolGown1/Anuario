@@ -1,10 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
-import { IngresarGraduados } from 'src/app/model/ingresar-graduados';
+import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-graduados';
 import { MatDialog } from '@angular/material/dialog'
 import { ModalanuarioComponent } from '../modalanuario/modalanuario.component';
 import { ActivatedRoute } from '@angular/router';
-import { IGraduado } from 'src/app/model/interfaces';
+import { IGraduado } from 'src/app/model/AnuarioGraduados/interfaces';
 
 @Component({
   selector: 'app-anuariovista',

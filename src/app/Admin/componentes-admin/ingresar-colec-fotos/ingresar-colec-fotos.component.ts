@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColeccionFotosGraduacionesService } from 'src/app/Servicios/coleccionfotos.service';
-import { ColeccionGraduacion } from 'src/app/model/interfaceColeccionfotos';
+import { ColeccionGraduacion } from 'src/app/model/Coleccion_Fotos/interfaceColeccionfotos';
 
 @Component({
   selector: 'app-ingresar-colec-fotos',
