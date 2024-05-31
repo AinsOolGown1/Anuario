@@ -1,22 +1,22 @@
 <div class="contenedor-principal" [ngStyle]="{'background-image':'url('+backgroundImage+')'}">
   <!-- Upload  -->
-  <form id="file-upload-form" class="uploader">
-    <input id="file-upload" type="file" name="fileUpload" accept=".xls, .xlsx" />
+  <form id="file-upload-form" class="uploader" action="YOUR_UPLOAD_ENDPOINT" method="POST" enctype="multipart/form-data">
+    <input id="file-upload" type="file" name="fileUpload" accept=".xls,.xlsx" />
 
     <label for="file-upload" id="file-drag">
-      <img id="file-image" src="#" alt="Preview" class="hidden">
       <div id="start">
         <i class="fa fa-download" aria-hidden="true"></i>
         <div>Seleccionar archivo</div>
-        <div id="notimage" class="hidden">Selecionar solo archivos XLS XLSX</div>
-        <span id="file-upload-btn" class="btn btn-primary">Seleccion un archivo</span>
+        <span id="file-upload-btn" class="btn btn-primary">Seleccionar un archivo</span>
       </div>
       <div id="response" class="hidden">
         <div id="messages"></div>
         <progress class="progress" id="file-progress" value="0">
           <span>0</span>%
         </progress>
+        <button id="save-button" class="btn btn-primary hidden boton">Guardar</button>
       </div>
     </label>
   </form>
 </div>
+<script src="../../../../assets/js/VistaSubirExcel/subirexcel.js"></script>

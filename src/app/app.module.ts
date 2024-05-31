@@ -9,6 +9,9 @@ import {DialogModule} from '@angular/cdk/dialog'
 
 import { FlipBookModule } from '@labsforge/flipbook';
 
+//Script JS
+import { CargarScriptsService } from './Servicios/cargar-scripts.service';
+
 //Vista publica
 import { ColeccionFotosComponent } from './Componentes/coleccion-fotos/coleccion-fotos.component';
 import { DashboardComponent } from './Componentes/dashboard/dashboard.component';
@@ -78,7 +81,9 @@ import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir
     MatDialogModule,
     QRCodeModule
   ],
-  providers: [],
+  providers: [
+    CargarScriptsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
