@@ -36,7 +36,7 @@ export class FiltroAnuarioComponent implements OnInit {
       next:(images) => {
         this.filteredImages = images;
       }, error:(err: any)=>{
-        console.error('Error fetching images:', err);
+        console.error('Error al recuperar imágenes:', err);
         alert('No se encontraron las imágenes. Por favor, intenta de nuevo.');
       }
     })
