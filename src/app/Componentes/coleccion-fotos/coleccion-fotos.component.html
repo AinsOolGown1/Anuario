@@ -1,7 +1,7 @@
 <app-filtro-anuario></app-filtro-anuario>
   <div class="gallery-container">
     <div *ngFor="let src of array_base64_imagenes" class="gallery-item" [ngClass]="{ 'tall': isTallImage(src) }">
-      <img [src]="src" alt="imagen_graduacion" (load)="checkImageDimensions($event, src)" />
+      <img [defaultImage]="imagenPordefecto" [lazyLoad]="src" alt="imagen_graduacion" (load)="checkImageDimensions($event, src)"/>
     </div>
   </div>
 

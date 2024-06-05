@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import {DialogModule} from '@angular/cdk/dialog'
+import { DialogModule } from '@angular/cdk/dialog'
 
 import { FlipBookModule } from '@labsforge/flipbook';
 
@@ -79,7 +81,9 @@ import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir
     FlipBookModule,
     DialogModule,
     MatDialogModule,
-    QRCodeModule
+    QRCodeModule,
+    LazyLoadImageModule,
+    FormsModule
   ],
   providers: [
     CargarScriptsService

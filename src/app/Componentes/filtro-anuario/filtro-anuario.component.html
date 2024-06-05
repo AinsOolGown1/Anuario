@@ -1,45 +1,27 @@
-<table class="filtro">
-  <tr class="fila-filtros">
-    <th>
-      <label>Campus</label>
-      <select class="campus" id="camp">
-        <option value="" disabled selected></option>
-        <option value="">Central</option>
-        <option value="">Jinotepe</option>
-        <option value="">Doral</option>
-      </select>
-    </th>
-    <th>
-      <label>Facultad</label>
-      <select class="facultad" id="facu">
-        <option value="" disabled selected></option>
-        <option value="">Ciencias Medicas</option>
-        <option value="">Ciencias Economicas</option>
-        <option value="">Ciencias Juridicas</option>
-        <option value="">Ingenieria en Sistemas</option>
+<div>
+  <label>Campus:
+    <select [(ngModel)]="selectedCampus">
+      <option *ngFor="let campus of campusOptions" [value]="campus">{{ campus }}</option>
+    </select>
+  </label>
 
-      </select>
-    </th>
-    <th>
-      <label>Carrera</label>
-      <select class="carrera" id="carreras">
-        <option value="" disabled selected></option>
-        <option value="">Ingenieria en Sistemas</option>
-        <option value="">Medicina Cirugia</option>
-        <option value="">Marketing</option>
-        <option value="">Psicología</option>
-      </select>
-    </th>
-    <th>
-      <label>Año</label>
-      <select class="years" id="year">
-        <option value="" disabled selected></option>
-        <option value="">2024</option>
-        <option value="">2023</option>
-        <option value="">2022</option>
-        <option value="">2021</option>
-      </select>
-    </th>
-    <th><button routerLink="/inicio/anuariovista" class="btn-consultar">Consultar</button></th>
-  </tr>
-</table>
+  <label>Año:
+    <select [(ngModel)]="selectedYear">
+      <option *ngFor="let year of yearOptions" [value]="year">{{ year }}</option>
+    </select>
+  </label>
+
+  <label>Sesión:
+    <select [(ngModel)]="selectedSession">
+      <option *ngFor="let session of sessionOptions" [value]="session">{{ session }}</option>
+    </select>
+  </label>
+
+  <button (click)="filterImages()">Filtrar</button>
+</div>
+
+<div *ngIf="filteredImages.length">
+  <div *ngFor="let image of filteredImages">
+    <img [src]="image.url" alt="Image" width="200">
+  </div>
+</div>
