@@ -16,19 +16,27 @@ export class VerListaGraduadosComponent implements OnInit {
   displayedColumns: string[] = [
     'carnet',
     'nombres',
-    'apellidos', 
-    'carrera', 
-    'facultad', 
+    'apellidos',
+    'carrera',
+    'facultad',
     'campus',
-    'frase_emotiva', 
-    'year_graduado', 
-    'estado_graduado', 
-    'destacado_graduado', 
+    'frase_emotiva',
+    'year_graduado',
+    'telefono_graduado',
+    'correo_graduado',
+    'estado_graduado',
+    'destacado_graduado',
     //'foto_graduado',
-    'qr_graduado', 
+    'qr_graduado',
     'acciones'
   ];
+
   dataSource = new MatTableDataSource<IngresarGraduados>();
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

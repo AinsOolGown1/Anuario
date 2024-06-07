@@ -5,7 +5,6 @@ import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-gradu
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import * as XLSX from 'xlsx'; //* Importar la biblioteca XLSX
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -40,6 +39,8 @@ export class IngresarGraduadosComponent {
       frase_emotiva:['', Validators.required],
       campus:['', Validators.required],
       year_graduado:['', Validators.required],
+      telefono_graduado:['', Validators.required],
+      correo_graduado:['', Validators.required],
       estado_graduado:['', Validators.required],
       destacado_graduado:['', Validators.required],
       foto_graduado:['', Validators.required],
@@ -65,6 +66,8 @@ export class IngresarGraduadosComponent {
       frase_emotiva: this.ingre_graduadoForm.get('frase_emotiva')?.value,
       campus: this.ingre_graduadoForm.get('campus')?.value,
       year_graduado: this.ingre_graduadoForm.get('year_graduado')?.value,
+      telefono_graduado: this.ingre_graduadoForm.get('telefono_graduado')?.value,
+      correo_graduado: this.ingre_graduadoForm.get('correo_graduado')?.value,
       estado_graduado: estado_graduado,
       destacado_graduado: destacado_graduado,
       foto_graduado: this.archivos[0], //* Se envía el archivo en lugar de la URL
