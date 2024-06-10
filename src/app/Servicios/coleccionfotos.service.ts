@@ -32,10 +32,6 @@ export class ColeccionFotosGraduacionesService {
     return this.http.get<any>(`${this.url}buscar/imagen/${campus}/${year_graduacion}/${sesion}`);
   }
 
-  /*ImagenesGraduaciones(campus: string, year_graduacion: string, sesion: string): Observable<any> {
-    return this.http.get(`${this.url}buscar/imagen/${campus}/${year_graduacion}/${sesion}`, {responseType: 'blob'});
-  }*/
-
   guardarFotosGraduaciones(formData: FormData): Observable<any> {
     return this.http.post(`${this.url}coleccion/`, formData);
   }

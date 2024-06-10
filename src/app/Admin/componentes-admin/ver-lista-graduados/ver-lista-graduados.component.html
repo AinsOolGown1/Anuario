@@ -1,4 +1,10 @@
 <!-- <app-navbar-admin></app-navbar-admin> -->
+<div class="buscar_graduado">
+  <mat-form-field>
+    <mat-label>Buscar Graduado</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
+</div>
 <div class="contenedor-tabla">
   <div class="contenedor-secundario">
     <table mat-table [dataSource]="dataSource">
@@ -50,6 +56,18 @@
         <td mat-cell *matCellDef="let graduado"> {{graduado.year_graduado}} </td>
       </ng-container>
 
+      <!-- Columna telefono del graduado -->
+      <ng-container matColumnDef="telefono_graduado">
+        <th mat-header-cell *matHeaderCellDef>Telefono</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.telefono_graduado}} </td>
+      </ng-container>
+
+      <!-- Columna correo del graduado -->
+      <ng-container matColumnDef="correo_graduado">
+        <th mat-header-cell *matHeaderCellDef>Correo</th>
+        <td mat-cell *matCellDef="let graduado"> {{graduado.correo_graduado}} </td>
+      </ng-container>
+
       <!-- Columna estado del graduado -->
       <ng-container matColumnDef="estado_graduado">
         <th mat-header-cell *matHeaderCellDef>Estado</th>
@@ -78,7 +96,7 @@
       <!-- Columna QR del graduado -->
       <ng-container matColumnDef="qr_graduado">
         <th mat-header-cell *matHeaderCellDef>QR</th>
-        <td class="qr_graduado" mat-cell *matCellDef="let graduado"> 
+        <td class="qr_graduado" mat-cell *matCellDef="let graduado">
           <a title="enlaceQR" [href]="graduado.qr_graduado">{{graduado.qr_graduado}} </a>
         </td>
       </ng-container>

@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import {DialogModule} from '@angular/cdk/dialog'
+import { DialogModule } from '@angular/cdk/dialog'
 
 import { FlipBookModule } from '@labsforge/flipbook';
+
+//Script JS
+import { CargarScriptsService } from './Servicios/cargar-scripts.service';
 
 //Vista publica
 import { ColeccionFotosComponent } from './Componentes/coleccion-fotos/coleccion-fotos.component';
@@ -41,6 +46,7 @@ import { ModalanuarioComponent } from './Componentes/modalanuario/modalanuario.c
 import { MatDialogModule } from '@angular/material/dialog';
 import { EventosComponent } from './Componentes/eventos/eventos.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir-excel.component';
 
 
 @NgModule({
@@ -59,7 +65,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     FiltroAnuarioComponent,
     AnuariovistaComponent,
     ModalanuarioComponent,
-    EventosComponent
+    EventosComponent,
+    SubirExcelComponent
   ],
   imports: [
     BrowserModule,
@@ -74,9 +81,13 @@ import { QRCodeModule } from 'angularx-qrcode';
     FlipBookModule,
     DialogModule,
     MatDialogModule,
-    QRCodeModule
+    QRCodeModule,
+    LazyLoadImageModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    CargarScriptsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

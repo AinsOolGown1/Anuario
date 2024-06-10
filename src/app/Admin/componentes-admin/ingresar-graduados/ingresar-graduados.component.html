@@ -1,13 +1,5 @@
 <div class="contenedor-principal" [ngStyle]="{'background-image':'url('+backgroundImage+')'}">
-  <div class="contenedor-secundario">
-    <div class="agregar-excel">
-      <label style="margin-right: 5px;
-      display: flex;
-      flex-wrap: wrap;
-      align-content: flex-end;" class="form-label fw-bold">Subir archivo Excel</label>
-      <input type="file" style="width: 30%;" (change)="onFileChange($event)" class="form-control" accept=".xlsx">
-    </div>
-    
+
     <div class="cuerpo">
       <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregar_graduado()" >
         <table>
@@ -135,9 +127,27 @@
               <!--QR del graduado-->
             <td>
               <label class="form-label fw-bold">QR del graduado</label>
-              <input formControlName="qr_graduado" class="form-control" type="url" placeholder="http://www.example.com">
+              <input formControlName="qr_graduado" class="form-control" type="text" placeholder="http://www.example.com">
               <div class="text_danger" *ngIf="ingre_graduadoForm.get('qr_graduado')?.hasError('required') && ingre_graduadoForm.get('qr_graduado')?.touched">
                 <span>El QR del graduado <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label class="form-label fw-bold">No. de Telefono</label>
+              <input formControlName="telefono_graduado" class="form-control" type="text" placeholder="+505 8551 1234">
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('telefono_graduado')?.hasError('required') && ingre_graduadoForm.get('telefono_graduado')?.touched">
+                <span>El numero de telefono del graduado <strong>es obligatorio</strong></span>
+              </div>
+            </td>
+
+            <td>
+              <label class="form-label fw-bold">Correo del graduado</label>
+              <input formControlName="correo_graduado" class="form-control" type="text" placeholder="jp.perez4827@ejemplo.com">
+              <div class="text_danger" *ngIf="ingre_graduadoForm.get('correo_graduado')?.hasError('required') && ingre_graduadoForm.get('correo_graduado')?.touched">
+                <span>El correo del graduado <strong>es obligatorio</strong></span>
               </div>
             </td>
           </tr>
@@ -148,4 +158,4 @@
       </form>
     </div>
   </div>
-</div>
+

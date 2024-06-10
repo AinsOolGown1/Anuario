@@ -35,6 +35,8 @@ export class GraduadosService {
       frase_emotiva: graduado.frase_emotiva,
       campus: graduado.campus,
       year_graduado: graduado.year_graduado,
+      telefono_graduado: graduado.telefono_graduado,
+      correo_graduado: graduado.correo_graduado,
       estado_graduado: graduado.estado_graduado,
       destacado_graduado: graduado.destacado_graduado,
       foto_graduado: graduado.foto_graduado,
@@ -57,6 +59,8 @@ export class GraduadosService {
     formData.append('frase_emotiva', graduado.frase_emotiva);
     formData.append('campus', graduado.campus);
     formData.append('year_graduado', String(graduado.year_graduado));
+    formData.append('telefono_graduado', String(graduado.telefono_graduado));
+    formData.append('correo_graduado', String(graduado.correo_graduado));
     formData.append('estado_graduado', String(graduado.estado_graduado));
     formData.append('destacado_graduado', String(graduado.destacado_graduado));
     formData.append('foto_graduado', graduado.foto_graduado);
