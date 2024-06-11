@@ -1,12 +1,11 @@
-
 <div class="contenedor-principal" [ngStyle]="{'background-image':'url('+backgroundImage+')'}">
   <div class="cuerpo">
-    <form enctype="multipart/form-data" [formGroup]="ingre_graduadoForm" (ngSubmit)="agregarColeccionFotos()">
+    <form enctype="multipart/form-data" [formGroup]="gallery_fromGrup" (ngSubmit)="agregarColeccionFotos()">
       <table>
         <tr>
           <td>
             <label for="formFileMultiple" class="form-label">Fotos</label>
-            <input formControlName="fotos_graduaciones" class="form-control" type="file" id="formFileMultiple" multiple>
+            <input formControlName="fotos_graduaciones" class="form-control" type="file" id="formFileMultiple" multiple (change)="onFileChange($event)">
           </td>
         </tr>
         <tr>
@@ -19,7 +18,7 @@
               <option value="Extensión Esteli">Extensión Esteli</option>
             </select>
             <div class="text_danger"
-              *ngIf="ingre_graduadoForm.get('campus')?.hasError('required') && ingre_graduadoForm.get('campus')?.touched">
+              *ngIf="gallery_fromGrup.get('campus')?.hasError('required') && gallery_fromGrup.get('campus')?.touched">
               <span>La opción campus <strong>es obligatoria</strong></span>
             </div>
           </td>
@@ -27,10 +26,9 @@
         <tr>
           <td>
             <label class="form-label">Año</label>
-            <input formControlName="year_graduacion" class="form-control" type="text"
-              placeholder="Ingresar el año de graduación">
+            <input formControlName="year_graduacion" class="form-control" type="text" placeholder="Ingresar el año de graduación">
             <div class="text_danger"
-              *ngIf="ingre_graduadoForm.get('year_graduacion')?.hasError('required') && ingre_graduadoForm.get('year_graduacion')?.touched">
+              *ngIf="gallery_fromGrup.get('year_graduacion')?.hasError('required') && gallery_fromGrup.get('year_graduacion')?.touched">
               <span>El año de graduación <strong>es obligatorio</strong></span>
             </div>
           </td>
@@ -40,7 +38,7 @@
             <label class="form-label">Sesión</label><br>
             <input formControlName="sesion" class="form-control" type="text" placeholder="Ingrese la sesión 1 o 2">
             <div class="text_danger"
-              *ngIf="ingre_graduadoForm.get('sesion')?.hasError('required') && ingre_graduadoForm.get('sesion')?.touched">
+              *ngIf="gallery_fromGrup.get('sesion')?.hasError('required') && gallery_fromGrup.get('sesion')?.touched">
               <span>La sesión <strong>es obligatoria</strong></span>
             </div>
           </td>

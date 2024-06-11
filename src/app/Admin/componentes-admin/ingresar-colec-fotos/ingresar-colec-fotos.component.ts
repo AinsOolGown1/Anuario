@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColeccionFotosGraduacionesService } from 'src/app/Servicios/coleccionfotos.service';
-import { ColeccionGraduacion } from 'src/app/model/Coleccion_Fotos/interfaceColeccionfotos';
+import { ColeccionesDeFotos } from 'src/app/model/Coleccion_Fotos/modeloInterfazColeccionFotoa';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,11 +16,11 @@ export class IngresarColecFotosComponent {
 
   backgroundImage = environment.svg_background_login;
 
-  ingre_graduadoForm: FormGroup;
+  gallery_fromGrup: FormGroup;
   titulo = 'Agregar Colección de Fotos';
   id: string;
 
-  public archivos: any = [];
+  public archivos: File[] = [];
 
   constructor(private fb: FormBuilder,
               private _coleccionGraduaciones: ColeccionFotosGraduacionesService,
@@ -28,7 +28,7 @@ export class IngresarColecFotosComponent {
               private router: Router,
               private aRouter: ActivatedRoute,
               private sanitizer: DomSanitizer) {
-    this.ingre_graduadoForm = this.fb.group({
+    this.gallery_fromGrup = this.fb.group({
       campus:['', Validators.required],
       year_graduacion:['', Validators.required],
       fotos_graduaciones:['', Validators.required],
@@ -40,29 +40,35 @@ export class IngresarColecFotosComponent {
   ngOnInit(){
   }
 
-  agregarColeccionFotos() {
-    const formData = new FormData();
-    formData.append('campus', this.ingre_graduadoForm.get('campus')?.value);
-    formData.append('year_graduacione', this.ingre_graduadoForm.get('year_graduacion')?.value);
-    formData.append('sesion', this.ingre_graduadoForm.get('sesion')?.value);
-
-    const files = this.ingre_graduadoForm.get('fotos_graduaciones')?.value;
-    for (let i = 0; i < files.length; i++) {
-      formData.append('fotos_graduaciones', files[i]);
+  onFileChange(event: any) {
+    if (event.target.files && event.target.files.length) {
+      this.archivos = Array.from(event.target.files);
     }
+  }
 
-    this._coleccionGraduaciones.guardarFotosGraduaciones(formData).subscribe({
+  agregarColeccionFotos() {
+    const GALERIA_GRADUACION: ColeccionesDeFotos = {
+      campus: this.gallery_fromGrup.get('campus')?.value,
+      year_graduacion: this.gallery_fromGrup.get('year_graduacion')?.value,
+      fotos_graduaciones: this.archivos,
+      sesion: this.gallery_fromGrup.get('sesion')?.value
+    };
+
+    this._coleccionGraduaciones.guardarFotosGraduaciones(GALERIA_GRADUACION).subscribe({
       next: (data) => {
         this._snackBar.open('Colección de fotos agregadas', 'Aceptar', {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
-        this.ingre_graduadoForm.reset();
+        this.gallery_fromGrup.reset();
+        this.archivos = [];
+        console.log(data);
       },
       error: () => {
         this._snackBar.open("Error al guardar la colección de fotos", "Aceptar", { duration: 3000 });
-        this.ingre_graduadoForm.reset();
+        this.gallery_fromGrup.reset();
+        this.archivos = [];
       }
     });
   }
