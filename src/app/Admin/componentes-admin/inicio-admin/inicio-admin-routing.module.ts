@@ -11,7 +11,7 @@ const routes: Routes = [
     {path:'',component: VerListaGraduadosComponent},
     {path:'ver-lista-graduados',component: VerListaGraduadosComponent},
     {path:'ingresar-graduados', component:IngresarGraduadosComponent},
-    {path:'editar-graduado/:id', component:IngresarGraduadosComponent},
+    {path:'editar-graduado/:carnet', component:IngresarGraduadosComponent},
     {path:'ingresar-colec-fotos', component:IngresarColecFotosComponent},
     {path: 'subir-excel', component:SubirExcelComponent}
   ]}

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       theme: 'filled_blue',
       size:  'large',
       shape: 'rectangle',
-      width: 266
+      width: 200
     })
   }
 

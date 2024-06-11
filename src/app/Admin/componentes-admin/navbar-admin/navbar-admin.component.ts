@@ -24,6 +24,6 @@ export class NavbarAdminComponent {
       this.router.navigate(['login']);
   }*/
 
-  
+
 
 }

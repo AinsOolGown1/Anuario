@@ -9,7 +9,7 @@ import { ColeccionesDeFotos } from '../model/Coleccion_Fotos/modeloInterfazColec
 })
 export class ColeccionFotosGraduacionesService {
 
-  url = 'http://localhost:4000/api/agregar_coleccionfotos/';
+  url = 'http://localhost:4100/api/agregar_coleccionfotos/';
 
   constructor(private http: HttpClient) { }
 

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
-  private apiUrl = 'http://localhost:4000/api/filtro_gallery/images';
+  private apiUrl = 'http://localhost:4100/api/filtro_gallery/images';
 
   constructor(private http: HttpClient) { }
 
