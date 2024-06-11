@@ -1,27 +1,43 @@
 <div>
-  <label>Campus:
-    <select [(ngModel)]="selectedCampus">
-      <option *ngFor="let campus of campusOptions" [value]="campus">{{ campus }}</option>
-    </select>
-  </label>
+  <h2>Filtros</h2>
+  <form (ngSubmit)="getFilteredResults()">
+    <div>
+      <label for="year">Año:</label>
+      <select id="year" [(ngModel)]="selectedYear" name="year">
+        <option *ngFor="let year of years" [value]="year.id">{{ year.year }}</option>
+      </select>
+    </div>
 
-  <label>Año:
-    <select [(ngModel)]="selectedYear">
-      <option *ngFor="let year of yearOptions" [value]="year">{{ year }}</option>
-    </select>
-  </label>
+    <div>
+      <label for="campus">Campus:</label>
+      <select id="campus" [(ngModel)]="selectedCampus" name="campus">
+        <option *ngFor="let campus of campuses" [value]="campus.id">{{ campus.name }}</option>
+      </select>
+    </div>
 
-  <label>Sesión:
-    <select [(ngModel)]="selectedSession">
-      <option *ngFor="let session of sessionOptions" [value]="session">{{ session }}</option>
-    </select>
-  </label>
+    <div>
+      <label for="faculty">Facultad:</label>
+      <select id="faculty" [(ngModel)]="selectedFaculty" name="faculty" (change)="onFacultyChange()">
+        <option *ngFor="let faculty of faculties" [ngValue]="faculty">{{ faculty.name }}</option>
+      </select>
+    </div>
 
-  <button (click)="filterImages()">Filtrar</button>
+    <div>
+      <label for="career">Carrera:</label>
+      <select id="career" [(ngModel)]="selectedCareer" name="career" [disabled]="!selectedFaculty">
+        <option *ngFor="let career of selectedFaculty?.careers" [value]="career.id">{{ career.name }}</option>
+      </select>
+    </div>
+
+    <button type="submit">Buscar</button>
+  </form>
 </div>
 
-<div *ngIf="filteredImages.length">
-  <div *ngFor="let image of filteredImages">
-    <img [src]="image.url" alt="Image" width="200">
-  </div>
+<div *ngIf="filteredData.length">
+  <h3>Resultados Filtrados</h3>
+  <ul>
+    <li *ngFor="let item of filteredData">
+      Año: {{ item.year }}, Campus: {{ item.campus }}, Facultad: {{ item.faculty }}, Carrera: {{ item.career }}
+    </li>
+  </ul>
 </div>

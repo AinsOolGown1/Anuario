@@ -159,9 +159,10 @@ export class IngresarGraduadosComponent {
             frase_emotiva: data.frase_emotiva,
             campus: data.campus,
             year_graduado: data.year_graduado,
+            telefono_graduado: data.telefono_graduado,
+            correo_graduado: data.correo_graduado,
             estado_graduado: data.estado_graduado,
             destacado_graduado: data.destacado_graduado,
-            foto_graduado: data.foto_graduado,
             qr_graduado: data.qr_graduado
           });
       });

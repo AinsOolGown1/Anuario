@@ -1,8 +1,8 @@
 .buscar_graduado{
-  margin-top: 100px;
-  margin-bottom: -50px;
+  margin-top: 65px;
+  margin-bottom: -86px;
   .mat-mdc-form-field{
-    width: 100%;
+    width: 30%;
   }
 }
 
@@ -42,4 +42,8 @@ table{
 .contenedor-secundario {
   overflow: auto;
   height:  -webkit-fill-available;
+}
+
+.pointer{
+  cursor: pointer;
 }
