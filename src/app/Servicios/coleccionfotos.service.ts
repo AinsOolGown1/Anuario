@@ -9,7 +9,7 @@ import { ColeccionesDeFotos } from '../model/Coleccion_Fotos/modeloInterfazColec
 })
 export class ColeccionFotosGraduacionesService {
 
-  url = 'http://localhost:4100/api/agregar_coleccionfotos/';
+  url = 'http://localhost:4100/api/coleccion-fotos';
 
   constructor(private http: HttpClient) { }
 
@@ -33,7 +33,7 @@ export class ColeccionFotosGraduacionesService {
   }
 
   guardarFotosGraduaciones(formData: FormData): Observable<any> {
-    return this.http.post(`${this.url}coleccion/`, formData);
+    return this.http.post(`${this.url}/cargar-coleccion`, formData);
   }
 
 }
