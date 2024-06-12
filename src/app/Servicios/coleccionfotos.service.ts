@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ColeccionesDeFotos } from '../model/Coleccion_Fotos/modeloInterfazColeccionFotoa';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ColeccionFotosGraduacionesService {
 
-  url = 'http://localhost:4100/api/coleccion-fotos';
+  private url: string  = environment.baseUrl + '/coleccion-fotos'
 
   constructor(private http: HttpClient) { }
 

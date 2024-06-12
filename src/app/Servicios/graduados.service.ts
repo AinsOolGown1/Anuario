@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'; // Importa map para transformar la respuesta JSON
 import { IngresarGraduados } from '../model/AnuarioGraduados/ingresar-graduados';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { IngresarGraduados } from '../model/AnuarioGraduados/ingresar-graduados'
 
 export class GraduadosService {
 
-  url = 'http://localhost:4100/api/graduados';
+  private url: string = environment.baseUrl +'/graduados'
 
   constructor(private http: HttpClient) { }
 
