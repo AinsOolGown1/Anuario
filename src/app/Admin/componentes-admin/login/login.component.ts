@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
 
   backgroundImage = environment.svg_background_login;
+  logo_ucn = environment.logo_ucn;
 
   private router = inject(Router);
 

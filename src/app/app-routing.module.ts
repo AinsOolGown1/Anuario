@@ -28,7 +28,6 @@ const routes: Routes = [
     .then(x => x.InicioAdminModule)
   },
   //!Rutas para la vista publica
-  {path: '', component: InicioComponent},
   {path:'inicio', component:InicioComponent},
   {path: 'coleccion-fotos', component: ColeccionFotosComponent},
   {path: 'anuarios', component: AnuariovistaComponent},
@@ -39,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
