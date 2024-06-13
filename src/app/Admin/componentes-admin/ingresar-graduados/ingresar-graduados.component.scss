@@ -30,6 +30,13 @@ tr, td{
   padding: 10px;
 }
 
+textarea{
+  resize: none;
+  min-width: 300px;
+}
+
+
+
 //Estilo botones
 .botones{
   display: flex;
@@ -40,10 +47,13 @@ tr, td{
 .btn-agregar
 {
   margin: auto;
+  background-color: #2ab36f;
+  color: #ffff;
 }
 
 //Estilo texto de emergencia
 .text_danger{
+  position: absolute;
   font-size: 13px;
   text-align: start;
   margin-left: 3px;
@@ -69,4 +79,13 @@ tr, td{
   align-items: center;
   justify-content: center;
 }
+
+.form-control{
+  max-width: 350px;
+}
+
+.carrera{
+  max-width: 300px;
+}
+
 

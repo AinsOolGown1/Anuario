@@ -34,6 +34,7 @@ export class ColeccionFotosGraduacionesService {
 
   guardarFotosGraduaciones(coleccion: ColeccionesDeFotos): Observable<any> {
     const formData = new FormData();
+
     //* Agregar los campos al FormData
     formData.append('campus', coleccion.campus);
     formData.append('year_graduacion', String(coleccion.year_graduacion));
