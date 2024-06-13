@@ -1,7 +1,7 @@
 <div class="contenedor-principal" [ngStyle]="{'background-image':'url('+backgroundImage+')'}">
   <!-- Upload  -->
-  <form id="file-upload-form" class="uploader" action="YOUR_UPLOAD_ENDPOINT" method="POST" enctype="multipart/form-data">
-    <input id="file-upload" type="file" name="fileUpload" accept=".xls,.xlsx" />
+  <form id="file-upload-form" action="/upload" method="post" class="uploader" enctype="multipart/form-data">
+    <input id="file-upload" (change)="archivoSeleccionado($event)" type="file" name="file" accept=".csv" />
 
     <label for="file-upload" id="file-drag">
       <div id="start">
@@ -19,4 +19,3 @@
     </label>
   </form>
 </div>
-<script src="../../../../assets/js/VistaSubirExcel/subirexcel.js"></script>

@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { Facultad } from 'src/app/model/Seleccion_carreras_facultad/Interfaz_Facultad';
 
 @Component({
   selector: 'app-ingresar-graduados',
@@ -13,6 +14,35 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./ingresar-graduados.component.scss'],
 })
 export class IngresarGraduadosComponent {
+
+
+  facultades: Facultad[] = [
+    { id: 1, name: 'Ciencias Médicas', carreras: [
+      { id: 1, name: 'Medicina' },
+      { id: 2, name: 'Farmacia' },
+      { id: 3, name: 'Enfermeria' },
+      { id: 4, name: 'Psicologia' }
+    ]},
+    { id: 2, name: 'Medicina Veterinaria', carreras: [
+      { id: 5, name: 'Medicina Veterinaria' }
+    ]},
+    { id: 3, name: 'Ciencias Administrativas', carreras: [
+      { id: 6, name: 'Administración de Empresas' },
+      { id: 7, name: 'Contabilidad Pública y Auditoría' },
+      { id: 8, name: 'Administración de Turismo y Hotelería' },
+      { id: 9, name: 'Mercadotecnia' }
+    ]},
+    { id: 4, name: 'Ciencias Juridicas y Sociales', carreras: [
+      { id: 10, name: 'Derecho' },
+      { id: 11, name: 'Relaciones Internacionales y Comercio exterior' }
+    ]},
+    { id: 5, name: 'Ingenieria en Sistemas', carreras: [
+      { id: 12, name: 'Ingenieria en Sistemas' }
+    ]}
+  ];
+
+  selectedFaculty?: Facultad;
+  selectedCareer?: number;
 
   backgroundImage = environment.svg_background_login;
 

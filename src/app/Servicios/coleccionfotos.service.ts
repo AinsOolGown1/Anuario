@@ -24,7 +24,7 @@ export class ColeccionFotosGraduacionesService {
     return {
       campus: graduaciones.campus,
       year_graduacion: graduaciones.year_graduacion,
-      fotos_graduacion: graduaciones.fotos_graduacion,
+      fotos_graduaciones: graduaciones.fotos_graduacion,
       sesion: graduaciones.sesion
     };
   }
@@ -33,8 +33,24 @@ export class ColeccionFotosGraduacionesService {
     return this.http.get<any>(`${this.url}buscar/imagen/${campus}/${year_graduacion}/${sesion}`);
   }
 
-  guardarFotosGraduaciones(formData: FormData): Observable<any> {
-    return this.http.post(`${this.url}/cargar-coleccion`, formData);
+  guardarFotosGraduaciones(coleccion: ColeccionesDeFotos): Observable<any> {
+    const formData = new FormData();
+
+    //* Agregar los campos al FormData
+    formData.append('campus', coleccion.campus);
+    formData.append('year_graduacion', String(coleccion.year_graduacion));
+
+      //* Iterar sobre el array de fotos y agregar cada archivo al FormData
+  if (Array.isArray(coleccion.fotos_graduaciones)) {
+    for (let i = 0; i < coleccion.fotos_graduaciones.length; i++) {
+      formData.append('fotos_graduaciones', coleccion.fotos_graduaciones[i]);
+    }
+  } else {
+    console.error('fotos_graduaciones no es un array de archivos');
+  }
+    formData.append('sesion', String(coleccion.sesion));
+
+    return this.http.post(`${this.url}coleccion`, formData);
   }
 
 }

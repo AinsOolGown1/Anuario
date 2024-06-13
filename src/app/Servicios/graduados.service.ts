@@ -86,12 +86,4 @@ export class GraduadosService {
     return this.http.put(`${this.url}/actualizar/${id}`, graduado);
   }
 
-  filtrarGraduados(campus: string, facultad: string, carrera: string, year: string): Observable<IngresarGraduados[]> {
-    const queryParams = `?campus=${campus}&facultad=${facultad}&carrera=${carrera}&year=${year}`;
-    const filterUrl = `${this.url}filtrar${queryParams}`;
-    return this.http.get<any[]>(filterUrl).pipe(
-      map(response => response.map(graduado => this.mapGraduado(graduado)))
-    );
-  }
-
 }

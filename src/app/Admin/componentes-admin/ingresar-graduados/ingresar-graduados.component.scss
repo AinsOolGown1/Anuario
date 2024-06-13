@@ -3,14 +3,7 @@
 .example-spacer{
   flex: 1 1 auto;
 }
-.ancho-tool2{
-  width: 99%;
-  margin-right: auto;
-  margin-left: auto;
-  //border: 0.7px solid rgba(63, 81, 181, 0.425);
-  border-radius: 6px 6px 0 0;
-  box-shadow: 0 5px 5px 2px rgba(63, 81, 181, 0.514);
-}
+
 .list{
   letter-spacing: .3rem;
 }
@@ -28,14 +21,8 @@
   width: auto;
   margin-left: auto; // Centra horizontalmente
   margin-right: auto; // Centra horizontalmente
+  margin-top: auto;
   //box-shadow: 0 5px 5px 2px rgba(158, 158, 158, 0.418);
-}
-
-//Estilo agregar archivo excel
-.agregar-excel{
-  display: flex;
-  justify-content: flex-end;
-  margin: 1rem 0;
 }
 
 //Estilo de la tabla
@@ -43,22 +30,30 @@ tr, td{
   padding: 10px;
 }
 
+textarea{
+  resize: none;
+  min-width: 300px;
+}
+
+
+
 //Estilo botones
 .botones{
   display: flex;
   justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 30px;
   width: 100%;
 }
 //Estilo boton Agregar y cancelar
 .btn-agregar
 {
-  margin-left: 50px;
+  margin: auto;
+  background-color: #2ab36f;
+  color: #ffff;
 }
 
 //Estilo texto de emergencia
 .text_danger{
+  position: absolute;
   font-size: 13px;
   text-align: start;
   margin-left: 3px;
@@ -85,8 +80,12 @@ tr, td{
   justify-content: center;
 }
 
-.contenedor-secundario{
-  display: flex;
-  flex-direction: column;
-  margin-top: 3rem;
+.form-control{
+  max-width: 350px;
 }
+
+.carrera{
+  max-width: 300px;
+}
+
+
