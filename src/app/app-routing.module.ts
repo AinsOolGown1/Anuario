@@ -23,14 +23,14 @@ const routes: Routes = [
       title: 'Iniciar Sesión'
     }
   },
-  {path:'inicio-admin', 
+  {path:'admin', 
     loadChildren:()=> import('./Admin/componentes-admin/inicio-admin/inicio-admin.module')
     .then(x => x.InicioAdminModule)
   },
   //!Rutas para la vista publica
   {path:'inicio', component:InicioComponent},
-  {path: 'coleccion-fotos', component: ColeccionFotosComponent},
-  {path: 'anuarios', component: AnuariovistaComponent},
+  {path:'coleccion-fotos', component: ColeccionFotosComponent},
+  {path:'anuarios', component: AnuariovistaComponent},
   {path:'eventos', component: EventosComponent},
   {path:'filtro-anuario', component: FiltroAnuarioComponent},
   // {path: '', component: DashboardComponent, children:[

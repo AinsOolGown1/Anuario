@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("loggedUser", JSON.stringify(payload));
 
       //Navegar en la pagina inicio del administrador
-      this.router.navigate(['inicio-admin'])
+      this.router.navigate(['admin'])
     }
   }
 

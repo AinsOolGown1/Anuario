@@ -25,6 +25,6 @@ export class AppComponent {
 
   checkRoute(){
     const rutaActual = this.router.url;
-    this.mostrarNavBar = !(rutaActual.includes('login') || rutaActual.includes('inicio-admin'))
+    this.mostrarNavBar = !(rutaActual.includes('login') || rutaActual.includes('admin'))
   }
 }

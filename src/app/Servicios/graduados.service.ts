@@ -22,7 +22,7 @@ export class GraduadosService {
   }
 
   guardarDatosExcel(datos: any[]): Observable<any> {
-    return this.http.post(`${this.url}guardar-desde-excel/`, datos);
+    return this.http.post(`${this.url}/guardar-desde-excel/`, datos);
   }
 
   //* Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
