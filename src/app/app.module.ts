@@ -47,6 +47,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EventosComponent } from './Componentes/eventos/eventos.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir-excel.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -86,7 +87,11 @@ import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir
     FormsModule
   ],
   providers: [
-    CargarScriptsService
+    CargarScriptsService,
+    {
+      provide:LocationStrategy,
+      useClass: HashLocationStrategy
+    }
   ],
   bootstrap: [AppComponent]
 })

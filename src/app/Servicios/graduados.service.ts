@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'; // Importa map para transformar la respuesta JSON
 import { IngresarGraduados } from '../model/AnuarioGraduados/ingresar-graduados';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +11,18 @@ import { IngresarGraduados } from '../model/AnuarioGraduados/ingresar-graduados'
 
 export class GraduadosService {
 
-  url = 'http://localhost:4100/api/agregar_graduados/';
+  private url: string = environment.baseUrl +'/graduados'
 
   constructor(private http: HttpClient) { }
 
   getGraduados(): Observable<any[]> {
-    return this.http.get<any[]>(this.url).pipe(
+    return this.http.get<any[]>(`${this.url}/obtener`).pipe(
       map(response => response.map(graduado => this.mapGraduado(graduado)))
     );
   }
 
   guardarDatosExcel(datos: any[]): Observable<any> {
-    return this.http.post(`${this.url}guardar-desde-excel/`, datos);
+    return this.http.post(`${this.url}/guardar-desde-excel/`, datos);
   }
 
   //* Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
@@ -45,7 +46,7 @@ export class GraduadosService {
   }
 
   eliminarGraduado(id: string): Observable<any> {
-    return this.http.delete(this.url + id);
+    return this.http.delete(`${this.url}/eliminar/${id}`);
   }
 
   guardarGraduado(graduado: IngresarGraduados): Observable<any> {
@@ -66,23 +67,23 @@ export class GraduadosService {
     formData.append('foto_graduado', graduado.foto_graduado);
     formData.append('qr_graduado', graduado.qr_graduado);
 
-    return this.http.post(this.url, formData);
+    return this.http.post(`${this.url}/agregar`, formData);
   }
 
   obtenerEstudiantePorCarnet(carnet: string): Observable<IngresarGraduados> {
-    return this.http.get<IngresarGraduados>(`${this.url}buscar/${carnet}`);
+    return this.http.get<IngresarGraduados>(`${this.url}/buscar-carnet/${carnet}`);
   }
 
   obtenerFotoGraduado(carnet: string): Observable<any> {
-    return this.http.get(`${this.url}buscar/imagen/${carnet}`, {responseType: 'blob'});
+    return this.http.get(`${this.url}/buscar/imagen/${carnet}`, {responseType: 'blob'});
   }
 
   obtenerUngraduado(id: string): Observable<IngresarGraduados> {
-    return this.http.get<IngresarGraduados>(`${this.url}${id}`); // Especificamos el tipo de datos esperado como IngresarGraduados
+    return this.http.get<IngresarGraduados>(`${this.url}/obtener/${id}`); // Especificamos el tipo de datos esperado como IngresarGraduados
   }
 
   editarGraduado(id: string, graduado: IngresarGraduados): Observable<any> {
-    return this.http.put(this.url + id, graduado);
+    return this.http.put(`${this.url}/actualizar/${id}`, graduado);
   }
 
 }

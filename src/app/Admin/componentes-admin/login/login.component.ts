@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
 
   backgroundImage = environment.svg_background_login;
+  logo_ucn = environment.logo_ucn;
 
   private router = inject(Router);
 
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("loggedUser", JSON.stringify(payload));
 
       //Navegar en la pagina inicio del administrador
-      this.router.navigate(['inicio-admin'])
+      this.router.navigate(['admin'])
     }
   }
 

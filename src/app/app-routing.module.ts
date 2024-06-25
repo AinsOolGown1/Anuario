@@ -13,27 +13,32 @@ import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anua
 //Rutas modulo vista admin
 
 const routes: Routes = [
-
-  //Rutas para la vista Administrador
-  {path:'login', component: LoginComponent},
-  {path:'inicio-admin', loadChildren:()=> import('./Admin/componentes-admin/inicio-admin/inicio-admin.module')
-  .then(x => x.InicioAdminModule)},
-
-
-
-  //Rutas para la vista publica
-  {path: '', component: DashboardComponent, children:[
-    {path: '', component: InicioComponent},
-    {path:'inicio', component:InicioComponent},
-    {path: 'coleccion-fotos', component: ColeccionFotosComponent},
-    {path: 'inicio/anuariovista', component: AnuariovistaComponent},
-    {path:'eventos', component: EventosComponent},
-    {path:'filtro-anuario', component: FiltroAnuarioComponent}
-  ]}
+  //!Rutas para la vista Administrador
+  {
+    path:'', redirectTo: 'inicio', pathMatch: 'full'
+  },
+  {
+    path:'login', component: LoginComponent,
+    data:{
+      title: 'Iniciar Sesión'
+    }
+  },
+  {path:'admin', 
+    loadChildren:()=> import('./Admin/componentes-admin/inicio-admin/inicio-admin.module')
+    .then(x => x.InicioAdminModule)
+  },
+  //!Rutas para la vista publica
+  {path:'inicio', component:InicioComponent},
+  {path:'coleccion-fotos', component: ColeccionFotosComponent},
+  {path:'anuarios', component: AnuariovistaComponent},
+  {path:'eventos', component: EventosComponent},
+  {path:'filtro-anuario', component: FiltroAnuarioComponent},
+  // {path: '', component: DashboardComponent, children:[
+  // ]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
