@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { Facultad } from 'src/app/model/Seleccion_carreras_facultad/Interfaz_Facultad';
+import { Carreras } from 'src/app/model/Seleccion_carreras_facultad/Interfaz_Carreras';
 
 @Component({
   selector: 'app-ingresar-graduados',
@@ -14,7 +15,6 @@ import { Facultad } from 'src/app/model/Seleccion_carreras_facultad/Interfaz_Fac
   styleUrls: ['./ingresar-graduados.component.scss'],
 })
 export class IngresarGraduadosComponent {
-
 
   facultades: Facultad[] = [
     { id: 1, name: 'Ciencias Médicas', carreras: [
@@ -41,8 +41,8 @@ export class IngresarGraduadosComponent {
     ]}
   ];
 
-  selectedFaculty?: Facultad;
-  selectedCareer?: number;
+  selectedFaculty: Facultad | undefined;
+  selectedCareer: Carreras | undefined;
 
   backgroundImage = environment.svg_background_login;
 
@@ -52,7 +52,6 @@ export class IngresarGraduadosComponent {
   id: string;
   public archivos: any = [];
   guardandoDesdeExcel: boolean = false; //* Bandera para indicar si se están guardando datos desde un archivo Excel
-
 
   constructor(private fb: FormBuilder,
               private _graduadoService: GraduadosService,
@@ -70,7 +69,7 @@ export class IngresarGraduadosComponent {
       campus:['', Validators.required],
       year_graduado:['', Validators.required],
       telefono_graduado:['', Validators.required],
-      correo_graduado:['', Validators.required],
+      correo_graduado:['', [Validators.required, Validators.email]], // Validación de correo
       estado_graduado:['', Validators.required],
       destacado_graduado:['', Validators.required],
       foto_graduado:['', Validators.required],
@@ -84,66 +83,102 @@ export class IngresarGraduadosComponent {
   }
 
   agregar_graduado() {
-    const estado_graduado: boolean = this.ingre_graduadoForm.get('estado_graduado')?.value === 'true';
-    const destacado_graduado: boolean = this.ingre_graduadoForm.get('destacado_graduado')?.value === 'true';
+    if (this.ingre_graduadoForm.valid) {
+      const estado_graduado: boolean = this.ingre_graduadoForm.get('estado_graduado')?.value === 'true';
+      const destacado_graduado: boolean = this.ingre_graduadoForm.get('destacado_graduado')?.value === 'true';
 
-    const GRADUADO: IngresarGraduados = {
-      carnet: this.ingre_graduadoForm.get('carnet')?.value,
-      nombres: this.ingre_graduadoForm.get('nombres')?.value,
-      apellidos: this.ingre_graduadoForm.get('apellidos')?.value,
-      carrera: this.ingre_graduadoForm.get('carrera')?.value,
-      facultad: this.ingre_graduadoForm.get('facultad')?.value,
-      frase_emotiva: this.ingre_graduadoForm.get('frase_emotiva')?.value,
-      campus: this.ingre_graduadoForm.get('campus')?.value,
-      year_graduado: this.ingre_graduadoForm.get('year_graduado')?.value,
-      telefono_graduado: this.ingre_graduadoForm.get('telefono_graduado')?.value,
-      correo_graduado: this.ingre_graduadoForm.get('correo_graduado')?.value,
-      estado_graduado: estado_graduado,
-      destacado_graduado: destacado_graduado,
-      foto_graduado: this.archivos[0], //* Se envía el archivo en lugar de la URL
-      qr_graduado: this.ingre_graduadoForm.get('qr_graduado')?.value
-    };
+      const GRADUADO: IngresarGraduados = {
+        carnet: this.ingre_graduadoForm.get('carnet')?.value,
+        nombres: this.ingre_graduadoForm.get('nombres')?.value,
+        apellidos: this.ingre_graduadoForm.get('apellidos')?.value,
+        carrera: this.ingre_graduadoForm.get('carrera')?.value,
+        facultad: this.ingre_graduadoForm.get('facultad')?.value,
+        frase_emotiva: this.ingre_graduadoForm.get('frase_emotiva')?.value,
+        campus: this.ingre_graduadoForm.get('campus')?.value,
+        year_graduado: this.ingre_graduadoForm.get('year_graduado')?.value,
+        telefono_graduado: this.ingre_graduadoForm.get('telefono_graduado')?.value,
+        correo_graduado: this.ingre_graduadoForm.get('correo_graduado')?.value,
+        estado_graduado: estado_graduado,
+        destacado_graduado: destacado_graduado,
+        foto_graduado: this.archivos[0], //* Se envía el archivo en lugar de la URL
+        qr_graduado: this.ingre_graduadoForm.get('qr_graduado')?.value
+      };
 
-    //*Editar graduado
-    if(this.id !== null){
-      this._graduadoService.editarGraduado(this.id, GRADUADO).subscribe({
-        next: ()=>{
-          this._snackBar.open('Graduado editado correctamente','Aceptar', {
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom'
+      //*Editar graduado
+      if(this.id !== null){
+        this._graduadoService.editarGraduado(this.id, GRADUADO).subscribe({
+          next: ()=>{
+            this._snackBar.open('Graduado editado correctamente','Aceptar', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom'
+            });
+            this.router.navigate(['/ver-lista-graduados']);
+          },
+          error: () =>{
+            this._snackBar.open('No se logró editar el graduado','Aceptar',{
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom'
+            });
+            this.ingre_graduadoForm.reset();
+          }
+        })
+      } else {
+        //* Agregar graduado
+        this._graduadoService.guardarGraduado(GRADUADO).subscribe({
+          next: (data)=>{
+            this._snackBar.open('Graduado agregado correctamente', 'Aceptar', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom'
+            });
+          },
+          error: ()=>{
+            this._snackBar.open('Error al guardar el graduado', 'Aceptar', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom' });
+            this.ingre_graduadoForm.reset();
+          }
         });
-        this.router.navigate(['/ver-lista-graduados']);
-        }, error: () =>{
-          this._snackBar.open('No se logro editar el graduado','Aceptar',{
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom'
-          });
-          this.ingre_graduadoForm.reset();
-        }
-      })
-  }
-  else {
-    //* Agregar graduado
-    this._graduadoService.guardarGraduado(GRADUADO).subscribe({
-      next: (data)=>{
-        this._snackBar.open('Graduado agregado correctamente', 'Aceptar', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-        });
-        this.router.navigate(['/ver-lista-graduados']);
-      }, error: ()=>{
-        this._snackBar.open('Error al guardar el graduado', 'Aceptar', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom' });
-        this.ingre_graduadoForm.reset();
       }
-    })
+    } else {
+      this._snackBar.open('Formulario no válido. Por favor, revise los campos.', 'Aceptar', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
+    }
   }
-}
+
+  getCarreras(): Carreras[] {
+    if (this.selectedFaculty) {
+      return this.selectedFaculty.carreras;
+    }
+    return [];
+  }
+
+  onSelectFacultad(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const facultadId = +selectElement.value;
+
+    this.selectedFaculty = this.facultades.find(f => f.id === facultadId);
+
+    if (this.selectedFaculty) {
+      this.ingre_graduadoForm.get('carrera')?.enable();
+    } else {
+      this.ingre_graduadoForm.get('carrera')?.disable();
+    }
+
+    this.ingre_graduadoForm.patchValue({
+      carrera: null
+    });
+  }
+
+
+
+
   capturarFile(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
 
@@ -199,4 +234,3 @@ export class IngresarGraduadosComponent {
     }
   }
 }
-
