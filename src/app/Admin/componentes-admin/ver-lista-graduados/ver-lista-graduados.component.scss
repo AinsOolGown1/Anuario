@@ -1,8 +1,11 @@
 .buscar_graduado{
-  margin-top: 65px;
-  margin-bottom: -86px;
+  margin: 0;
+  padding: 0;
   .mat-mdc-form-field{
-    width: 30%;
+    width: 50%;
+  }
+  .mat-mdc-form-field-subscript-wrapper{
+    height: 0;
   }
 }
 

@@ -1,11 +1,11 @@
 <!-- <app-navbar-admin></app-navbar-admin> -->
-<div class="buscar_graduado">
-  <mat-form-field>
-    <mat-label>Buscar Graduado</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
-  </mat-form-field>
-</div>
 <div class="contenedor-tabla">
+  <div class="buscar_graduado">
+    <mat-form-field>
+      <mat-label>Buscar Graduado</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+    </mat-form-field>
+  </div>
   <div class="contenedor-secundario">
     <table mat-table [dataSource]="dataSource">
       <!-- Columna Carnet -->
@@ -105,7 +105,7 @@
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let graduado">
-            <mat-icon [routerLink]="['/editar-graduado', graduado._carnet_graduado ]" class="pointer" color="primary">edit</mat-icon>
+            <mat-icon [routerLink]="['/admin/editar-graduado', graduado._carnet_graduado ]" class="pointer" color="primary">edit</mat-icon>
             <mat-icon (click)="eliminarGraduado(graduado._id)" class="pointer" color="warn">delete</mat-icon>
           </td>
       </ng-container>
@@ -116,5 +116,5 @@
       </tr> -->
     </table>
   </div>
-  <mat-paginator id="paginador-tabla" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  <mat-paginator id="paginador-tabla" [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
 </div>

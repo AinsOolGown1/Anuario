@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ColeccionesDeFotos } from '../model/Coleccion_Fotos/modeloInterfazColeccionFotoa';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ColeccionFotosGraduacionesService {
 
-  url = 'http://localhost:4100/api/agregar_coleccionfotos/';
+  private url: string  = environment.baseUrl + '/coleccion-fotos'
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +30,7 @@ export class ColeccionFotosGraduacionesService {
   }
 
   ObtenerImagenesGraduaciones(campus: string, year_graduacion: string, sesion: string): Observable<any> {
-    return this.http.get<any>(`${this.url}buscar/imagen/${campus}/${year_graduacion}/${sesion}`);
+    return this.http.get<any>(`${this.url}/buscar/imagen/${campus}/${year_graduacion}/${sesion}`);
   }
 
   guardarFotosGraduaciones(coleccion: ColeccionesDeFotos): Observable<any> {
@@ -49,7 +50,9 @@ export class ColeccionFotosGraduacionesService {
   }
     formData.append('sesion', String(coleccion.sesion));
 
-    return this.http.post(`${this.url}coleccion`, formData);
+    console.log(formData)
+
+    return this.http.post(`${this.url}/cargar-coleccion`, formData);
   }
 
 }

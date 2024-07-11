@@ -4,6 +4,7 @@
   justify-content: center;
   place-items: center;
   flex-wrap: wrap;
+  align-content: flex-start;
 }
 .card{
   display: flex;
@@ -41,7 +42,7 @@
   margin-top: 5px;
 }
 .card > .card_image > .picture{
-  transition: all 0.7s;
+  transition: all 0.2s;
 }
 
 .card:hover > .card_image > .picture{

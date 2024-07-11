@@ -40,8 +40,10 @@ textarea{
 //Estilo botones
 .botones{
   display: flex;
-  justify-content: center;
   width: 100%;
+  height: 80px;
+  flex-wrap: wrap;
+  align-content: flex-end;
 }
 //Estilo boton Agregar y cancelar
 .btn-agregar
@@ -49,6 +51,8 @@ textarea{
   margin: auto;
   background-color: #2ab36f;
   color: #ffff;
+  width: 200px;
+  height: 50px;
 }
 
 //Estilo texto de emergencia
@@ -85,7 +89,8 @@ textarea{
 }
 
 .carrera{
-  max-width: 300px;
+  max-width: 350px;
 }
+
 
 

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
-  private URL = 'http://localhost:4100/api/filtro';
+  
+  private URL: string = environment.baseUrl + '/filtro'
 
   constructor(private http: HttpClient) {}
 

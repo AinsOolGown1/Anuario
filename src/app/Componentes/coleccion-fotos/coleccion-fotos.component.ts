@@ -21,7 +21,7 @@ export class ColeccionFotosComponent implements OnInit {
   }
 
   obtener_coleccion_fotos(){
-    this._imagenesService.ObtenerImagenesGraduaciones('Doral', '2023', '1').subscribe({
+    this._imagenesService.ObtenerImagenesGraduaciones('Extensión Esteli', '2024', '1').subscribe({
       next: (value) =>{
 
         this.array_base64_imagenes = value.coleccion_base64;
