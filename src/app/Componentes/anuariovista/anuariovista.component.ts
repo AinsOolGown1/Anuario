@@ -1,6 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
-import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-graduados';
 import { MatDialog } from '@angular/material/dialog'
 import { ModalanuarioComponent } from '../modalanuario/modalanuario.component';
 import { ActivatedRoute } from '@angular/router';
@@ -54,7 +53,7 @@ export class AnuariovistaComponent implements OnInit {
               convert(value)
             },
             error: (err: any)=>{
-              console.log('Error al obtener la foto'+err)
+              console.log('Error al obtener la foto' +err)
             }
           })
 

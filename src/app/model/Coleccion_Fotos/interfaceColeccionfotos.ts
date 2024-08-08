@@ -1,8 +1,8 @@
 export interface ColeccionGraduacion{
-  id?: string,
+  _id: string,
   campus: string,
   year_graduacion: string,
-  fotos_graduaciones: File,
-  ruta_fotos: string,
+  fotos_graduaciones: string[],
+  ruta_fotos?: string[],
   sesion: string
 }

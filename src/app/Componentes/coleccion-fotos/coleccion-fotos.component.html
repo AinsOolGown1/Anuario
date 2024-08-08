@@ -1,10 +1,19 @@
 <!-- <app-filtro-anuario></app-filtro-anuario>
   -->
 
-  <div class="gallery-container">
-    <div *ngFor="let src of array_base64_imagenes" class="gallery-item" [ngClass]="{ 'tall': isTallImage(src) }">
-      <img [defaultImage]="imagenPordefecto" [lazyLoad]="src" alt="imagen_graduacion" (load)="checkImageDimensions($event, src)"/>
+  <div *ngFor="let graduacion of listGraduaciones">
+    <div *ngIf="graduacion.ruta_fotos && graduacion.ruta_fotos.length">
+      <img *ngFor="let foto of graduacion.ruta_fotos"
+           [src]="foto || imagenPordefecto"
+           alt="Foto de graduación"
+           (load)="checkImageDimensions($event, foto)"
+           [ngClass]="{'tall-image': isTallImage(foto)}">
+    </div>
+    <div *ngIf="!graduacion.ruta_fotos || !graduacion.ruta_fotos.length">
+      <p>No hay fotos disponibles</p>
     </div>
   </div>
+  
+  
 
 

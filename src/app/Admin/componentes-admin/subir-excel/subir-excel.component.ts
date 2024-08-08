@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import {CargarScriptsService} from 'src/app/Servicios/cargar-scripts.service'
 import { CargaMasivaCSV } from 'src/app/Servicios/cargamasivaCSV.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

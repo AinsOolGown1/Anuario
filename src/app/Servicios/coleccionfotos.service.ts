@@ -10,17 +10,17 @@ import { environment } from 'src/environments/environment';
 })
 export class ColeccionFotosGraduacionesService {
 
-  private url: string  = environment.baseUrl + '/coleccion-fotos'
+  private url: string  = environment.baseUrl +'/coleccion-fotos'
 
   constructor(private http: HttpClient) { }
 
-  getGraduaciones(): Observable<any[]> {
-    return this.http.get<any[]>(this.url).pipe(
-      map(response => response.map(graduaciones => this.mapGraduado(graduaciones)))
+  getGraduaciones_coleccion(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/mostrar_coleccion_graduaciones`).pipe(
+      map(response => response.map(graduaciones => this.mapGraduaciones(graduaciones)))
     );
   }
 
-  private mapGraduado(graduaciones: any): ColeccionesDeFotos {
+  private mapGraduaciones(graduaciones: any): ColeccionesDeFotos {
     return {
       campus: graduaciones.campus,
       year_graduacion: graduaciones.year_graduacion,
@@ -54,5 +54,9 @@ export class ColeccionFotosGraduacionesService {
 
     return this.http.post(`${this.url}/cargar-coleccion`, formData);
   }
+
+  obtenerColeccionFotosGraduaciones(_id: string): Observable<Blob[]> {
+    return this.http.get<Blob[]>(`${this.url}/mostrar_coleccion_graduaciones/${_id}`, { responseType: 'array' as 'json' });
+  }  
 
 }
