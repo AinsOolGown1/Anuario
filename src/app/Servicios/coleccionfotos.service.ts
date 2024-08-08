@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ColeccionesDeFotos } from '../model/Coleccion_Fotos/modeloInterfazColeccionFotoa';
 import { environment } from 'src/environments/environment';
+import { ColeccionGraduacion } from '../model/Coleccion_Fotos/interfaceColeccionfotos';
 
 @Injectable({
   providedIn: 'root'
@@ -55,8 +56,13 @@ export class ColeccionFotosGraduacionesService {
     return this.http.post(`${this.url}/cargar-coleccion`, formData);
   }
 
-  obtenerColeccionFotosGraduaciones(_id: string): Observable<Blob[]> {
-    return this.http.get<Blob[]>(`${this.url}/mostrar_coleccion_graduaciones/${_id}`, { responseType: 'array' as 'json' });
-  }  
+  obtenerColeccionFotosGraduaciones(_id: string): Observable<any> {
+    // Cambia 'any' a una interfaz adecuada si la tienes
+    return this.http.get<any>(`${this.url}/mostrar_coleccion_graduaciones/${_id}`);
+  }
+
+  ColeccionesDeGraduaciones(): Observable<ColeccionGraduacion[]> {
+    return this.http.get<ColeccionGraduacion[]>(`${this.url}/coleccion_graduaciones`);
+  }
 
 }

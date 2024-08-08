@@ -2,17 +2,21 @@
   -->
 
   <div *ngFor="let graduacion of listGraduaciones">
-    <div *ngIf="graduacion.ruta_fotos && graduacion.ruta_fotos.length">
-      <img *ngFor="let foto of graduacion.ruta_fotos"
-           [src]="foto || imagenPordefecto"
+    <h3>{{ graduacion.campus }} - {{ graduacion.year_graduacion }}</h3>
+    <div *ngIf="graduacion.fotos_graduaciones.length; else noFotos">
+      <img *ngFor="let foto of graduacion.fotos_graduaciones"
+           [src]="foto"
            alt="Foto de graduación"
            (load)="checkImageDimensions($event, foto)"
            [ngClass]="{'tall-image': isTallImage(foto)}">
     </div>
-    <div *ngIf="!graduacion.ruta_fotos || !graduacion.ruta_fotos.length">
+    <ng-template #noFotos>
       <p>No hay fotos disponibles</p>
-    </div>
+    </ng-template>
   </div>
+  
+  
+  
   
   
 

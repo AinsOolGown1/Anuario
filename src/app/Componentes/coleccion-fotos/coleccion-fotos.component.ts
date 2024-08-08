@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ColeccionFotosGraduacionesService } from 'src/app/Servicios/coleccionfotos.service';
 import { ColeccionGraduacion } from 'src/app/model/Coleccion_Fotos/interfaceColeccionfotos';
+import { ColeccionesDeFotos } from 'src/app/model/Coleccion_Fotos/modeloInterfazColeccionFotoa';
 
 @Component({
   selector: 'app-coleccion-fotos',
@@ -35,46 +36,20 @@ export class ColeccionFotosComponent implements OnInit {
     })
   }*/
     vistaColeccionFotosGraduaciones(): void {
-      this._imagenesService.getGraduaciones_coleccion().subscribe({
+      this._imagenesService.ColeccionesDeGraduaciones().subscribe({
         next: (data: ColeccionGraduacion[]) => {
           this.listGraduaciones = data;
-    
-          data.forEach((item: ColeccionGraduacion) => {
-            this._imagenesService.obtenerColeccionFotosGraduaciones(item._id).subscribe({
-              next: (blobs: Blob[]) => {
-                const base64ImagesPromises = blobs.map(blob => this.convertBlobToBase64(blob));
-                Promise.all(base64ImagesPromises).then(base64ImagesArray => {
-                  item.ruta_fotos = base64ImagesArray.flat(); // Asegúrate de que ruta_fotos sea un array de strings
-                });
-              },
-              error: (err: any) => {
-                console.log('Error al obtener la foto: ' + err);
-              }
-            });
-          });
+          console.log('Datos de graduaciones:', data);
         },
         error: (err: any) => {
-          console.log('Error al obtener el graduado: ' + err);
+          console.log('Error al obtener las colecciones de graduaciones: ' + err);
         }
-      });
-    }   
-  
-    convertBlobToBase64(blob: Blob): Promise<string[]> {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const result = reader.result as string;
-          resolve([result]); // Aquí asumo que el blob es un solo archivo, ajusta si es necesario
-        };
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
       });
     }
   
     checkImageDimensions(event: Event, src: string): void {
       const imgElement = event.target as HTMLImageElement;
       const aspectRatio = imgElement.naturalWidth / imgElement.naturalHeight;
-  
       if (aspectRatio < 1) {
         this.tallImages.add(src);
       }
