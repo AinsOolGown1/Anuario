@@ -21,18 +21,14 @@ export class GraduadosService {
     );
   }
 
-  guardarDatosExcel(datos: any[]): Observable<any> {
-    return this.http.post(`${this.url}/guardar-desde-excel/`, datos);
-  }
-
   //* Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
   private mapGraduado(graduado: any): IngresarGraduados {
     return {
       carnet: graduado.carnet,
       nombres: graduado.nombres,
       apellidos: graduado.apellidos,
-      carrera: graduado.carrera,
       facultad: graduado.facultad,
+      carrera: graduado.carrera,
       frase_emotiva: graduado.frase_emotiva,
       campus: graduado.campus,
       year_graduado: graduado.year_graduado,
@@ -55,8 +51,8 @@ export class GraduadosService {
     formData.append('carnet', graduado.carnet);
     formData.append('nombres', graduado.nombres);
     formData.append('apellidos', graduado.apellidos);
-    formData.append('carrera', graduado.carrera);
     formData.append('facultad', graduado.facultad);
+    formData.append('carrera', graduado.carrera);
     formData.append('frase_emotiva', graduado.frase_emotiva);
     formData.append('campus', graduado.campus);
     formData.append('year_graduado', String(graduado.year_graduado));

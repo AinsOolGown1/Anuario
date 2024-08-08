@@ -24,7 +24,7 @@ export class SubirExcelComponent implements OnInit {
     const archivo = (event.target as HTMLInputElement).files?.[0];
     if (archivo) {
       const formData = new FormData();
-      formData.append('file', archivo);
+      formData.append('file', archivo, archivo.name);
       this._cargaMasivaService.importarCSV(formData).subscribe({
         next: (response) =>{
           this._snackBar.open('Archivo almacenado correctamente', 'Aceptar', {

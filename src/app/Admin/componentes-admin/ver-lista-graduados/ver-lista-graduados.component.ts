@@ -54,7 +54,7 @@ export class VerListaGraduadosComponent implements OnInit {
         this.dataSource.data = this.listGraduados;
         this.dataSource.paginator = this.paginator;
       }, error: (err: any)=>{
-        console.log('Error al obtener los graduados'+err)
+        console.log('Error al obtener los graduados'+ err)
       }
     })
   }

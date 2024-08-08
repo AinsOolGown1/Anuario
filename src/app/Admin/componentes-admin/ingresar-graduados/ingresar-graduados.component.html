@@ -54,17 +54,17 @@
         <tr>
           <td>
             <label for="facultad" class="form-label fw-bold">Facultad</label>
-            <select id="facultad" formControlName="facultad" class="form-select" (change)="onSelectFacultad($event)">
-              <option *ngFor="let facultad of facultades" [value]="facultad.id">{{ facultad.name }}</option>
-            </select>
+              <select id="facultad" formControlName="facultad" class="form-select" (change)="onSelectFacultad($event)">
+                <option *ngFor="let facultad of facultades" [value]="facultad.name">{{ facultad.name }}</option>
+              </select>
             <div class="text_danger" *ngIf="ingre_graduadoForm.get('facultad')?.invalid && ingre_graduadoForm.get('facultad')?.touched">
               <span>La facultad es obligatoria</span>
             </div>
           </td>
           <td>
             <label for="carreras" class="form-label fw-bold">Carrera</label>
-            <select id="carreras" formControlName="carrera" class="form-select carrera" [disabled]="!selectedFaculty">
-              <option *ngFor="let carrera of getCarreras()" [value]="carrera.id">{{ carrera.name }}</option>
+            <select id="carreras" formControlName="carrera" class="form-select" [disabled]="!selectedFaculty" (change)="onSelectCarrera($event)">
+              <option *ngFor="let carrera of getCarreras()" [value]="carrera.name">{{ carrera.name }}</option>
             </select>
             <div class="text_danger" *ngIf="ingre_graduadoForm.get('carrera')?.invalid && ingre_graduadoForm.get('carrera')?.touched">
               <span>La carrera es obligatoria</span>

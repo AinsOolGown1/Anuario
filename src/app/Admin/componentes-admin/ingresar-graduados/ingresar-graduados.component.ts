@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
 import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-graduados';
@@ -14,8 +14,7 @@ import { Carreras } from 'src/app/model/Seleccion_carreras_facultad/Interfaz_Car
   templateUrl: './ingresar-graduados.component.html',
   styleUrls: ['./ingresar-graduados.component.scss'],
 })
-export class IngresarGraduadosComponent {
-
+export class IngresarGraduadosComponent implements OnInit {
   facultades: Facultad[] = [
     { id: 1, name: 'Ciencias Médicas', carreras: [
       { id: 1, name: 'Medicina' },
@@ -43,43 +42,41 @@ export class IngresarGraduadosComponent {
 
   selectedFaculty: Facultad | undefined;
   selectedCareer: Carreras | undefined;
-
   backgroundImage = environment.svg_background_login;
 
-  ExcelData: any;
   ingre_graduadoForm: FormGroup;
-  titulo = 'Agregar graduado';
   id: string;
   public archivos: any = [];
-  guardandoDesdeExcel: boolean = false; //* Bandera para indicar si se están guardando datos desde un archivo Excel
 
-  constructor(private fb: FormBuilder,
-              private _graduadoService: GraduadosService,
-              private _snackBar: MatSnackBar,
-              private router: Router,
-              private aRouter: ActivatedRoute,
-              private sanitizer: DomSanitizer) {
+  constructor(
+    private fb: FormBuilder,
+    private _graduadoService: GraduadosService,
+    private _snackBar: MatSnackBar,
+    private router: Router,
+    private aRouter: ActivatedRoute,
+    private sanitizer: DomSanitizer
+  ) {
     this.ingre_graduadoForm = this.fb.group({
-      carnet:['', Validators.required],
-      nombres:['', Validators.required],
-      apellidos:['', Validators.required],
-      carrera:['', Validators.required],
-      facultad:['', Validators.required],
-      frase_emotiva:['', Validators.required],
-      campus:['', Validators.required],
-      year_graduado:['', Validators.required],
-      telefono_graduado:['', Validators.required],
-      correo_graduado:['', [Validators.required, Validators.email]], // Validación de correo
-      estado_graduado:['', Validators.required],
-      destacado_graduado:['', Validators.required],
-      foto_graduado:['', Validators.required],
-      qr_graduado:['', Validators.required]
+      carnet: ['', Validators.required],
+      nombres: ['', Validators.required],
+      apellidos: ['', Validators.required],
+      facultad: ['', Validators.required],
+      carrera: [{ value: '', disabled: true }, Validators.required],
+      frase_emotiva: ['', Validators.required],
+      campus: ['', Validators.required],
+      year_graduado: ['', Validators.required],
+      telefono_graduado: ['', Validators.required],
+      correo_graduado: ['', [Validators.required, Validators.email]], // Validación de correo
+      estado_graduado: ['', Validators.required],
+      destacado_graduado: ['', Validators.required],
+      foto_graduado: ['', Validators.required],
+      qr_graduado: ['', Validators.required]
     });
     this.id = this.aRouter.snapshot.paramMap.get('id')!;
   }
 
-  ngOnInit(){
-    this.esEditar();
+  ngOnInit() {
+    //this.esEditar();
   }
 
   agregar_graduado() {
@@ -91,8 +88,8 @@ export class IngresarGraduadosComponent {
         carnet: this.ingre_graduadoForm.get('carnet')?.value,
         nombres: this.ingre_graduadoForm.get('nombres')?.value,
         apellidos: this.ingre_graduadoForm.get('apellidos')?.value,
-        carrera: this.ingre_graduadoForm.get('carrera')?.value,
         facultad: this.ingre_graduadoForm.get('facultad')?.value,
+        carrera: this.ingre_graduadoForm.get('carrera')?.value,
         frase_emotiva: this.ingre_graduadoForm.get('frase_emotiva')?.value,
         campus: this.ingre_graduadoForm.get('campus')?.value,
         year_graduado: this.ingre_graduadoForm.get('year_graduado')?.value,
@@ -104,41 +101,44 @@ export class IngresarGraduadosComponent {
         qr_graduado: this.ingre_graduadoForm.get('qr_graduado')?.value
       };
 
+      console.log(GRADUADO);
+
       //*Editar graduado
-      if(this.id !== null){
+      if (this.id !== null) {
         this._graduadoService.editarGraduado(this.id, GRADUADO).subscribe({
-          next: ()=>{
-            this._snackBar.open('Graduado editado correctamente','Aceptar', {
+          next: () => {
+            this._snackBar.open('Graduado editado correctamente', 'Aceptar', {
               duration: 3000,
               horizontalPosition: 'center',
               verticalPosition: 'bottom'
             });
             this.router.navigate(['/ver-lista-graduados']);
           },
-          error: () =>{
-            this._snackBar.open('No se logró editar el graduado','Aceptar',{
+          error: () => {
+            this._snackBar.open('No se logró editar el graduado', 'Aceptar', {
               duration: 3000,
               horizontalPosition: 'center',
               verticalPosition: 'bottom'
             });
             this.ingre_graduadoForm.reset();
           }
-        })
+        });
       } else {
         //* Agregar graduado
         this._graduadoService.guardarGraduado(GRADUADO).subscribe({
-          next: (data)=>{
+          next: (data) => {
             this._snackBar.open('Graduado agregado correctamente', 'Aceptar', {
               duration: 3000,
               horizontalPosition: 'center',
               verticalPosition: 'bottom'
             });
           },
-          error: ()=>{
+          error: () => {
             this._snackBar.open('Error al guardar el graduado', 'Aceptar', {
               duration: 3000,
               horizontalPosition: 'center',
-              verticalPosition: 'bottom' });
+              verticalPosition: 'bottom'
+            });
             this.ingre_graduadoForm.reset();
           }
         });
@@ -152,33 +152,6 @@ export class IngresarGraduadosComponent {
     }
   }
 
-  getCarreras(): Carreras[] {
-    if (this.selectedFaculty) {
-      return this.selectedFaculty.carreras;
-    }
-    return [];
-  }
-
-  onSelectFacultad(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    const facultadId = +selectElement.value;
-
-    this.selectedFaculty = this.facultades.find(f => f.id === facultadId);
-
-    if (this.selectedFaculty) {
-      this.ingre_graduadoForm.get('carrera')?.enable();
-    } else {
-      this.ingre_graduadoForm.get('carrera')?.disable();
-    }
-
-    this.ingre_graduadoForm.patchValue({
-      carrera: null
-    });
-  }
-
-
-
-
   capturarFile(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
 
@@ -187,50 +160,92 @@ export class IngresarGraduadosComponent {
       this.archivos = []; //* Limpiar el array de archivos antes de agregar uno nuevo
       this.archivos.push(archivoCapturado);
       this.extraerBase64(archivoCapturado).then((imagenBase64) => {
-        console.log(imagenBase64); //* Puedes usar esta imagen en una vista previa
+        console.log(imagenBase64); // Opcional: puedes imprimir el base64 de la imagen en la consola para verificarlo
       });
     } else {
-      console.log('No se seleccionó ningún archivo.');
+      console.log('No se ha seleccionado ningún archivo.');
     }
   }
 
-  extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
-    try {
-        const unsafeIMG = window.URL.createObjectURL($event);
-        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeIMG);
+  extraerBase64 = async ($event: any) =>
+    new Promise((resolve, reject) => {
+      try {
+        const unsafeImg = window.URL.createObjectURL($event);
+        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
         const reader = new FileReader();
         reader.readAsDataURL($event);
         reader.onload = () => {
-            resolve({ base: reader.result });
+          resolve({
+            base: reader.result
+          });
         };
         reader.onerror = (error) => {
-            reject(error);
-        };
-    } catch (error) {
-        reject(error);
-    }
-  });
-
-  esEditar(){
-    if (this.id !== null){
-      this.titulo = "EDITAR GRADUADO";
-      this._graduadoService.obtenerUngraduado(this.id).subscribe( data=>{
-        this.ingre_graduadoForm.setValue({
-            carnet: data.carnet,
-            nombres: data.nombres,
-            apellidos: data.apellidos,
-            carrera: data.carrera,
-            facultad: data.facultad,
-            frase_emotiva: data.frase_emotiva,
-            campus: data.campus,
-            year_graduado: data.year_graduado,
-            telefono_graduado: data.telefono_graduado,
-            correo_graduado: data.correo_graduado,
-            estado_graduado: data.estado_graduado,
-            destacado_graduado: data.destacado_graduado,
-            qr_graduado: data.qr_graduado
+          reject({
+            base: null
           });
+        };
+      } catch (e) {
+        reject({
+          base: null
+        });
+      }
+    });
+
+    getCarreras(): Carreras[] {
+      console.log('Available Careers:', this.selectedFaculty?.carreras); // Verificar que se devuelven las carreras correctas
+      return this.selectedFaculty?.carreras || [];
+    }
+    
+  
+    onSelectFacultad(event: Event): void {
+      const selectElement = event.target as HTMLSelectElement;
+      const selectedFacultyName = selectElement.value;
+      this.selectedFaculty = this.facultades.find(facultad => facultad.name === selectedFacultyName);
+    
+      console.log('Selected Faculty:', this.selectedFaculty); // Verificar que se actualiza correctamente
+    
+      this.ingre_graduadoForm.get('carrera')?.setValue(''); // Reiniciar el valor del select de carreras
+      this.ingre_graduadoForm.get('carrera')?.enable(); // Habilitar el select de carreras
+    }
+    
+  
+    onSelectCarrera(event: Event): void {
+      const selectElement = event.target as HTMLSelectElement;
+      const selectedCareerName = selectElement.value;
+      this.selectedCareer = this.selectedFaculty?.carreras.find(carrera => carrera.name === selectedCareerName);
+      this.ingre_graduadoForm.get('carrera')?.setValue(this.selectedCareer?.name);
+    }
+
+/*
+  esEditar() {
+    if (this.id !== null) {
+      this._graduadoService.obtenerGraduado(this.id).subscribe((data) => {
+        this.ingre_graduadoForm.patchValue({
+          carnet: data.carnet,
+          nombres: data.nombres,
+          apellidos: data.apellidos,
+          facultad: data.facultad,
+          carrera: data.carrera,
+          frase_emotiva: data.frase_emotiva,
+          campus: data.campus,
+          year_graduado: data.year_graduado,
+          telefono_graduado: data.telefono_graduado,
+          correo_graduado: data.correo_graduado,
+          estado_graduado: data.estado_graduado ? 'true' : 'false',
+          destacado_graduado: data.destacado_graduado ? 'true' : 'false',
+          foto_graduado: data.foto_graduado,
+          qr_graduado: data.qr_graduado
+        });
+
+        // Seleccionar la facultad y habilitar el select de carreras
+        this.selectedFaculty = this.facultades.find(f => f.id === data.facultad);
+        const carreraControl = this.ingre_graduadoForm.get('carrera');
+        if (this.selectedFaculty) {
+          carreraControl?.enable();
+        } else {
+          carreraControl?.disable();
+        }
       });
     }
-  }
+  }*/
 }
