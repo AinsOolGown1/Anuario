@@ -60,19 +60,20 @@ export class IngresarGraduadosComponent implements OnInit {
       carnet: ['', Validators.required],
       nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
-      facultad: ['', Validators.required],
-      carrera: [{ value: '', disabled: true }, Validators.required],
+      facultad: [this.facultades[0].name, Validators.required],
+      carrera: [this.facultades[0].carreras[0].name, Validators.required],
       frase_emotiva: ['', Validators.required],
-      campus: ['', Validators.required],
+      campus: ['Central', Validators.required],
       year_graduado: ['', Validators.required],
       telefono_graduado: ['', Validators.required],
       correo_graduado: ['', [Validators.required, Validators.email]], // Validación de correo
-      estado_graduado: ['', Validators.required],
-      destacado_graduado: ['', Validators.required],
+      estado_graduado: [true, Validators.required],
+      destacado_graduado: [false, Validators.required],
       foto_graduado: ['', Validators.required],
       qr_graduado: ['', Validators.required]
     });
     this.id = this.aRouter.snapshot.paramMap.get('id')!;
+    this.selectedFaculty = this.facultades.find(facultad => facultad.name === this.facultades[0].name);
   }
 
   ngOnInit() {

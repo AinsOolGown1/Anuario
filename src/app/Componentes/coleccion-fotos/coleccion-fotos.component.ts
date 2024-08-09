@@ -18,12 +18,12 @@ export class ColeccionFotosComponent implements OnInit {
   imagenPordefecto = "assets/Fotos/LOGO UCN.png"
 
   ngOnInit(): void {
-    //this.obtener_coleccion_fotos();
-    this.vistaColeccionFotosGraduaciones();
+    this.obtener_coleccion_fotos();
+    // this.vistaColeccionFotosGraduaciones();
   }
 
-  /*obtener_coleccion_fotos(){
-    this._imagenesService.ObtenerImagenesGraduaciones('Extensión Esteli', '2024', '1').subscribe({
+  obtener_coleccion_fotos(){
+    this._imagenesService.ObtenerImagenesGraduaciones('Central', '2024', '1').subscribe({
       next: (value) =>{
 
         this.array_base64_imagenes = value.coleccion_base64;
@@ -34,20 +34,20 @@ export class ColeccionFotosComponent implements OnInit {
         console.log('Error al obtener las fotos'+err)
       }
     })
-  }*/
-    vistaColeccionFotosGraduaciones(): void {
-      this._imagenesService.ColeccionesDeGraduaciones().subscribe({
-        next: (data: ColeccionGraduacion[]) => {
-          this.listGraduaciones = data;
-          console.log('Datos de graduaciones:', data);
-        },
-        error: (err: any) => {
-          console.log('Error al obtener las colecciones de graduaciones: ' + err);
-        }
-      });
-    }
+  }
+    // vistaColeccionFotosGraduaciones() {
+    //   this._imagenesService.ColeccionesDeGraduaciones().subscribe({
+    //     next: (data: ColeccionGraduacion[]) => {
+    //       this.listGraduaciones = data;
+    //       console.log('Datos de graduaciones:', data);
+    //     },
+    //     error: (err: any) => {
+    //       console.log('Error al obtener las colecciones de graduaciones: ' + err);
+    //     }
+    //   });
+    // }
   
-    checkImageDimensions(event: Event, src: string): void {
+    checkImageDimensions(event: Event, src: string) {
       const imgElement = event.target as HTMLImageElement;
       const aspectRatio = imgElement.naturalWidth / imgElement.naturalHeight;
       if (aspectRatio < 1) {

@@ -17,7 +17,7 @@
           <td>
             <label class="form-label fw-bold" style="width: 220px;">Estado del graduado</label>
             <select formControlName="estado_graduado" class="form-select">
-              <option value="true">Activo</option>
+              <option value="true" >Activo</option>
               <option value="false">Inactivo</option>
             </select>
             <div class="text_danger" *ngIf="ingre_graduadoForm.get('estado_graduado')?.invalid && ingre_graduadoForm.get('estado_graduado')?.touched">
@@ -55,7 +55,9 @@
           <td>
             <label for="facultad" class="form-label fw-bold">Facultad</label>
               <select id="facultad" formControlName="facultad" class="form-select" (change)="onSelectFacultad($event)">
-                <option *ngFor="let facultad of facultades" [value]="facultad.name">{{ facultad.name }}</option>
+                <option *ngFor="let facultad of facultades; let i = index" [value]="facultad.name"
+                  [selected]="i === 0"
+                >{{ facultad.name }}</option>
               </select>
             <div class="text_danger" *ngIf="ingre_graduadoForm.get('facultad')?.invalid && ingre_graduadoForm.get('facultad')?.touched">
               <span>La facultad es obligatoria</span>
@@ -120,7 +122,7 @@
           </td>
           <td>
             <div class="botones">
-              <button type="submit" class="btn-agregar" mat-raised-button>AGREGAR</button>
+              <button type="submit" [disabled]="this.ingre_graduadoForm.invalid" class="btn-agregar" mat-raised-button>AGREGAR</button>
             </div>
           </td>
         </tr>

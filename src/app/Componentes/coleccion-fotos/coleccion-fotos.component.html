@@ -5,7 +5,7 @@
     <h3>{{ graduacion.campus }} - {{ graduacion.year_graduacion }}</h3>
     <div *ngIf="graduacion.fotos_graduaciones.length; else noFotos">
       <img *ngFor="let foto of graduacion.fotos_graduaciones"
-           [src]="foto"
+           [src]="foto" 
            alt="Foto de graduación"
            (load)="checkImageDimensions($event, foto)"
            [ngClass]="{'tall-image': isTallImage(foto)}">

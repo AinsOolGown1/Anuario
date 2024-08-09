@@ -31,7 +31,7 @@ import { IngresarColecFotosComponent } from './Admin/componentes-admin/ingresar-
 import { InicioAdminRoutingModule } from './Admin/componentes-admin/inicio-admin/inicio-admin-routing.module';
 import { NavbarAdminComponent } from './Admin/componentes-admin/navbar-admin/navbar-admin.component';
 import { VerListaGraduadosComponent } from './Admin/componentes-admin/ver-lista-graduados/ver-lista-graduados.component';
-
+import { IngresarEventosComponent } from './Admin/componentes-admin/ingresar-eventos/ingresar-eventos.component';
 //Shared
 import { SharedModule } from './Shared/shared.module';
 
@@ -67,7 +67,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     AnuariovistaComponent,
     ModalanuarioComponent,
     EventosComponent,
-    SubirExcelComponent
+    SubirExcelComponent,
+    IngresarEventosComponent
   ],
   imports: [
     BrowserModule,

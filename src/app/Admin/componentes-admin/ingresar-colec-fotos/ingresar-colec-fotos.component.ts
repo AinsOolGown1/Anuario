@@ -29,7 +29,7 @@ export class IngresarColecFotosComponent {
               private aRouter: ActivatedRoute,
               private sanitizer: DomSanitizer) {
     this.gallery_fromGrup = this.fb.group({
-      campus:['', Validators.required],
+      campus:['Central', Validators.required],
       year_graduacion:['', Validators.required],
       fotos_graduaciones:['', Validators.required],
       sesion:['', Validators.required],
