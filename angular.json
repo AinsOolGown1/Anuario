@@ -34,7 +34,7 @@
               "src/styles.scss","node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts":[],
-            "allowedCommonJsDependencies": ["qrcode"]
+            "allowedCommonJsDependencies": ["qrcode", "page-flip"]
           },
           "configurations": {
             "production": {

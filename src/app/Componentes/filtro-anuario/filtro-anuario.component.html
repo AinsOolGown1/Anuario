@@ -1,43 +1,34 @@
-<div class="filtro">
-  <h2>Filtros</h2>
-  <form (ngSubmit)="getFilteredResults()">
-    <div>
-      <label for="year">Año:</label>
-      <select id="year" [(ngModel)]="selectedYear" name="year">
-        <option *ngFor="let year of years" [value]="year.id">{{ year.year }}</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="campus">Campus:</label>
-      <select id="campus" [(ngModel)]="selectedCampus" name="campus">
-        <option *ngFor="let campus of campuses" [value]="campus.id">{{ campus.name }}</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="faculty">Facultad:</label>
-      <select id="faculty" [(ngModel)]="selectedFaculty" name="faculty" (change)="onFacultyChange()">
-        <option *ngFor="let faculty of faculties" [ngValue]="faculty">{{ faculty.name }}</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="career">Carrera:</label>
-      <select id="career" [(ngModel)]="selectedCareer" name="career" [disabled]="!selectedFaculty">
-        <option *ngFor="let career of selectedFaculty?.careers" [value]="career.id">{{ career.name }}</option>
-      </select>
-    </div>
-
-    <button type="submit">Buscar</button>
-  </form>
-</div>
-
-<div *ngIf="filteredData.length">
-  <h3>Resultados Filtrados</h3>
-  <ul>
-    <li *ngFor="let item of filteredData">
-      Año: {{ item.year }}, Campus: {{ item.campus }}, Facultad: {{ item.faculty }}, Carrera: {{ item.career }}
-    </li>
-  </ul>
-</div>
+<div class="container">
+    <form>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <label for="yearSelect" class="form-label custom-label">Año</label>
+          <select id="yearSelect" class="form-select" [(ngModel)]="selectedYear" name="year">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-3 mb-3">
+          <label for="campusSelect" class="form-label custom-label">Campus</label>
+          <select id="campusSelect" class="form-select" [(ngModel)]="selectedCampus" name="campus">
+            <option *ngFor="let campus of campuses" [value]="campus">{{ campus }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-3 mb-3">
+          <label for="facultadSelect" class="form-label custom-label">Facultad</label>
+          <select id="facultadSelect" class="form-select" [(ngModel)]="selectedFacultad" name="facultad">
+            <option *ngFor="let facultad of facultades" [value]="facultad">{{ facultad }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-3 mb-3">
+          <label for="carreraSelect" class="form-label custom-label">Carrera</label>
+          <select id="carreraSelect" class="form-select" [(ngModel)]="selectedCarrera" name="carrera">
+            <option *ngFor="let carrera of carreras" [value]="carrera">{{ carrera }}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  

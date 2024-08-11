@@ -1,0 +1,27 @@
+<div class="container">
+    <form>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="yearSelect" class="form-label custom-label">Año</label>
+          <select id="yearSelect" class="form-select" [(ngModel)]="selectedYear" name="year">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <label for="campusSelect" class="form-label custom-label">Campus</label>
+          <select id="campusSelect" class="form-select" [(ngModel)]="selectedCampus" name="campus">
+            <option *ngFor="let campus of campuses" [value]="campus">{{ campus }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <label for="sessionSelect" class="form-label custom-label">Sesión</label>
+          <select id="sessionSelect" class="form-select" [(ngModel)]="selectedSession" name="session">
+            <option *ngFor="let session of sessions" [value]="session">{{ session }}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  

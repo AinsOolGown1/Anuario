@@ -1,9 +1,10 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
-import { MatDialog } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog';
 import { ModalanuarioComponent } from '../modalanuario/modalanuario.component';
 import { ActivatedRoute } from '@angular/router';
 import { IGraduado } from 'src/app/model/AnuarioGraduados/interfaces';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-anuariovista',
@@ -13,17 +14,22 @@ import { IGraduado } from 'src/app/model/AnuarioGraduados/interfaces';
 export class AnuariovistaComponent implements OnInit {
 
   listGraduados: IGraduado[] = [];
+  paginatedGraduados: IGraduado[] = [];
   id: string | undefined;
+  totalGraduados: number = 0;
+  pageSize: number = 8;
+  pageIndex: number = 0;
 
-  constructor(private _graduadoService: GraduadosService,
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  constructor(
+    private _graduadoService: GraduadosService,
     private _matDialog: MatDialog,
-    private aRouter: ActivatedRoute,
-    private elRef: ElementRef
-
+    private aRouter: ActivatedRoute
   ) {
     this.id = this.aRouter.snapshot.paramMap.get('id')!;
   }
-
 
   ngOnInit(): void {
     this.vistaAnuario();
@@ -35,49 +41,65 @@ export class AnuariovistaComponent implements OnInit {
       return;
     }
     this._matDialog.open(ModalanuarioComponent, {
-        data: { carnet: carnet }
+      data: { carnet: carnet }
     });
   }
+
   vistaAnuario(): void {
     this._graduadoService.getGraduados().subscribe({
-      next:(data: IGraduado[]) =>{
-        //*cargo el array de graduados
+      next: (data: IGraduado[]) => {
         this.listGraduados = data;
+        this.totalGraduados = data.length;
+        this.paginate();
 
-        //*recorro el array para obtener la foto
-        data.forEach((item: IGraduado)=>{
-
-          //*obtengo la foto del graduado tomado del array desde una suscripcion
+        data.forEach((item: IGraduado) => {
           this._graduadoService.obtenerFotoGraduado(item.carnet).subscribe({
-            next: (value) =>{
-              convert(value)
+            next: (value) => {
+              this.convert(value, item);
             },
-            error: (err: any)=>{
-              console.log('Error al obtener la foto' +err)
+            error: (err: any) => {
+              console.log('Error al obtener la foto ' + err);
             }
-          })
-
-          //*creo una funcion de conversion de archivo desde el backend a una imagen64
-          function convert(value_file:any){
-            if(['image/jpeg','image/jpg','image/png'].includes(value_file.type)){
-              const reader = new FileReader();
-              reader.onload = () => {
-
-                //*creo una ruta de imagen para ocupar de comodin y asignarla a un parametro del objeto
-                item.ruta_foto = reader.result as string;
-              }
-              reader.readAsDataURL(value_file);
-            }else{
-              console.log('Esto no es una imagen')
-            }
-          }
-
-        })
+          });
+        });
       },
-      error: (err: any)=>{
-        console.log('Error al obtener el graduado'+err)
+      error: (err: any) => {
+        console.log('Error al obtener el graduado ' + err);
       }
-    })
+    });
   }
 
+  paginate(): void {
+    if (!this.paginator) return; // Asegúrate de que el paginador esté definido
+
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = (this.paginator.pageIndex + 1) * this.paginator.pageSize;
+    this.paginatedGraduados = this.listGraduados.slice(startIndex, endIndex);
+  }
+
+  onPageChange(event: PageEvent): void {
+    // Añadir la clase de animación
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => card.classList.add('page-turn'));
+  
+    // Después de un corto retraso (lo suficiente para que la animación se ejecute), quitar la clase
+    setTimeout(() => {
+      cards.forEach(card => card.classList.remove('page-turn'));
+      this.pageSize = event.pageSize;
+      this.pageIndex = event.pageIndex;
+      this.paginate();
+    }, 400); // La duración del timeout debe coincidir con la duración de la animación
+  }
+
+  convert(value_file: any, item: IGraduado): void {
+    if (['image/jpeg', 'image/jpg', 'image/png'].includes(value_file.type)) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        item.ruta_foto = reader.result as string;
+      };
+      reader.readAsDataURL(value_file);
+    } else {
+      console.log('Esto no es una imagen');
+    }
+  }
 }

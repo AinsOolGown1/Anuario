@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ingresar-eventos',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ingresar-eventos.component.scss']
 })
 export class IngresarEventosComponent {
+  backgroundImage = environment.svg_background_login;
 
 }

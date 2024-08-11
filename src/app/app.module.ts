@@ -19,7 +19,6 @@ import { ColeccionFotosComponent } from './Componentes/coleccion-fotos/coleccion
 import { DashboardComponent } from './Componentes/dashboard/dashboard.component';
 import { NavbarComponent } from './Componentes/navbar/navbar.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
-import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anuario.component';
 import { AnuariovistaComponent } from './Componentes/anuariovista/anuariovista.component';
 
 
@@ -48,7 +47,9 @@ import { EventosComponent } from './Componentes/eventos/eventos.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir-excel.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
+import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anuario.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FiltroColeccionFotosComponent } from './Componentes/filtro-coleccion-fotos/filtro-coleccion-fotos.component';
 
 @NgModule({
   declarations: [
@@ -63,12 +64,13 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     IngresarColecFotosComponent,
     NavbarAdminComponent,
     VerListaGraduadosComponent,
-    FiltroAnuarioComponent,
     AnuariovistaComponent,
     ModalanuarioComponent,
     EventosComponent,
     SubirExcelComponent,
-    IngresarEventosComponent
+    IngresarEventosComponent,
+    FiltroAnuarioComponent,
+    FiltroColeccionFotosComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MatDialogModule,
     QRCodeModule,
     LazyLoadImageModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [
     CargarScriptsService,

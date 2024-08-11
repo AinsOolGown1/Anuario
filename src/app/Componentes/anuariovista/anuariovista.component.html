@@ -1,17 +1,28 @@
-<!--
 <app-filtro-anuario></app-filtro-anuario>
--->
-<div id="app" >
-    <div *ngFor="let universitario of listGraduados">
-        <div class="card" (click)="abrirModalAnuario(universitario.carnet)">
-            <div class="card_image">
-                <img [src]="universitario.ruta_foto" class="picture">
-            </div>
-            <div class="card_body">
-                <h2>{{universitario.nombres}}</h2> <h2>{{universitario.apellidos}}</h2>
-                <p>{{universitario.facultad}}</p>
-                <button type="button" class="btn btn-success" (click)="abrirModalAnuario(universitario.carnet)">Ver detalles</button>
-            </div>
+<!-- Asegúrate de que el contenedor de las tarjetas tenga la perspectiva adecuada -->
+<div id="app">
+  <div *ngFor="let universitario of paginatedGraduados">
+    <div class="card" (click)="abrirModalAnuario(universitario.carnet)">
+      <div class="card_inner">
+        <!-- Cara frontal -->
+        <div class="card_face card_front">
+          <div class="card_image">
+            <img [src]="universitario.ruta_foto" class="picture">
+          </div>
+          <div class="card_body">
+            <h2>{{universitario.nombres}}</h2> <h2>{{universitario.apellidos}}</h2>
+            <p>{{universitario.facultad}}</p>
+            <button type="button" class="btn btn-success" (click)="abrirModalAnuario(universitario.carnet)">Ver detalles</button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <mat-paginator
+    [length]="totalGraduados"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[2, 8, 20]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
 </div>

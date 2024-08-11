@@ -1,4 +1,7 @@
-#app{
+/* Estilos generales para el contenedor de las tarjetas */
+#app {
+  perspective: 1500px;
+  position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -6,46 +9,95 @@
   flex-wrap: wrap;
   align-content: flex-start;
 }
-.card{
+
+/* Efecto de rotación de la tarjeta */
+.card {
+  position: relative;
+  width: 250px;
+  height: 285px;
+  margin: 20px;
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.card.page-turn {
+  transform: rotateY(180deg);
+}
+
+/* Contenedor interno para la animación 3D */
+.card_inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Definición de las caras de la tarjeta */
+.card_face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card_front {
+  background: linear-gradient(rgb(30 176 106) 29%, rgb(255, 255, 255) 30%);
+  box-shadow: 0 0 25px rgba(0, 139, 63, 0.63);
+  border-radius: 5px;
+  padding: 50px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
-  height: 285px;
-  margin: 0 auto;
-  background:linear-gradient(rgb(30 176 106) 29%, rgb(255, 255, 255) 30%);
-  box-shadow: 0 0 25px rgba(0, 139, 63, 0.63) ;
+}
+
+.card_back {
+  background: #fff;
   border-radius: 10px;
   padding: 50px 16px;
-  margin-right: 30px;
-  margin-top: 20px;
+  transform: rotateY(180deg);
 }
-.card_image{
+
+/* Estilos para la imagen dentro de la tarjeta */
+.card_image {
   position: relative;
   margin-top: -40px;
   height: 120px;
   width: 120px;
   backdrop-filter: blur(2px);
-
 }
-.card_image .picture{
+
+.card_image .picture {
   width: 120px;
   height: 100px;
   object-fit: cover;
   border-radius: 2%;
   box-shadow: 0 5px 20px rgba(100, 255, 170, 0.4);
 }
-.card_body{ text-align: center;}
-.card_body h2{ color: #1FB16B; margin-bottom: 5px;}
-.card_body p{font: bold;
+
+/* Estilos para el cuerpo de la tarjeta */
+.card_body {
+  text-align: center;
+}
+
+.card_body h2 {
+  color: #1FB16B;
+  margin-bottom: 5px;
+}
+
+.card_body p {
+  font: bold;
   color: rgb(255, 170, 0);
   margin-top: 5px;
 }
-.card > .card_image > .picture{
-  transition: all 0.2s;
+
+/* Estilo para el efecto hover en la imagen */
+.card > .card_image > .picture {
+  transition: all 0.1s;
 }
 
-.card:hover > .card_image > .picture{
+.card:hover > .card_image > .picture {
   border-radius: 5%;
   box-shadow: 0 0px 40px var(--colorDark);
   transform: translateY(-20%) scale(1.1);

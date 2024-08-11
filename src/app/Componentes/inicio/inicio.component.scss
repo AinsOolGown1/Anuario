@@ -40,3 +40,20 @@
   justify-content: center;
 }
 
+.container_evento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  // Centrar el contenido horizontalmente
+  text-align: center;    // Centrar el texto
+
+  h3 {
+    margin-bottom: 20px;  // Espacio debajo del título
+    font-size: 1.5rem;    // Tamaño del texto del título
+  }
+
+  img {
+    max-width: 100%;      // Asegurar que la imagen no exceda el ancho del contenedor
+    height: auto;         // Mantener la proporción de la imagen
+  }
+}
+
