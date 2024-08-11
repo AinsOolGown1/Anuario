@@ -45,7 +45,7 @@
         </tr>
       </table>
       <div class="botones">
-        <button type="submit" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
+        <button type="submit" [disabled]="this.gallery_fromGrup.invalid" class="btn-agregar" mat-raised-button color="primary">AGREGAR</button>
       </div>
     </form>
   </div>

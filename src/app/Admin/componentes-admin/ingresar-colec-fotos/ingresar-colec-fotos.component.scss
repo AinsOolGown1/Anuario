@@ -52,6 +52,11 @@ tr, td{
   height: 50px;
 }
 
+.btn-agregar:disabled{
+  opacity: 0.6;
+  touch-action: none;
+}
+
 
 //Estilo texto de emergencia
 .text_danger{

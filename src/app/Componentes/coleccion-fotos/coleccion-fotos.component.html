@@ -1,19 +1,24 @@
 <!-- <app-filtro-anuario></app-filtro-anuario>
   -->
 
-  <div *ngFor="let graduacion of listGraduaciones">
-    <h3>{{ graduacion.campus }} - {{ graduacion.year_graduacion }}</h3>
-    <div *ngIf="graduacion.fotos_graduaciones.length; else noFotos">
-      <img *ngFor="let foto of graduacion.fotos_graduaciones"
-           [src]="foto" 
-           alt="Foto de graduación"
-           (load)="checkImageDimensions($event, foto)"
-           [ngClass]="{'tall-image': isTallImage(foto)}">
+  <div class="gallery-container">
+    <div *ngFor="let graduacion of listGraduaciones" class="gallery-item">
+      <h3>{{ graduacion.campus }} - {{ graduacion.year_graduacion }}</h3>
+      <div *ngIf="graduacion.fotos_graduaciones.length; else noFotos">
+        <img *ngFor="let foto of graduacion.fotos_graduaciones"
+             [src]="foto"
+             alt="Foto de graduación"
+             (load)="checkImageDimensions($event, foto)"
+             [ngClass]="{'tall-image': isTallImage(foto)}">
+      </div>
+      <ng-template #noFotos>
+        <p>No hay fotos disponibles</p>
+      </ng-template>
     </div>
-    <ng-template #noFotos>
-      <p>No hay fotos disponibles</p>
-    </ng-template>
   </div>
+  
+  
+  
   
   
   

@@ -65,4 +65,9 @@ export class ColeccionFotosGraduacionesService {
     return this.http.get<ColeccionGraduacion[]>(`${this.url}/coleccion_graduaciones`);
   }
 
+   // Servicio para obtener las fotos de graduación en base64
+   obtenerFotosGraduacion(_id: string): Observable<any> {
+    return this.http.get<any>(`${this.url}/ver_coleccion/fotos/${_id}`);
+  }
+
 }
