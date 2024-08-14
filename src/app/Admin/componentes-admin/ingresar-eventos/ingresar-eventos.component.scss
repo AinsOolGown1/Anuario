@@ -58,14 +58,15 @@
   }
   
   
-  //Estilo texto de emergencia
-  .text_danger{
-    font-size: 13px;
-    text-align: start;
-    margin-left: 3px;
-    color: #ffbf00;
-    letter-spacing: 2px;
-  }
+//Estilo texto de emergencia
+.text_danger{
+  position: absolute;
+  font-size: 13px;
+  text-align: start;
+  margin-left: 3px;
+  color: #ffbf00;
+  letter-spacing: 2px;
+}
   
   .form-label{
     color: #f9f9f9;

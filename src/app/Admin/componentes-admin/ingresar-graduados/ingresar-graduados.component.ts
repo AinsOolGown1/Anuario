@@ -113,7 +113,6 @@ export class IngresarGraduadosComponent implements OnInit {
               horizontalPosition: 'center',
               verticalPosition: 'bottom'
             });
-            this.router.navigate(['/ver-lista-graduados']);
           },
           error: () => {
             this._snackBar.open('No se logró editar el graduado', 'Aceptar', {
@@ -133,6 +132,7 @@ export class IngresarGraduadosComponent implements OnInit {
               horizontalPosition: 'center',
               verticalPosition: 'bottom'
             });
+            console.log(data);
           },
           error: () => {
             this._snackBar.open('Error al guardar el graduado', 'Aceptar', {

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class FiltroAnuarioComponent {
   years: number[] = [2021, 2022, 2023, 2024];
-  campuses: string[] = ['Campus A', 'Campus B', 'Campus C'];
+  campuses: string[] = ['Central', 'Campus B', 'Campus C'];
   facultades: string[] = [
     'Ciencias Médicas',
     'Medicina Veterinaria',
@@ -16,7 +16,7 @@ export class FiltroAnuarioComponent {
     'Ciencias Jurídicas y Sociales',
     'Ingeniería en Sistemas'
   ];
-  carreras: string[] = ['Carrera 1', 'Carrera 2', 'Carrera 3'];
+  carreras: string[] = ['Medicina', 'Carrera 2', 'Carrera 3'];
 
   selectedYear: number | null = null;
   selectedCampus: string | null = null;

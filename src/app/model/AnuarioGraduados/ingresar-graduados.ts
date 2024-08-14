@@ -16,8 +16,10 @@ export class IngresarGraduados{
   qr_graduado: string;
 
 
-  constructor(carnet: string, nombres: string, apellidos: string, facultad: string, carrera: string, campus: string,
-    frase_emotiva: string, year_graduado: number, telefono_graduado: number, correo_graduado: string, estado_graduado = true, destacado_graduado = true, foto_graduado: File, qr_graduado: string,
+  constructor(carnet: string, nombres: string, apellidos: string, facultad: string, carrera: string,
+    campus: string, frase_emotiva: string, year_graduado: number, telefono_graduado: number, 
+    correo_graduado: string, estado_graduado = true, destacado_graduado = true, foto_graduado: File,
+    qr_graduado: string,
     ) { // Cambiado a tipo File
       this.carnet = carnet;
       this.nombres = nombres;

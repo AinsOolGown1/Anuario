@@ -94,7 +94,7 @@
 
 /* Estilo para el efecto hover en la imagen */
 .card > .card_image > .picture {
-  transition: all 0.1s;
+  transition: all 0.3s;
 }
 
 .card:hover > .card_image > .picture {
@@ -102,3 +102,4 @@
   box-shadow: 0 0px 40px var(--colorDark);
   transform: translateY(-20%) scale(1.1);
 }
+
