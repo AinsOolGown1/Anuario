@@ -27,7 +27,7 @@ export class IngresarEventosComponent {
               private sanitizer: DomSanitizer
   ){
     this.evento_formGrup = this.fb.group({
-      campus_evento: ['', Validators.required],
+      campus_evento: ['Central', Validators.required],
       year_evento: ['', Validators.required],
       img_evento: ['', Validators.required],
       sesion: ['', Validators.required]

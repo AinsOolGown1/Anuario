@@ -20,6 +20,9 @@ import { DashboardComponent } from './Componentes/dashboard/dashboard.component'
 import { NavbarComponent } from './Componentes/navbar/navbar.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { AnuariovistaComponent } from './Componentes/anuariovista/anuariovista.component';
+import { FiltroColeccionFotosComponent } from './Componentes/filtro-coleccion-fotos/filtro-coleccion-fotos.component';
+import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anuario.component';
+import { EventosProximosComponent } from './Componentes/eventos-proximos/eventos-proximos.component';
 
 
 //Vista Admin
@@ -31,6 +34,7 @@ import { InicioAdminRoutingModule } from './Admin/componentes-admin/inicio-admin
 import { NavbarAdminComponent } from './Admin/componentes-admin/navbar-admin/navbar-admin.component';
 import { VerListaGraduadosComponent } from './Admin/componentes-admin/ver-lista-graduados/ver-lista-graduados.component';
 import { IngresarEventosComponent } from './Admin/componentes-admin/ingresar-eventos/ingresar-eventos.component';
+import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir-excel.component';
 //Shared
 import { SharedModule } from './Shared/shared.module';
 
@@ -43,13 +47,9 @@ import { ModalanuarioComponent } from './Componentes/modalanuario/modalanuario.c
 
 //Angular Material
 import { MatDialogModule } from '@angular/material/dialog';
-import { EventosComponent } from './Componentes/eventos/eventos.component';
 import { QRCodeModule } from 'angularx-qrcode';
-import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir-excel.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { FiltroAnuarioComponent } from './Componentes/filtro-anuario/filtro-anuario.component';
 import { MatSelectModule } from '@angular/material/select';
-import { FiltroColeccionFotosComponent } from './Componentes/filtro-coleccion-fotos/filtro-coleccion-fotos.component';
 
 @NgModule({
   declarations: [
@@ -66,11 +66,11 @@ import { FiltroColeccionFotosComponent } from './Componentes/filtro-coleccion-fo
     VerListaGraduadosComponent,
     AnuariovistaComponent,
     ModalanuarioComponent,
-    EventosComponent,
     SubirExcelComponent,
     IngresarEventosComponent,
     FiltroAnuarioComponent,
-    FiltroColeccionFotosComponent
+    FiltroColeccionFotosComponent,
+    EventosProximosComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,6 @@ import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { ColeccionFotosComponent } from './Componentes/coleccion-fotos/coleccion-fotos.component';
 import { LoginComponent } from './Admin/componentes-admin/login/login.component';
 import { AnuariovistaComponent } from './Componentes/anuariovista/anuariovista.component';
-import { EventosComponent } from './Componentes/eventos/eventos.component';
 import { NavbarComponent } from './Componentes/navbar/navbar.component';
 
 //Rutas modulo vista admin
@@ -30,7 +29,6 @@ const routes: Routes = [
   {path:'inicio', component:InicioComponent},
   {path:'coleccion-fotos', component: ColeccionFotosComponent},
   {path:'anuarios', component: AnuariovistaComponent},
-  {path:'eventos', component: EventosComponent},
   // {path: '', component: DashboardComponent, children:[
   // ]}
 ];

@@ -132,6 +132,7 @@ export class IngresarGraduadosComponent implements OnInit {
               horizontalPosition: 'center',
               verticalPosition: 'bottom'
             });
+            this.ingre_graduadoForm.reset();
             console.log(data);
           },
           error: () => {
