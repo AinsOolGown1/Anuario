@@ -17,6 +17,7 @@ export class EventosService{
 
     private mapEvento(eventos: any): Eventos {
         return {
+          _id: eventos._id,
           campus_evento: eventos.campus_evento,
           year_evento: eventos.year_evento,
           img_evento: eventos.img_evento,
@@ -24,9 +25,9 @@ export class EventosService{
         };
       }
 
-    getGraduaciones_coleccion(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.url}/mostrar_coleccion_graduaciones`).pipe(
-          map(response => response.map(graduaciones => this.mapEvento(graduaciones)))
+    getGraduaciones_eventos(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.url}/ver_info_evento`).pipe(
+          map(response => response.map(eventos => this.mapEvento(eventos)))
         );
     }
 
@@ -38,5 +39,9 @@ export class EventosService{
         formData.append('sesion', String(evento.sesion));       
 
         return this.http.post(`${this.url}/cargar_evento`, formData);
+    }
+
+    obtenerFotoEvento(_id: string): Observable<any> {
+      return this.http.get(`${this.url}/ver_imagen/${_id}`, {responseType: 'blob'});
     }
 }

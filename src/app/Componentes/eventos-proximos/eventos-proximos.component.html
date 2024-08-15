@@ -1,1 +1,6 @@
-<p>eventos-proximos works!</p>
+<div>
+    <div *ngFor="let universitario of listEventos">
+        <h3>{{universitario.campus_evento}}</h3>
+        <img [src]="universitario.ruta_fotos" alt="">
+    </div>
+</div>
