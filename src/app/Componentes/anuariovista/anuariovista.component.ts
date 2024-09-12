@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalanuarioComponent } from '../modalanuario/modalanuario.component';
@@ -24,6 +24,7 @@ export class AnuariovistaComponent implements OnInit {
   paginator!: MatPaginator;
 
   constructor(
+    private renderer: Renderer2,
     private _graduadoService: GraduadosService,
     private _matDialog: MatDialog,
     private aRouter: ActivatedRoute
@@ -69,8 +70,9 @@ export class AnuariovistaComponent implements OnInit {
     });
   }
 
+  
   paginate(): void {
-    if (!this.paginator) return; // Asegúrate de que el paginador esté definido
+    if (!this.paginator) return;
 
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     const endIndex = (this.paginator.pageIndex + 1) * this.paginator.pageSize;
@@ -78,9 +80,31 @@ export class AnuariovistaComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent): void {
-    this.pageSize = event.pageSize;
-    this.pageIndex = event.pageIndex;
-    this.paginate();
+    const appContainer = document.getElementById('app');
+    if (appContainer) {
+      // Determina la dirección de la animación
+      const isForward = event.pageIndex > this.pageIndex;
+
+      // Aplica la animación correspondiente
+      if (isForward) {
+        this.renderer.addClass(appContainer, 'flip-container');
+      } else {
+        this.renderer.addClass(appContainer, 'flip-back');
+      }
+
+      setTimeout(() => {
+        this.pageSize = event.pageSize;
+        this.pageIndex = event.pageIndex;
+        this.paginate();
+
+        // Remueve las clases después de la animación
+        if (isForward) {
+          this.renderer.removeClass(appContainer, 'flip-container');
+        } else {
+          this.renderer.removeClass(appContainer, 'flip-back');
+        }
+      }, 600); // Duración de la animación ajustada
+    }
   }
 
   convert(value_file: any, item: IGraduado): void {

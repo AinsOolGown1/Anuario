@@ -1,57 +1,116 @@
-#app{
+#app {
   display: flex;
-    place-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-left: 135px;
+  place-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: 135px;
+  animation-duration: 0.6s; // Aumenta un poco la duración para hacer la transición más suave
+  animation-fill-mode: forwards;
 }
-.card{
+
+@keyframes pageFlip {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+    transform-origin: left;
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-90deg);
+    transform-origin: left;
+  }
+  100% {
+    transform: perspective(1000px) rotateY(-180deg);
+    transform-origin: left;
+  }
+}
+
+@keyframes pageFlipBack {
+  0% {
+    transform: perspective(1000px) rotateY(-180deg);
+    transform-origin: right;
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-90deg);
+    transform-origin: right;
+  }
+  100% {
+    transform: perspective(1000px) rotateY(0deg);
+    transform-origin: right;
+  }
+}
+
+.flip-container {
+  animation-name: pageFlip;
+}
+
+.flip-back {
+  animation-name: pageFlipBack;
+}
+
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 250px;
   height: 285px;
-  background:linear-gradient(rgb(30 176 106) 29%, rgb(255, 255, 255) 30%);
-  box-shadow: 0 0 25px rgba(0, 139, 63, 0.63) ;
+  background: linear-gradient(rgb(30, 176, 106) 29%, rgb(255, 255, 255) 30%);
+  box-shadow: 0 0 25px rgba(0, 139, 63, 0.63);
   border-radius: 10px;
   padding: 50px 16px;
   margin-right: 30px;
   margin-top: 20px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
-.card_image{
+
+.card.flip {
+  transform: rotateY(-180deg);
+}
+
+.card_image {
   position: relative;
   margin-top: -40px;
   height: 120px;
   width: 120px;
   backdrop-filter: blur(2px);
-
 }
-.card_image .picture{
+
+.card_image .picture {
   width: 120px;
   height: 100px;
   object-fit: cover;
   border-radius: 2%;
   box-shadow: 0 5px 20px rgba(100, 255, 170, 0.4);
 }
-.card_body{ text-align: center;}
-.card_body h2{ color: #1FB16B; margin-bottom: 5px;}
-.card_body p{font: bold;
+
+.card_body {
+  text-align: center;
+}
+
+.card_body h2 {
+  color: #1fb16b;
+  margin-bottom: 5px;
+}
+
+.card_body p {
+  font: bold;
   color: rgb(255, 170, 0);
   margin-top: 5px;
 }
-.card > .card_image > .picture{
+
+.card > .card_image > .picture {
   transition: all 0.3s;
 }
 
-.card:hover > .card_image > .picture{
+.card:hover > .card_image > .picture {
   border-radius: 5%;
   box-shadow: 0 0px 40px var(--colorDark);
   transform: translateY(-20%) scale(1.1);
 }
 
-.mat-mdc-paginator{
+.mat-mdc-paginator {
   display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-end;
 }
