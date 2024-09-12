@@ -82,8 +82,8 @@
         <th mat-header-cell *matHeaderCellDef>Destacado</th>
         <td mat-cell *matCellDef="let graduado" [ngStyle]="{'color': graduado.destacado_graduado === true ? 'green' : 'red'}">
           <ng-container *ngIf="graduado.destacado_graduado=== true;
-        else graduadoInactivo">
-        Si</ng-container><ng-template #graduadoInactivo>No</ng-template>  </td>
+        else graduadoNoDestacado">
+        Si</ng-container><ng-template #graduadoNoDestacado>No</ng-template>  </td>
       </ng-container>
 
       <!-- <ng-container matColumnDef="foto_graduado">
@@ -104,9 +104,9 @@
       <!-- Columna acciones -->
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let graduado">
-            <mat-icon [routerLink]="['/admin/editar-graduado', graduado._carnet_graduado ]" class="pointer" color="primary">edit</mat-icon>
-            <mat-icon (click)="eliminarGraduado(graduado._id)" class="pointer" color="warn">delete</mat-icon>
+        <td mat-cell *matCellDef="let graduado" (click)="abrirModalEditar(graduado.carnet)">
+            <mat-icon (click)="abrirModalEditar(graduado.carnet)" class="pointer" color="primary">edit</mat-icon>
+            <!-- <mat-icon (click)="eliminarGraduado(graduado._id)" class="pointer" color="warn">delete</mat-icon> -->
           </td>
       </ng-container>
 
@@ -116,5 +116,5 @@
       </tr> -->
     </table>
   </div>
-  <mat-paginator id="paginador-tabla" [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
+  <mat-paginator id="paginador-tabla" [pageSizeOptions]="[5, 10, 100]" showFirstLastButtons></mat-paginator>
 </div>

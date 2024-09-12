@@ -1,72 +1,83 @@
-/*Estilo del texto Anuario*/
-.tituloAnuario{
+/* Estilo del contenedor del logo */
+.logo-container {
+  position: absolute;
+  //top: 0;
+  left: 20px;
+  background-color: #ffffff;
+  padding: 0.5rem; /* Ajusta el padding según sea necesario */
+  z-index: 10; /* Asegúrate de que el logo esté encima de otros elementos */
+  border-radius: 0px 0px 20px 20px;
+  height: 110px;
+}
+
+.logo {
+  width: 80px; /* Ajusta el tamaño del logo según sea necesario */
+  //height: auto;
+  margin-top: 10px;
+}
+
+/* Estilo del texto Anuario */
+.tituloAnuario {
   background-color: #1BC075;
   height: 30px;
   width: 100%;
   box-shadow: 7px 7px 7px 0 rgba(97, 83, 83, 0.3);
+  //margin-top: 60px; /* Asegúrate de que el texto no se sobreponga con el logo */
 }
-.anuario{
+
+.anuario {
   color: #ffff;
   font: bold 1rem "Open Sans", serif;
   text-align: center;
   padding-top: 0.2rem;
   letter-spacing: .2rem;
 }
-/*Estilo texto Felicidades*/
 
-.tituloFelicidades{
+/* Estilo del contenedor principal */
+.tituloFelicidades {
   width: 100%;
   height: auto;
   background: rgb(35,204,123);
   background: linear-gradient(90deg, rgba(35,204,123,1) 0%, rgba(30,172,104,1) 100%);
   box-shadow: 7px 7px 7px 0 rgba(20, 20, 20, 0.3);
+  position: relative; /* Necesario para el posicionamiento absoluto del logo */
+  //padding-top: 40px; /* Ajusta el padding según sea necesario */
 }
-.felicidades{
+
+.felicidades {
   color: #ffff;
   font: bold 1.3rem "Open Sans", serif;
   text-align: center;
   padding-top: 2.3rem;
   letter-spacing: .9rem;
 }
-// .btn-principal{
-//   display: flex;
-//   padding: 1rem 0;
-//   align-items: center;
-//   justify-content: space-evenly;
-//   flex-wrap: wrap;
-//   .btn-70, .btn-71{
-//     border: 1px solid #ffff;
-//     margin: 0;
-//     padding-left:  15px;
-//     padding-right:  15px;
-//   }
-// }
 
-.contenedor-botones{
+/* Estilo del contenedor de botones */
+.contenedor-botones {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
   height: 5rem;
-
-  button{
-    border-radius: 5px;
-    background-color: rgb(0, 119, 255);
-    color: #ffff;
-    border: 1px solid #ffff;
-    margin: 0;
-    padding: 0.5rem 1.5rem;
-    font-weight: bold;
-    letter-spacing: 0.2rem;
-  }
-
-  .btn-71{
-    border-radius: 5px;
-    background-color: rgb(255, 153, 0);
-    color: #ffff;
-    border: 1px solid #ffff;
-    margin: 0;
-    padding: 0.5rem 1.5rem;
-  }
+  //margin-top: 2rem; /* Ajusta el margen según sea necesario */
 }
 
+button {
+  border-radius: 5px;
+  background-color: rgb(0, 119, 255);
+  color: #ffff;
+  border: 1px solid #ffff;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+}
+
+.btn-71 {
+  border-radius: 5px;
+  background-color: rgb(255, 153, 0);
+  color: #ffff;
+  border: 1px solid #ffff;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+}

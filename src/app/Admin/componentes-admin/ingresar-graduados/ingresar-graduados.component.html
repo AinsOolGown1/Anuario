@@ -65,7 +65,7 @@
           </td>
           <td>
             <label for="carreras" class="form-label fw-bold">Carrera</label>
-            <select id="carreras" formControlName="carrera" class="form-select" [disabled]="!selectedFaculty" (change)="onSelectCarrera($event)">
+            <select id="carreras" formControlName="carrera" class="form-select" (change)="onSelectCarrera($event)">
               <option *ngFor="let carrera of getCarreras()" [value]="carrera.name">{{ carrera.name }}</option>
             </select>
             <div class="text_danger" *ngIf="ingre_graduadoForm.get('carrera')?.invalid && ingre_graduadoForm.get('carrera')?.touched">

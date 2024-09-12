@@ -24,6 +24,7 @@ export class GraduadosService {
   //* Función auxiliar para mapear el objeto graduado recibido del servidor a un objeto IngresarGraduados
   private mapGraduado(graduado: any): IngresarGraduados {
     return {
+      _id: graduado._id,
       carnet: graduado.carnet,
       nombres: graduado.nombres,
       apellidos: graduado.apellidos,
@@ -74,12 +75,16 @@ export class GraduadosService {
     return this.http.get(`${this.url}/buscar/imagen/${carnet}`, {responseType: 'blob'});
   }
 
-  obtenerUngraduado(id: string): Observable<IngresarGraduados> {
-    return this.http.get<IngresarGraduados>(`${this.url}/obtener/${id}`); // Especificamos el tipo de datos esperado como IngresarGraduados
+  obtenerUngraduado(carnet: string): Observable<IngresarGraduados> {
+    return this.http.get<IngresarGraduados>(`${this.url}/obtener/${carnet}`); // Especificamos el tipo de datos esperado como IngresarGraduados
   }
 
   editarGraduado(id: string, graduado: IngresarGraduados): Observable<any> {
     return this.http.put(`${this.url}/actualizar/${id}`, graduado);
+  }
+
+  updateGraduado(carnet: string, data: FormData): Observable<any> {
+    return this.http.put(`${this.url}/updateGraduado/${carnet}`, data);
   }
 
 }

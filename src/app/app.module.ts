@@ -35,6 +35,8 @@ import { NavbarAdminComponent } from './Admin/componentes-admin/navbar-admin/nav
 import { VerListaGraduadosComponent } from './Admin/componentes-admin/ver-lista-graduados/ver-lista-graduados.component';
 import { IngresarEventosComponent } from './Admin/componentes-admin/ingresar-eventos/ingresar-eventos.component';
 import { SubirExcelComponent } from './Admin/componentes-admin/subir-excel/subir-excel.component';
+import { ModalEditarGraduadoComponent } from './Admin/componentes-admin/modal-editar-graduado/modal-editar-graduado.component';
+
 //Shared
 import { SharedModule } from './Shared/shared.module';
 
@@ -70,7 +72,8 @@ import { MatSelectModule } from '@angular/material/select';
     IngresarEventosComponent,
     FiltroAnuarioComponent,
     FiltroColeccionFotosComponent,
-    EventosProximosComponent
+    EventosProximosComponent,
+    ModalEditarGraduadoComponent
   ],
   imports: [
     BrowserModule,

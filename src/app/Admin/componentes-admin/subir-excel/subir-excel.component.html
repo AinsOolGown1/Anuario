@@ -1,5 +1,11 @@
 <div class="contenedor-principal" [ngStyle]="{'background-image':'url('+backgroundImage+')'}">
-  <!-- Upload  -->
+  
+  <!-- Spinner de Carga -->
+  <div *ngIf="isLoading" class="spinner-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Upload -->
   <form id="file-upload-form" action="/upload" method="post" class="uploader" enctype="multipart/form-data">
     <input id="file-upload" (change)="archivoSeleccionado($event)" type="file" name="file" accept=".csv" />
 

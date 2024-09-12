@@ -1,0 +1,60 @@
+<form [formGroup]="formGroupEditarGraduado">
+  <div class="form-group">
+    <label for="nombres">Nombres</label>
+    <input id="nombres" formControlName="nombres" class="form-control" type="text">
+  </div>
+  <div class="form-group">
+    <label for="apellidos">Apellidos</label>
+    <input id="apellidos" formControlName="apellidos" class="form-control" type="text">
+  </div>
+  <div class="form-group">
+    <label for="facultad">Facultad</label>
+    <select id="facultad" formControlName="facultad" class="form-control" (change)="onSelectFacultad()">
+      <option *ngFor="let facultad of facultades" [value]="facultad.name">{{ facultad.name }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="carrera">Carrera</label>
+    <select id="carrera" formControlName="carrera" class="form-control" [disabled]="!selectedFaculty">
+      <option *ngFor="let carrera of getCarreras()" [value]="carrera.name">{{ carrera.name }}</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="frase_emotiva">Frase Emotiva</label>
+    <input id="frase_emotiva" formControlName="frase_emotiva" class="form-control" type="text">
+  </div>
+  <div class="form-group">
+    <label for="telefono_graduado">Teléfono</label>
+    <input id="telefono_graduado" formControlName="telefono_graduado" class="form-control" type="text">
+  </div>
+  <div class="form-group">
+    <label for="correo_graduado">Correo</label>
+    <input id="correo_graduado" formControlName="correo_graduado" class="form-control" type="email">
+  </div>
+  <!-- <div class="form-group">
+    <label for="estado_graduado">Estado</label>
+    <select id="estado_graduado" formControlName="estado_graduado" class="form-control">
+      <option value="activo">Activo</option>
+      <option value="inactivo">Inactivo</option>
+    </select>
+  </div> -->
+  <div class="form-group">
+    <label for="destacado_graduado">Destacado</label>
+    <select id="destacado_graduado" formControlName="destacado_graduado" class="form-control">
+      <option value="true">Sí</option>
+      <option value="false">No</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="foto_graduado">Foto</label>
+    <input id="file_input" type="file" (change)="onFileChange($event)" class="form-control">
+    <!-- Mostrar vista previa de la imagen -->
+    <img *ngIf="selectedImageUrl" [src]="selectedImageUrl" alt="Vista previa de la imagen" class="img-thumbnail">
+  </div>
+  <div class="form-group">
+    <label for="qr_graduado">QR</label>
+    <input id="qr_graduado" formControlName="qr_graduado" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="guardarGraduadoActualizado()">Actualizar</button>
+</form>

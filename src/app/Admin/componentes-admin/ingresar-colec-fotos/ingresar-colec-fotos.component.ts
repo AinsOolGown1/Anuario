@@ -57,16 +57,20 @@ export class IngresarColecFotosComponent {
     this._coleccionGraduaciones.guardarFotosGraduaciones(GALERIA_GRADUACION).subscribe({
       next: (data) => {
         this._snackBar.open('Colección de fotos agregadas', 'Aceptar', {
-          duration: 3000,
           horizontalPosition: 'center',
-          verticalPosition: 'bottom'
+          verticalPosition: 'bottom',
+          panelClass: ['ingre-coleccion']
         });
         this.gallery_fromGrup.reset();
         this.archivos = [];
         console.log(data);
       },
       error: () => {
-        this._snackBar.open("Error al guardar la colección de fotos", "Aceptar", { duration: 3000 });
+        this._snackBar.open("Error al guardar la colección de fotos", "Aceptar", { 
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['ingre-coleccion-error']
+         });
         this.gallery_fromGrup.reset();
         this.archivos = [];
       }

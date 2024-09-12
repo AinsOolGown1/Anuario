@@ -35,6 +35,10 @@ export class LoginComponent implements OnInit {
     return JSON.parse(atob(token.split(".")[1]));
   }
 
+  iniciar_sesion(){
+    this.router.navigate(['admin'])
+  }
+
   handleLogin(response: any){
     if(response){
       //Decodificar el token

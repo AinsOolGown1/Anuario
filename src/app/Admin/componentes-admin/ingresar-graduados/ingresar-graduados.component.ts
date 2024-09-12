@@ -17,25 +17,30 @@ import { Carreras } from 'src/app/model/Seleccion_carreras_facultad/Interfaz_Car
 export class IngresarGraduadosComponent implements OnInit {
   facultades: Facultad[] = [
     { id: 1, name: 'Ciencias Médicas', carreras: [
+      { id: 0, name: 'Seleccionar' },
       { id: 1, name: 'Medicina' },
       { id: 2, name: 'Farmacia' },
       { id: 3, name: 'Enfermeria' },
       { id: 4, name: 'Psicologia' }
     ]},
     { id: 2, name: 'Medicina Veterinaria', carreras: [
+      { id: 0, name: 'Seleccionar' },
       { id: 5, name: 'Medicina Veterinaria' }
     ]},
     { id: 3, name: 'Ciencias Administrativas', carreras: [
+      { id: 0, name: 'Seleccionar' },
       { id: 6, name: 'Administración de Empresas' },
       { id: 7, name: 'Contabilidad Pública y Auditoría' },
       { id: 8, name: 'Administración de Turismo y Hotelería' },
       { id: 9, name: 'Mercadotecnia' }
     ]},
     { id: 4, name: 'Ciencias Juridicas y Sociales', carreras: [
+      { id: 0, name: 'Seleccionar' },
       { id: 10, name: 'Derecho' },
       { id: 11, name: 'Relaciones Internacionales y Comercio exterior' }
     ]},
     { id: 5, name: 'Ingenieria en Sistemas', carreras: [
+      { id: 0, name: 'Seleccionar' },
       { id: 12, name: 'Ingenieria en Sistemas' }
     ]}
   ];
@@ -128,18 +133,18 @@ export class IngresarGraduadosComponent implements OnInit {
         this._graduadoService.guardarGraduado(GRADUADO).subscribe({
           next: (data) => {
             this._snackBar.open('Graduado agregado correctamente', 'Aceptar', {
-              duration: 3000,
               horizontalPosition: 'center',
-              verticalPosition: 'bottom'
+              verticalPosition: 'top',
+              panelClass: ['ingre-graduado']
             });
             this.ingre_graduadoForm.reset();
             console.log(data);
           },
           error: () => {
             this._snackBar.open('Error al guardar el graduado', 'Aceptar', {
-              duration: 3000,
               horizontalPosition: 'center',
-              verticalPosition: 'bottom'
+              verticalPosition: 'top',
+              panelClass: ['ingre-graduado-error']
             });
             this.ingre_graduadoForm.reset();
           }
@@ -147,9 +152,9 @@ export class IngresarGraduadosComponent implements OnInit {
       }
     } else {
       this._snackBar.open('Formulario no válido. Por favor, revise los campos.', 'Aceptar', {
-        duration: 3000,
         horizontalPosition: 'center',
-        verticalPosition: 'bottom'
+        verticalPosition: 'top',
+        panelClass: ['ingre-graduado-error']
       });
     }
   }

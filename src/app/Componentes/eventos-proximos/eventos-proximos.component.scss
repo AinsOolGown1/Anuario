@@ -1,0 +1,32 @@
+// Estilos para el contenedor principal
+div {
+    display: flex;
+    flex-direction: column;
+    //gap: 1.5rem; // Espacio entre cada elemento
+  
+    // Estilos para cada bloque de evento
+    > div {
+      //border: 1px solid #ddd; // Borde ligero
+      border-radius: 8px; // Bordes redondeados
+      padding: 5px; // Espaciado interno
+      //background-color: #f9f9f9; // Fondo gris claro
+  
+      // Estilos para el título del evento
+      h3 {
+        margin-top: 0; // Eliminar margen superior
+        margin-bottom: 0.5rem; // Espacio debajo del título
+        color: #333; // Color del texto
+        font-size: 1.25rem; // Tamaño de fuente
+      }
+  
+      // Estilos para la imagen
+      img {
+         // La imagen no debe exceder el ancho del contenedor
+        height: 100vh; // Mantener la proporción de la imagen
+        min-height: 30vh;
+        border-radius: 4px; // Bordes redondeados en la imagen
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra ligera
+      }
+    }
+  }
+  

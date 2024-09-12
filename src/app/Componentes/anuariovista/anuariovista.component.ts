@@ -78,17 +78,9 @@ export class AnuariovistaComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent): void {
-    // Añadir la clase de animación
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => card.classList.add('page-turn'));
-  
-    // Después de un corto retraso (lo suficiente para que la animación se ejecute), quitar la clase
-    setTimeout(() => {
-      cards.forEach(card => card.classList.remove('page-turn'));
-      this.pageSize = event.pageSize;
-      this.pageIndex = event.pageIndex;
-      this.paginate();
-    }, 400); // La duración del timeout debe coincidir con la duración de la animación
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    this.paginate();
   }
 
   convert(value_file: any, item: IGraduado): void {

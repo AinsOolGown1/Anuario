@@ -1,0 +1,82 @@
+// Variables para colores y espacio
+$primary-color: #007bff;
+$background-color: #f8f9fa;
+$input-border-radius: 5px;
+$input-padding: 0.75rem;
+$label-color: #495057;
+$label-font-size: 14px;
+$form-width: 1000px; // Ancho del formulario
+$form-max-height: 600px; // Altura máxima del formulario para activar la barra de desplazamiento
+
+form {
+  background-color: $background-color;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: $form-width;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-height: $form-max-height; // Establece la altura máxima del formulario
+  overflow-y: auto; // Activa la barra de desplazamiento vertical si es necesario
+
+  .form-group {
+    flex: 1 1 calc(33.333% - 1.5rem); // Tres columnas con espacio entre ellas
+    label {
+      color: $label-color;
+      font-size: $label-font-size;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: $input-padding;
+      font-size: 1rem;
+      border-radius: $input-border-radius;
+      border: 1px solid #ced4da;
+      transition: border-color 0.3s ease-in-out;
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 5px rgba($primary-color, 0.3);
+        outline: none;
+      }
+    }
+
+    // Ajustes para el select
+    select {
+      -webkit-appearance: none; /* Remove default arrow in Safari */
+      appearance: none;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    background-color: $primary-color;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+  
+  .img-thumbnail {
+    max-width: 150px; /* Ancho máximo */
+    max-height: 150px; /* Altura máxima */
+    width: auto; /* Ajustar ancho automáticamente */
+    height: auto; /* Ajustar altura automáticamente */
+    display: block; /* Mostrar la imagen como bloque */
+    margin-top: 10px; /* Espacio superior */
+    margin-bottom: 0; /* Sin espacio inferior */
+    border-radius: 4px; /* Bordes redondeados */
+    border: 1px solid #ddd; /* Borde de la imagen */
+  }
+}

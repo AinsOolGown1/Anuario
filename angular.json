@@ -34,7 +34,8 @@
               "src/styles.scss","node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts":[],
-            "allowedCommonJsDependencies": ["qrcode", "page-flip"]
+            "allowedCommonJsDependencies": ["qrcode", "page-flip", "crypto", "stream", "assert",
+            "http", "https", "os"]
           },
           "configurations": {
             "production": {

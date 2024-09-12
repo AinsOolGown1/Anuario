@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class FiltroColeccionFotosComponent {
   years: number[] = [2021, 2022, 2023, 2024];
-  campuses: string[] = ['Campus A', 'Campus B', 'Campus C'];
+  campuses: string[] = ['Central', 'Doral', 'Jinotepe', 'Extensión Estelí'];
   sessions: string[] = ['Sesión 1', 'Sesión 2', 'Sesión 3'];
 
   selectedYear: number | null = null;

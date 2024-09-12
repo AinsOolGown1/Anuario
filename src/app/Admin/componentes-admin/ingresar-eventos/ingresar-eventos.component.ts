@@ -49,15 +49,19 @@ export class IngresarEventosComponent {
     this._eventosProximos.guardarEvento(EVENTO_PROX).subscribe({
       next: (data) => {
         this._snackBar.open('Evento agregado correctamente', 'Aceptar', {
-          duration: 3000,
           horizontalPosition: 'center',
-          verticalPosition: 'bottom'
+          verticalPosition: 'bottom',
+          panelClass: ['ingre-evento']
         });
         this.evento_formGrup.reset();
         console.log(data);
       },
       error: () => {
-        this._snackBar.open("Error al guardar el evento", "Aceptar", { duration: 3000 });
+        this._snackBar.open("Error al guardar el evento", "Aceptar", { 
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['ingre-evento-error']
+        });
         this.evento_formGrup.reset();
       }
     });
