@@ -25,11 +25,11 @@
 
 @keyframes pageFlipBack {
   0% {
-    transform: perspective(1000px) rotateY(-180deg);
+    transform: perspective(1000px) rotateY(180deg);
     transform-origin: right;
   }
   50% {
-    transform: perspective(1000px) rotateY(-90deg);
+    transform: perspective(1000px) rotateY(90deg);
     transform-origin: right;
   }
   100% {
