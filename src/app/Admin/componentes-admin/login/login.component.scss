@@ -112,6 +112,31 @@ input[type="text"], input[type="password"]{
 #google-btn{
   margin-bottom: 10px;
 }
+
+//Estilo mensaje de login
+::ng-deep .ingre-login {
+  font: bold;
+    border-radius: 5px;
+  --mdc-snackbar-container-color:#ffffff;
+  --mdc-snackbar-supporting-text-color:#030303;
+}
+
+::ng-deep .ingre-login button{
+  border: none;
+  background-color: #2F3033;
+}
+
+::ng-deep .ingre-login-error {
+  font: bold;
+    border-radius: 5px;
+  --mdc-snackbar-container-color:#ffffff;
+  --mdc-snackbar-supporting-text-color:#030303;
+}
+
+::ng-deep .ingre-login-error button{
+  border: none;
+  background-color: #2F3033;
+}
 /*
 //Estilo boton ingresar con google
 .google{

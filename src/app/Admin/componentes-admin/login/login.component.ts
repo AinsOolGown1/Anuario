@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/Shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { IniciarLoginService} from 'src/app/Servicios/authLogin.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 //import { AuthGoogleService } from 'src/app/auth-google.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
 
   private router = inject(Router);
-  constructor( private _loginService: IniciarLoginService ){}
+  constructor( private _loginService: IniciarLoginService, private _SnackBar: MatSnackBar ){}
 
   ngOnInit(): void {
     google.accounts.id.initialize({
@@ -57,26 +58,40 @@ export class LoginComponent implements OnInit {
   }
    // Método para iniciar sesión utilizando el servicio de login
    ingresarLogin() {
-    if (this.email && this.password) {
-      this._loginService.iniciarSesion(this.email, this.password).subscribe({
-        next: (response) => {
-          console.log('Inicio de sesión exitoso:', response);
-          
-          // Almacenar el token y datos del usuario en sessionStorage
-          sessionStorage.setItem('token', response.token);
-          sessionStorage.setItem('user', JSON.stringify(response.userToken));
-          
-          // Redirigir al dashboard del administrador
-          this.router.navigate(['admin']);
-        },error: (err: any) => {
-          console.error('Error al iniciar sesión:', err);
-        }
-    });
-    } else {
-      console.error('Por favor, ingrese el correo y la contraseña');
-      // Mostrar mensaje de error si los campos están vacíos
+    if (!this.email || !this.password) {
+      this._SnackBar.open('Por favor, ingrese el correo y la contraseña', 'Aceptar', {
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        panelClass: ['ingre-login']
+      });  // Mensaje si los campos están vacíos
+      return;
     }
-  }
+    this._loginService.iniciarSesion(this.email, this.password).subscribe({
+      next: (response) => {
+        this._SnackBar.open('Inicio de sesión exitoso', 'Aceptar', {
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          //panelClass: ['ingre-login']
+        });  // Mensaje si los campos están vacíos
+        
+        // Almacenar el token y datos del usuario en sessionStorage
+        sessionStorage.setItem('token', response.token);
+        sessionStorage.setItem('user', JSON.stringify(response.userToken));
+        
+        // Redirigir al dashboard del administrador
+        this.router.navigate(['admin']);
+        
+      },error: (err: any) => {
+        console.error('Error al iniciar sesión:', err);
+        this._SnackBar.open('Correo o contreseña son incorretos', 'Aceptar', {
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['ingre-login']
+        });
+      }
+  });
+}
+
 
 /* constructor(private AuthGoogleService: AuthGoogleService){}
 

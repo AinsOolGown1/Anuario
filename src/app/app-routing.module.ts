@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //Rutas modulo vista publica
-import { DashboardComponent } from './Componentes/dashboard/dashboard.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { ColeccionFotosComponent } from './Componentes/coleccion-fotos/coleccion-fotos.component';
 import { LoginComponent } from './Admin/componentes-admin/login/login.component';
 import { AnuariovistaComponent } from './Componentes/anuariovista/anuariovista.component';
-import { NavbarComponent } from './Componentes/navbar/navbar.component';
+import { authGuard } from './guards/auth.guard'; 
 
 //Rutas modulo vista admin
 
@@ -23,14 +22,13 @@ const routes: Routes = [
   },
   {path:'admin', 
     loadChildren:()=> import('./Admin/componentes-admin/inicio-admin/inicio-admin.module')
-    .then(x => x.InicioAdminModule)
+    .then(x => x.InicioAdminModule),
+    canActivate: [authGuard]
   },
   //!Rutas para la vista publica
   {path:'inicio', component:InicioComponent},
   {path:'coleccion-fotos', component: ColeccionFotosComponent},
   {path:'anuarios', component: AnuariovistaComponent},
-  // {path: '', component: DashboardComponent, children:[
-  // ]}
 ];
 
 @NgModule({
