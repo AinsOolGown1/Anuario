@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
 import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-graduados';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-modalanuario',
@@ -11,6 +12,7 @@ import { IngresarGraduados } from 'src/app/model/AnuarioGraduados/ingresar-gradu
 export class ModalanuarioComponent implements OnInit {
   graduadoSeleccionado: IngresarGraduados | null = null
   imagen_graduado: any;
+  imagenPordefecto = environment.imagen_graduado;
 
   constructor(public _matDialogRef: MatDialogRef<ModalanuarioComponent>,
     private _graduadoService: GraduadosService,
@@ -65,4 +67,9 @@ export class ModalanuarioComponent implements OnInit {
       console.log('Esto no es una imagen')
     }
   };
+
+  onImageError(event: Event): void {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = this.imagenPordefecto;
+  }
 }

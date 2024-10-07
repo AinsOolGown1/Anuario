@@ -1,3 +1,8 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 .gallery-container {
   display: flex;
   flex-wrap: wrap; /* Esto permite que las imágenes se distribuyan en varias filas si es necesario */
@@ -10,11 +15,20 @@
   flex: 1 1 150px; /* Cada imagen ocupará un mínimo de 150px de ancho y se ajustará según el espacio disponible */
   max-width: 200px; /* Tamaño máximo de la imagen */
 }
-
+.titulos{
+  display: flex;
+  
+}
 .gallery-item img {
   width: 100%;
   height: auto; /* Mantén la proporción de las imágenes */
   object-fit: cover;
+}
+
+.fotosGraduacion{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 /* Clase para imágenes altas */

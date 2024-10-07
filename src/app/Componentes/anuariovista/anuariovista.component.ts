@@ -5,6 +5,7 @@ import { ModalanuarioComponent } from '../modalanuario/modalanuario.component';
 import { ActivatedRoute } from '@angular/router';
 import { IGraduado } from 'src/app/model/AnuarioGraduados/interfaces';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-anuariovista',
@@ -19,6 +20,7 @@ export class AnuariovistaComponent implements OnInit {
   totalGraduados: number = 0;
   pageSize: number = 8;
   pageIndex: number = 0;
+  imagenPordefecto = environment.imagen_graduado;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -117,5 +119,10 @@ export class AnuariovistaComponent implements OnInit {
     } else {
       console.log('Esto no es una imagen');
     }
+  }
+
+  onImageError(event: Event): void {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = this.imagenPordefecto;
   }
 }

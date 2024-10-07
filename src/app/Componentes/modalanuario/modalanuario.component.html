@@ -1,9 +1,9 @@
-<div >
 <div id="app" >
   <div *ngIf="graduadoSeleccionado" class="contenedor">
       <div class="card">
           <div class="card_image">
-              <img [src]="imagen_graduado" class="picture">
+              <img [src]="imagen_graduado" class="picture"
+              (error)="onImageError($event)">
           </div>
           <div class="card_body">
             <h2 class="titulo_contenido">Nombres</h2>

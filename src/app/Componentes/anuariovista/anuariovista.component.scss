@@ -1,10 +1,8 @@
 #app {
   display: flex;
-  place-items: center;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-left: 135px;
-  animation-duration: 0.6s; // Aumenta un poco la duración para hacer la transición más suave
+  justify-content: center;
+  animation-duration: 0.6s;
   animation-fill-mode: forwards;
 }
 
@@ -50,14 +48,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-basis: 250px;
   width: 250px;
   height: 285px;
   background: linear-gradient(rgb(30, 176, 106) 29%, rgb(255, 255, 255) 30%);
-  box-shadow: 0 0 25px rgba(0, 139, 63, 0.63);
+  box-shadow: 0 0 25px rgba(0, 139, 63, 0.438);
   border-radius: 10px;
   padding: 50px 16px;
-  margin-right: 30px;
-  margin-top: 20px;
+  margin: 10px;
   transition: transform 0.6s;
   transform-style: preserve-3d;
   backface-visibility: hidden;
@@ -80,7 +78,6 @@
   height: 100px;
   object-fit: cover;
   border-radius: 2%;
-  box-shadow: 0 5px 20px rgba(100, 255, 170, 0.4);
 }
 
 .card_body {
@@ -113,4 +110,69 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-end;
+}
+
+/* Estilos responsivos */
+
+@media (max-width: 576px) {
+  #app {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .card {
+    width: calc(225px - 30px);
+    margin: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  #app {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    flex-basis: 250px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  #app {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    flex-basis: 250px;
+    margin: 10px;
+  }
+}
+
+
+
+@media (min-width: 1366px) {
+  #app {
+    justify-content: space-evenly;
+    padding: 0px 100px 0px 100px;
+  }
+  .card {
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 1440px) {
+  #app {
+    justify-content: space-evenly;
+    padding: 0px 100px 0px 100px;
+  }
+  .card {
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 1920px) {
+  #app {
+    padding: 0 15vw; /* Ajuste flexible en pantallas grandes */
+  }
 }
