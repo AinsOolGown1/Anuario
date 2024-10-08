@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProximosEventos } from 'src/app/model/EventosProximos/interfazEventos';
-import { Eventos } from 'src/app/model/EventosProximos/modeloEventosProximos';
 import { EventosService } from 'src/app/Servicios/eventosproximos';
 
 @Component({
@@ -8,28 +7,28 @@ import { EventosService } from 'src/app/Servicios/eventosproximos';
   templateUrl: './eventos-proximos.component.html',
   styleUrls: ['./eventos-proximos.component.scss']
 })
-export class EventosProximosComponent implements OnInit {
+export class EventosProximosComponent implements OnInit, OnDestroy {
 
-  
   listEventos: ProximosEventos[] = [];
+  currentIndex: number = 0; // Índice actual del slider
+  sliderInterval: any; // Referencia al intervalo
 
-  constructor(
-    private _eventoService: EventosService
-  ){
+  constructor(private _eventoService: EventosService) {}
 
+  ngOnInit(): void {
+    this.vista_eventos();
+    this.startSlider(); // Iniciar el slider automático
   }
 
-  ngOnInit(): void{
-    this.vista_eventos();
+  ngOnDestroy(): void {
+    clearInterval(this.sliderInterval); // Limpiar el intervalo al destruir el componente
   }
 
   vista_eventos(): void {
     this._eventoService.getGraduaciones_eventos().subscribe({
-      next: (data: ProximosEventos []) => {
+      next: (data: ProximosEventos[]) => {
         this.listEventos = data;
-        console.log(this.listEventos);
         data.forEach((item: ProximosEventos) => {
-          console.log('ID del evento:', item._id);  // Verifica que el _id no es undefined
           if (item._id) {
             this._eventoService.obtenerFotoEvento(item._id).subscribe({
               next: (value) => {
@@ -39,8 +38,6 @@ export class EventosProximosComponent implements OnInit {
                 console.log('Error al obtener la foto ' + err);
               }
             });
-          } else {
-            console.log('ID no definido para el evento:', item);
           }
         });
       },
@@ -49,7 +46,6 @@ export class EventosProximosComponent implements OnInit {
       }
     });
   }
-  
 
   convert(value_file: any, item: ProximosEventos): void {
     if (['image/jpeg', 'image/jpg', 'image/png'].includes(value_file.type)) {
@@ -63,4 +59,20 @@ export class EventosProximosComponent implements OnInit {
     }
   }
 
+  //Función para iniciar el slider automático
+  startSlider(): void {
+    this.sliderInterval = setInterval(() => {
+      this.nextSlide();
+    },2000); // Cambia cada 3 segundos
+  }
+
+  // Función para ir al siguiente slide
+  nextSlide(): void {
+    this.currentIndex = (this.currentIndex + 1) % this.listEventos.length;
+  }
+
+  // Función para ir al slide anterior
+  prevSlide(): void {
+    this.currentIndex = (this.currentIndex - 1 + this.listEventos.length) % this.listEventos.length;
+  }
 }

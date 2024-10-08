@@ -1,6 +1,29 @@
+.row{
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content:space-between;
+}
 .form-select {
-    width: 100%;
-  }
+  width: 100%;
+}
+
+#campusSelect,
+#yearSelect{
+  width: fit-content;
+}
+
+.year{
+  width: 115px;
+}
+
+.campus{
+  width: 190px;
+}
+
+.btn-filtro{
+  width: 200px;
+  margin-top: 3rem;
+}
 
   /* Estilo personalizado para los labels */
 .custom-label {

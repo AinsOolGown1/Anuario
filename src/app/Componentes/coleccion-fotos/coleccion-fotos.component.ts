@@ -18,6 +18,23 @@ export class ColeccionFotosComponent implements OnInit {
     this.vistaColeccionFotosGraduaciones();
   }
 
+    // Método para actualizar los graduados filtrados
+    actualizarGraduadosFiltrados(graduaciones: ColeccionGraduacion[]): void {
+      this.listGraduaciones = graduaciones;
+  
+      // Obtener fotos en base64 para cada colección de graduaciones
+      this.listGraduaciones.forEach(graduaciones => {
+        this._imagenesService.obtenerFotosGraduacion(graduaciones._id).subscribe({
+          next: (res: any) => {
+            graduaciones.fotos_graduaciones = res.imagenesBase64;
+          },
+          error: (err: any) => {
+            console.log('Error al obtener las fotos de graduación: ' + err);
+          }
+        });
+      });
+    }
+
   vistaColeccionFotosGraduaciones() {
     this._imagenesService.ColeccionesDeGraduaciones().subscribe({
       next: (data: any[]) => {

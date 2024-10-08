@@ -21,6 +21,11 @@
             <option *ngFor="let session of sessions" [value]="session">{{ session }}</option>
           </select>
         </div>
+
+        <div class="mb-3 btn-filtro-coleccion">
+          <button type="button" class="btn btn-primary" (click)="filtrarColeccion()">Filtrar Graduados</button>
+        </div>
+
       </div>
     </form>
   </div>

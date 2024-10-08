@@ -86,5 +86,8 @@ export class GraduadosService {
   updateGraduado(carnet: string, data: FormData): Observable<any> {
     return this.http.put(`${this.url}/updateGraduado/${carnet}`, data);
   }
-
+  filtrarGraduados(year: string, campus: string, facultad: string, carrera: string): Observable<any> {
+    const body = { year, campus, facultad, carrera };  // Enviar los datos en el cuerpo de la solicitud
+    return this.http.post<any>(`${this.url}/filtrar`, body);
+  }
 }

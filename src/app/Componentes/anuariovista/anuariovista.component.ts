@@ -35,7 +35,25 @@ export class AnuariovistaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.vistaAnuario();
+    this.vistaAnuario(); // Cargar inicialmente todos los graduados
+  }
+
+  // Método para actualizar los graduados filtrados
+  actualizarGraduadosFiltrados(graduados: IGraduado[]): void {
+    this.listGraduados = graduados;
+    this.totalGraduados = graduados.length;
+    this.paginate();
+
+    graduados.forEach((item: IGraduado) => {
+      this._graduadoService.obtenerFotoGraduado(item.carnet).subscribe({
+        next: (value) => {
+          this.convert(value, item);
+        },
+        error: (err: any) => {
+          console.log('Error al obtener la foto ' + err);
+        }
+      });
+    });
   }
 
   abrirModalAnuario(carnet: string): void {
@@ -72,7 +90,6 @@ export class AnuariovistaComponent implements OnInit {
     });
   }
 
-  
   paginate(): void {
     if (!this.paginator) return;
 
@@ -84,10 +101,7 @@ export class AnuariovistaComponent implements OnInit {
   onPageChange(event: PageEvent): void {
     const appContainer = document.getElementById('app');
     if (appContainer) {
-      // Determina la dirección de la animación
       const isForward = event.pageIndex > this.pageIndex;
-
-      // Aplica la animación correspondiente
       if (isForward) {
         this.renderer.addClass(appContainer, 'flip-container');
       } else {
@@ -99,27 +113,28 @@ export class AnuariovistaComponent implements OnInit {
         this.pageIndex = event.pageIndex;
         this.paginate();
 
-        // Remueve las clases después de la animación
         if (isForward) {
           this.renderer.removeClass(appContainer, 'flip-container');
         } else {
           this.renderer.removeClass(appContainer, 'flip-back');
         }
-      }, 600); // Duración de la animación ajustada
+      }, 600); 
     }
   }
 
-  convert(value_file: any, item: IGraduado): void {
+  convert(value_file: Blob, item: IGraduado): void {
+    // Solo procesar si el blob es de tipo imagen
     if (['image/jpeg', 'image/jpg', 'image/png'].includes(value_file.type)) {
       const reader = new FileReader();
       reader.onload = () => {
-        item.ruta_foto = reader.result as string;
+        item.ruta_foto = reader.result as string;  // Convertir a base64
       };
       reader.readAsDataURL(value_file);
     } else {
-      console.log('Esto no es una imagen');
+      console.log('El archivo no es una imagen válida');
     }
   }
+  
 
   onImageError(event: Event): void {
     const imgElement = event.target as HTMLImageElement;

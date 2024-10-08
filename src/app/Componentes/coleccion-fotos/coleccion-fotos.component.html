@@ -1,4 +1,4 @@
-<app-filtro-coleccion-fotos></app-filtro-coleccion-fotos>
+<app-filtro-coleccion-fotos (graduacionesFiltrados)="actualizarGraduadosFiltrados($event)"></app-filtro-coleccion-fotos>
 <div class="container">
   <div class="gallery-container">
     <div *ngFor="let graduacion of listGraduaciones" class="gallery-item">

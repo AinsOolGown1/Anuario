@@ -70,4 +70,9 @@ export class ColeccionFotosGraduacionesService {
     return this.http.get<any>(`${this.url}/ver_coleccion/fotos/${_id}`);
   }
 
+  filtrarGraduados(year: string, campus: string, sesion: string): Observable<any> {
+    const body = { year, campus, sesion };  // Enviar los datos en el cuerpo de la solicitud
+    return this.http.post<any>(`${this.url}/filtrar-coleccion`, body);
+  }
+  
 }
