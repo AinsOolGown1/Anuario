@@ -5,6 +5,7 @@
 }
 .gallery-container {
   display: flex;
+  flex-direction: column-reverse;
   flex-wrap: wrap; /* Esto permite que las imágenes se distribuyan en varias filas si es necesario */
   justify-content: flex-start; /* Alinea los elementos horizontalmente */
   gap: 10px; /* Añade un espacio de 10px entre cada imagen */
@@ -27,7 +28,6 @@
 
 .fotosGraduacion{
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
 }
 

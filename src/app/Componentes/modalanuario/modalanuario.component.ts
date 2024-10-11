@@ -35,7 +35,7 @@ export class ModalanuarioComponent implements OnInit {
       next: (estudiante: IngresarGraduados) => {
         if (estudiante) {
           this.graduadoSeleccionado = estudiante;
-          console.log(estudiante)
+          //console.log(estudiante)
         } else {
           //console.error('No se encontró ningún estudiante con el carnet proporcionado.');
         }

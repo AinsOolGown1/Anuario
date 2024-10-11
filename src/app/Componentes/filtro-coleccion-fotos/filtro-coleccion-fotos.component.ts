@@ -59,7 +59,7 @@ export class FiltroColeccionFotosComponent implements OnInit {
 
       this._filtrarColeccionService.filtrarGraduados(year, campus, sesion).subscribe({
         next: (data) => {
-          console.log('Graduados filtrados:', data);
+          //console.log('Graduados filtrados:', data);
           this.graduacionesFiltrados.emit(data); //Aqui emitimos los graduado filtrados
         },
         error: (err) => {

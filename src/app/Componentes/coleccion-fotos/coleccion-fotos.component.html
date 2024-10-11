@@ -2,8 +2,8 @@
 <div class="container">
   <div class="gallery-container">
     <div *ngFor="let graduacion of listGraduaciones" class="gallery-item">
-      <h3 class="titulos">Campus {{ graduacion.campus }} - Año {{ graduacion.year_graduacion }} - Sesión {{ graduacion.sesion }}</h3>
-      <div class="fotosGraduacion" *ngIf="graduacion.fotos_graduaciones.length; else noFotos">
+      <!-- <h3 class="titulos">Campus {{ graduacion.campus }} - Año {{ graduacion.year_graduacion }} - Sesión {{ graduacion.sesion }}</h3> -->
+      <div class="fotosGraduacion" *ngIf="graduacion.fotos_graduaciones.length;">
         <img *ngFor="let foto of graduacion.fotos_graduaciones"
              [src]="foto"
              alt="Foto de graduación"
@@ -12,9 +12,9 @@
              [ngClass]="{'tall-image': isTallImage(foto)}"
              loading="lazy">
       </div>
-      <ng-template #noFotos>
+      <!-- <ng-template #noFotos>
         <p>No hay fotos disponibles</p>
-      </ng-template>
+      </ng-template> -->
     </div>
   </div>
 </div>

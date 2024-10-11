@@ -65,7 +65,7 @@ export class FiltroAnuarioComponent {
 
       this._filtroGraduadoService.filtrarGraduados(year, campus, facultad, carrera).subscribe({
         next: (data) => {
-          console.log('Graduados filtrados:', data);
+          //console.log('Graduados filtrados:', data);
           this.graduadosFiltrados.emit(data); //Aqui emitimos los graduado filtrados
         },
         error: (err) => {
