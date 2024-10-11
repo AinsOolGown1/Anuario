@@ -1,12 +1,12 @@
 <div class="container">
   <!-- Botón para mostrar/ocultar filtros en pantallas pequeñas -->
-  <button type="button" class="btn btn-secondary d-md-none" (click)="toggleFiltros()">
-    {{ mostrarFiltros ? 'Ocultar Filtros' : 'Mostrar Filtros' }}
+  <button type="button" class="btn btn-primary btn-s d-md-none" (click)="toggleFiltros()">
+    {{ 'Mostrar Filtros' }}
   </button>
 
-  <!-- Contenedor de filtros que se superpondrá al contenido -->
-  <div [ngClass]="{'filters-overlay': mostrarFiltros}" class="filters-container">
-    <form>
+  <!-- Contenedor de filtros que se oculta en pantallas pequeñas -->
+  <div [ngClass]="{'filters-overlay': mostrarFiltros, 'filters-hidden': !mostrarFiltros}" class="filters-container">
+    <form class="filtro">
       <div class="row">
         <div class="col-md-4 mb-3 year">
           <label for="yearSelect" class="form-label custom-label">Año</label>
@@ -30,7 +30,11 @@
         </div>
 
         <div class="mb-3 btn-filtro-coleccion">
-          <button type="button" (click)="closeFiltro()" class="btn btn-primary" (click)="filtrarColeccion()">Filtrar Colección</button>
+          <button type="button" class="btn btn-primary" (click)="filtrarColeccion()" (click)="closeFiltro()">Filtrar Colección</button>
+        </div>
+
+        <div>
+          <button (click)="closeFiltro()" class="close-filtro"><mat-icon>close</mat-icon></button>
         </div>
       </div>
     </form>

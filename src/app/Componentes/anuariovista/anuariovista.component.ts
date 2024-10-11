@@ -50,7 +50,7 @@ export class AnuariovistaComponent implements OnInit {
           this.convert(value, item);
         },
         error: (err: any) => {
-          console.log('Error al obtener la foto ' + err);
+          //console.log('Error al obtener la foto ' + err);
         }
       });
     });
@@ -58,7 +58,7 @@ export class AnuariovistaComponent implements OnInit {
 
   abrirModalAnuario(carnet: string): void {
     if (!carnet) {
-      console.error("Carnet de graduado no válido:", carnet);
+      //console.error("Carnet de graduado no válido:", carnet);
       return;
     }
     this._matDialog.open(ModalanuarioComponent, {
@@ -79,13 +79,13 @@ export class AnuariovistaComponent implements OnInit {
               this.convert(value, item);
             },
             error: (err: any) => {
-              console.log('Error al obtener la foto ' + err);
+              //console.log('Error al obtener la foto ' + err);
             }
           });
         });
       },
       error: (err: any) => {
-        console.log('Error al obtener el graduado ' + err);
+        //console.log('Error al obtener el graduado ' + err);
       }
     });
   }
@@ -131,7 +131,7 @@ export class AnuariovistaComponent implements OnInit {
       };
       reader.readAsDataURL(value_file);
     } else {
-      console.log('El archivo no es una imagen válida');
+      
     }
   }
   

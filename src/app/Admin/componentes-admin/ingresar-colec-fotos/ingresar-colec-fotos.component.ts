@@ -63,7 +63,6 @@ export class IngresarColecFotosComponent {
         });
         this.gallery_fromGrup.reset();
         this.archivos = [];
-        console.log(data);
       },
       error: () => {
         this._snackBar.open("Error al guardar la colección de fotos", "Aceptar", { 

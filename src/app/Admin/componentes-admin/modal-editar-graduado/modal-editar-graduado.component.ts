@@ -114,7 +114,7 @@ export class ModalEditarGraduadoComponent implements OnInit{
                 }
               });
         } else {
-          console.error('Error al obtener el graduado po el id')
+          console.error('Error al obtener el graduado por el id')
         }
       },
       error: (err: any)=>{
@@ -161,9 +161,7 @@ export class ModalEditarGraduadoComponent implements OnInit{
   onSelectFacultad(): void {
     const selectedFacultyName = this.formGroupEditarGraduado.get('facultad')?.value;
     this.selectedFaculty = this.facultades.find(facultad => facultad.name === selectedFacultyName);
-  
-    console.log('Selected Faculty:', this.selectedFaculty); // Verifica que se actualiza correctamente
-  
+    
     if (this.selectedFaculty) {
       // Reiniciar y habilitar el campo de carrera
       this.formGroupEditarGraduado.get('carrera')?.setValue('');
@@ -176,7 +174,6 @@ export class ModalEditarGraduadoComponent implements OnInit{
   }
   
   getCarreras(): Carreras[] {
-    //console.log('Available Careers:', this.selectedFaculty?.carreras); // Verificar que se devuelven las carreras correctas
     return this.selectedFaculty?.carreras || [];
   }
 

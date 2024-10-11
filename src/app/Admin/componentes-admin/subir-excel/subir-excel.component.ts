@@ -41,7 +41,7 @@ export class SubirExcelComponent implements OnInit {
             verticalPosition: 'bottom',
             panelClass: ['ingre-csv']
         });
-        console.log('Datos del archivo almacenados exitosamente:', response);
+        //console.log('Datos del archivo almacenados exitosamente:', response);
          // Recargar la página después de que el Snackbar se cierre
          snackBarRef.afterDismissed().subscribe(() => {
           window.location.reload();
@@ -52,7 +52,7 @@ export class SubirExcelComponent implements OnInit {
           verticalPosition: 'bottom',
           panelClass: ['ingre-csv-error']
         });
-          console.error('Error al subir el archivo:', err);
+          //console.error('Error al subir el archivo:', err);
             // Recargar la página después de que el Snackbar se cierre
          snackBarRef.afterDismissed().subscribe(() => {
           window.location.reload();

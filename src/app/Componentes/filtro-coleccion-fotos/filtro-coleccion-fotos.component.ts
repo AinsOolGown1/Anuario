@@ -26,7 +26,6 @@ export class FiltroColeccionFotosComponent implements OnInit {
   ngOnInit(): void {
     this.checkScreenSize();
   }
-
   // Alternar visibilidad de los filtros
   toggleFiltros() {
     this.mostrarFiltros = !this.mostrarFiltros;
@@ -64,11 +63,11 @@ export class FiltroColeccionFotosComponent implements OnInit {
           this.graduacionesFiltrados.emit(data); //Aqui emitimos los graduado filtrados
         },
         error: (err) => {
-          console.error('Error al filtrar graduados:', err);
+          //console.error('Error al filtrar graduados:', err);
         }
       });
     } else {
-      console.warn('Por favor, completa todos los campos antes de filtrar.');
+      //console.warn('Por favor, completa todos los campos antes de filtrar.');
     }
   }
 

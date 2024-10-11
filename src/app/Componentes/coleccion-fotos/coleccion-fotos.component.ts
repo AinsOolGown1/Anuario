@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ColeccionFotosGraduacionesService } from 'src/app/Servicios/coleccionfotos.service';
 import { ColeccionGraduacion } from 'src/app/model/Coleccion_Fotos/interfaceColeccionfotos';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-coleccion-fotos',
@@ -10,7 +11,7 @@ import { ColeccionGraduacion } from 'src/app/model/Coleccion_Fotos/interfaceCole
 export class ColeccionFotosComponent implements OnInit {
   listGraduaciones: ColeccionGraduacion[] = [];
   tallImages: Set<string> = new Set();
-  imagenPordefecto = "assets/Fotos/LOGO UCN.png";
+  imagenPordefecto = environment.logo_ucn;
 
   constructor(private _imagenesService: ColeccionFotosGraduacionesService) { }
 
@@ -29,7 +30,7 @@ export class ColeccionFotosComponent implements OnInit {
             graduaciones.fotos_graduaciones = res.imagenesBase64;
           },
           error: (err: any) => {
-            console.log('Error al obtener las fotos de graduación: ' + err);
+            //console.log('Error al obtener las fotos de graduación: ' + err);
           }
         });
       });
@@ -47,15 +48,15 @@ export class ColeccionFotosComponent implements OnInit {
               graduacion.fotos_graduaciones = res.imagenesBase64;
             },
             error: (err: any) => {
-              console.log('Error al obtener las fotos de graduación: ' + err);
+              //console.log('Error al obtener las fotos de graduación: ' + err);
             }
           });
         });
 
-        console.log('Datos de graduaciones:', this.listGraduaciones);
+        //console.log('Datos de graduaciones:', this.listGraduaciones);
       },
       error: (err: any) => {
-        console.log('Error al obtener las colecciones de graduaciones: ' + err);
+        //console.log('Error al obtener las colecciones de graduaciones: ' + err);
       }
     });
   }

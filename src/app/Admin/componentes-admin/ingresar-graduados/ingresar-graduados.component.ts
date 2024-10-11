@@ -82,7 +82,6 @@ export class IngresarGraduadosComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.esEditar();
   }
 
   agregar_graduado() {
@@ -106,29 +105,6 @@ export class IngresarGraduadosComponent implements OnInit {
         foto_graduado: this.archivos[0], //* Se envía el archivo en lugar de la URL
         qr_graduado: this.ingre_graduadoForm.get('qr_graduado')?.value
       };
-
-      console.log(GRADUADO);
-
-      //*Editar graduado
-      if (this.id !== null) {
-        this._graduadoService.editarGraduado(this.id, GRADUADO).subscribe({
-          next: () => {
-            this._snackBar.open('Graduado editado correctamente', 'Aceptar', {
-              duration: 3000,
-              horizontalPosition: 'center',
-              verticalPosition: 'bottom'
-            });
-          },
-          error: () => {
-            this._snackBar.open('No se logró editar el graduado', 'Aceptar', {
-              duration: 3000,
-              horizontalPosition: 'center',
-              verticalPosition: 'bottom'
-            });
-            this.ingre_graduadoForm.reset();
-          }
-        });
-      } else {
         //* Agregar graduado
         this._graduadoService.guardarGraduado(GRADUADO).subscribe({
           next: (data) => {
@@ -138,7 +114,6 @@ export class IngresarGraduadosComponent implements OnInit {
               panelClass: ['ingre-graduado']
             });
             this.ingre_graduadoForm.reset();
-            console.log(data);
           },
           error: () => {
             this._snackBar.open('Error al guardar el graduado', 'Aceptar', {
@@ -150,7 +125,7 @@ export class IngresarGraduadosComponent implements OnInit {
           }
         });
       }
-    } else {
+     else {
       this._snackBar.open('Formulario no válido. Por favor, revise los campos.', 'Aceptar', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
@@ -199,7 +174,6 @@ export class IngresarGraduadosComponent implements OnInit {
     });
 
     getCarreras(): Carreras[] {
-      console.log('Available Careers:', this.selectedFaculty?.carreras); // Verificar que se devuelven las carreras correctas
       return this.selectedFaculty?.carreras || [];
     }
     
@@ -208,8 +182,6 @@ export class IngresarGraduadosComponent implements OnInit {
       const selectElement = event.target as HTMLSelectElement;
       const selectedFacultyName = selectElement.value;
       this.selectedFaculty = this.facultades.find(facultad => facultad.name === selectedFacultyName);
-    
-      console.log('Selected Faculty:', this.selectedFaculty); // Verificar que se actualiza correctamente
     
       this.ingre_graduadoForm.get('carrera')?.setValue(''); // Reiniciar el valor del select de carreras
       this.ingre_graduadoForm.get('carrera')?.enable(); // Habilitar el select de carreras
@@ -222,37 +194,4 @@ export class IngresarGraduadosComponent implements OnInit {
       this.selectedCareer = this.selectedFaculty?.carreras.find(carrera => carrera.name === selectedCareerName);
       this.ingre_graduadoForm.get('carrera')?.setValue(this.selectedCareer?.name);
     }
-
-/*
-  esEditar() {
-    if (this.id !== null) {
-      this._graduadoService.obtenerGraduado(this.id).subscribe((data) => {
-        this.ingre_graduadoForm.patchValue({
-          carnet: data.carnet,
-          nombres: data.nombres,
-          apellidos: data.apellidos,
-          facultad: data.facultad,
-          carrera: data.carrera,
-          frase_emotiva: data.frase_emotiva,
-          campus: data.campus,
-          year_graduado: data.year_graduado,
-          telefono_graduado: data.telefono_graduado,
-          correo_graduado: data.correo_graduado,
-          estado_graduado: data.estado_graduado ? 'true' : 'false',
-          destacado_graduado: data.destacado_graduado ? 'true' : 'false',
-          foto_graduado: data.foto_graduado,
-          qr_graduado: data.qr_graduado
-        });
-
-        // Seleccionar la facultad y habilitar el select de carreras
-        this.selectedFaculty = this.facultades.find(f => f.id === data.facultad);
-        const carreraControl = this.ingre_graduadoForm.get('carrera');
-        if (this.selectedFaculty) {
-          carreraControl?.enable();
-        } else {
-          carreraControl?.disable();
-        }
-      });
-    }
-  }*/
 }

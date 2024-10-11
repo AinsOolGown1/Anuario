@@ -63,7 +63,6 @@ export class VerListaGraduadosComponent implements OnInit {
   obtenerGraduados(): void {
     this._graduadoService.getGraduados().subscribe({
       next: (data) =>{
-        console.log(data);
         this.listGraduados = data;
         this.dataSource.data = this.listGraduados;
         this.dataSource.paginator = this.paginator;
@@ -73,23 +72,23 @@ export class VerListaGraduadosComponent implements OnInit {
     })
   }
   //*Elimar el graduado
-  eliminarGraduado(id: any): void {
-    this._graduadoService.eliminarGraduado(id).subscribe({
-      next: (data) =>{
-        this._snackBar.open('Graduado eliminado correctamente', 'Graduado Eliminado', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-      });
-      // Actualizar la lista de graduados después de eliminar uno
-      this.obtenerGraduados();
-      }, error: (err: any)=>{
-        this._snackBar.open("Error al eliminar el graduado", "Aceptar", { duration: 3000 });
-      }
-    })
-  }
+  // eliminarGraduado(id: any): void {
+  //   this._graduadoService.eliminarGraduado(id).subscribe({
+  //     next: (data) =>{
+  //       this._snackBar.open('Graduado eliminado correctamente', 'Graduado Eliminado', {
+  //         duration: 3000,
+  //         horizontalPosition: 'center',
+  //         verticalPosition: 'bottom'
+  //     });
+  //     // Actualizar la lista de graduados después de eliminar uno
+  //     this.obtenerGraduados();
+  //     }, error: (err: any)=>{
+  //       this._snackBar.open("Error al eliminar el graduado", "Aceptar", { duration: 3000 });
+  //     }
+  //   })
+  // }
 
-  cambiarEstadoGraduado(){
+  // cambiarEstadoGraduado(){
 
-  }
+  // }
 }

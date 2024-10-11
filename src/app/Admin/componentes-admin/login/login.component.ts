@@ -23,17 +23,17 @@ export class LoginComponent implements OnInit {
   constructor( private _loginService: IniciarLoginService, private _SnackBar: MatSnackBar ){}
 
   ngOnInit(): void {
-    google.accounts.id.initialize({
-      client_id: '106043652118-i7u30h1t4jiqdcqom0u5k6o8582i0t7p.apps.googleusercontent.com',
-      callback: (resp: any) => this.handleLogin(resp)
-    });
+    // google.accounts.id.initialize({
+    //   client_id: '106043652118-i7u30h1t4jiqdcqom0u5k6o8582i0t7p.apps.googleusercontent.com',
+    //   callback: (resp: any) => this.handleLogin(resp)
+    // });
 
-    google.accounts.id.renderButton(document.getElementById("google-btn"),{
-      theme: 'filled_blue',
-      size:  'large',
-      shape: 'rectangle',
-      width: 200
-    })
+    // google.accounts.id.renderButton(document.getElementById("google-btn"),{
+    //   theme: 'filled_blue',
+    //   size:  'large',
+    //   shape: 'rectangle',
+    //   width: 200
+    // })
   }
 
   private decodeToken(token: string){
@@ -58,12 +58,13 @@ export class LoginComponent implements OnInit {
   }
    // Método para iniciar sesión utilizando el servicio de login
    ingresarLogin() {
+    // Mensaje si los campos están vacíos
     if (!this.email || !this.password) {
       this._SnackBar.open('Por favor, ingrese el correo y la contraseña', 'Aceptar', {
         horizontalPosition: 'center',
         verticalPosition: 'bottom',
         panelClass: ['ingre-login']
-      });  // Mensaje si los campos están vacíos
+      });  
       return;
     }
     this._loginService.iniciarSesion(this.email, this.password).subscribe({
@@ -72,7 +73,7 @@ export class LoginComponent implements OnInit {
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
           //panelClass: ['ingre-login']
-        });  // Mensaje si los campos están vacíos
+        });
         
         // Almacenar el token y datos del usuario en sessionStorage
         sessionStorage.setItem('token', response.token);
@@ -82,7 +83,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['admin']);
         
       },error: (err: any) => {
-        console.error('Error al iniciar sesión:', err);
         this._SnackBar.open('Correo o contreseña son incorretos', 'Aceptar', {
           horizontalPosition: 'center',
           verticalPosition: 'bottom',

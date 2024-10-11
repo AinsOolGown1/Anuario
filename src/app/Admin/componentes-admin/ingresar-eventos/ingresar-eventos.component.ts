@@ -54,7 +54,6 @@ export class IngresarEventosComponent {
           panelClass: ['ingre-evento']
         });
         this.evento_formGrup.reset();
-        console.log(data);
       },
       error: () => {
         this._snackBar.open("Error al guardar el evento", "Aceptar", { 

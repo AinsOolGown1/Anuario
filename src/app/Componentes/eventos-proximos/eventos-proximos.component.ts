@@ -35,14 +35,14 @@ export class EventosProximosComponent implements OnInit, OnDestroy {
                 this.convert(value, item);
               },
               error: (err: any) => {
-                console.log('Error al obtener la foto ' + err);
+                //console.log('Error al obtener la foto ' + err);
               }
             });
           }
         });
       },
       error: (err: any) => {
-        console.log('Error al obtener el evento' + err);
+        //console.log('Error al obtener el evento' + err);
       }
     });
   }
@@ -55,7 +55,7 @@ export class EventosProximosComponent implements OnInit, OnDestroy {
       };
       reader.readAsDataURL(value_file);
     } else {
-      console.log('Esto no es una imagen');
+      //console.log('Esto no es una imagen');
     }
   }
 

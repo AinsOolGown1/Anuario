@@ -26,7 +26,7 @@ export class ModalanuarioComponent implements OnInit {
       this.vistaAnuario(this.data.carnet);
       this.obtenerFoto(this.data.carnet)
     } else {
-      console.error('El objeto de datos es nulo o no tiene una propiedad "carnet" válida.');
+      //console.error('El objeto de datos es nulo o no tiene una propiedad "carnet" válida.');
     }
   }
 
@@ -37,11 +37,11 @@ export class ModalanuarioComponent implements OnInit {
           this.graduadoSeleccionado = estudiante;
           console.log(estudiante)
         } else {
-          console.error('No se encontró ningún estudiante con el carnet proporcionado.');
+          //console.error('No se encontró ningún estudiante con el carnet proporcionado.');
         }
       },
       error: (err: any)=>{
-        console.log('Error al obtener el graduado'+err.message)
+        //console.log('Error al obtener el graduado'+err.message)
       }
   });
   }
@@ -52,7 +52,7 @@ export class ModalanuarioComponent implements OnInit {
       this.convertirBase64(value)
     },
     error: (err: any)=>{
-      console.log('Error al obtener la foto'+err.message)
+      //console.log('Error al obtener la foto'+err.message)
     }
   })
   }
@@ -64,7 +64,7 @@ export class ModalanuarioComponent implements OnInit {
       }
       reader.readAsDataURL(archivo);
     }else{
-      console.log('Esto no es una imagen')
+      //console.log('Esto no es una imagen')
     }
   };
 

@@ -69,11 +69,11 @@ export class FiltroAnuarioComponent {
           this.graduadosFiltrados.emit(data); //Aqui emitimos los graduado filtrados
         },
         error: (err) => {
-          console.error('Error al filtrar graduados:', err);
+          //console.error('Error al filtrar graduados:', err);
         }
       });
     } else {
-      console.warn('Por favor, completa todos los campos antes de filtrar.');
+      //console.warn('Por favor, completa todos los campos antes de filtrar.');
     }
   }
 
