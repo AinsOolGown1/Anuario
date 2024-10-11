@@ -6,43 +6,43 @@
   animation-fill-mode: forwards;
 }
 
-@keyframes pageFlip {
-  0% {
-    transform: perspective(1000px) rotateY(0deg);
-    transform-origin: left;
-  }
-  50% {
-    transform: perspective(1000px) rotateY(-90deg);
-    transform-origin: left;
-  }
-  100% {
-    transform: perspective(1000px) rotateY(-180deg);
-    transform-origin: left;
-  }
-}
+// @keyframes pageFlip {
+//   0% {
+//     transform: perspective(1000px) rotateY(0deg);
+//     transform-origin: left;
+//   }
+//   50% {
+//     transform: perspective(1000px) rotateY(-90deg);
+//     transform-origin: left;
+//   }
+//   100% {
+//     transform: perspective(1000px) rotateY(-180deg);
+//     transform-origin: left;
+//   }
+// }
 
-@keyframes pageFlipBack {
-  0% {
-    transform: perspective(1000px) rotateY(180deg);
-    transform-origin: right;
-  }
-  50% {
-    transform: perspective(1000px) rotateY(90deg);
-    transform-origin: right;
-  }
-  100% {
-    transform: perspective(1000px) rotateY(0deg);
-    transform-origin: right;
-  }
-}
+// @keyframes pageFlipBack {
+//   0% {
+//     transform: perspective(1000px) rotateY(180deg);
+//     transform-origin: right;
+//   }
+//   50% {
+//     transform: perspective(1000px) rotateY(90deg);
+//     transform-origin: right;
+//   }
+//   100% {
+//     transform: perspective(1000px) rotateY(0deg);
+//     transform-origin: right;
+//   }
+// }
 
-.flip-container {
-  animation-name: pageFlip;
-}
+// .flip-container {
+//   animation-name: pageFlip;
+// }
 
-.flip-back {
-  animation-name: pageFlipBack;
-}
+// .flip-back {
+//   animation-name: pageFlipBack;
+// }
 
 .card {
   display: flex;
