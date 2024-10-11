@@ -1,21 +1,28 @@
 <div class="container">
+  <!-- Botón para mostrar/ocultar filtros en pantallas pequeñas -->
+  <button type="button" class="btn btn-secondary d-md-none" (click)="toggleFiltros()">
+    {{ mostrarFiltros ? 'Ocultar Filtros' : 'Mostrar Filtros' }}
+  </button>
+
+  <!-- Contenedor de filtros que se superpondrá al contenido -->
+  <div [ngClass]="{'filters-overlay': mostrarFiltros}" class="filters-container">
     <form>
       <div class="row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3 year">
           <label for="yearSelect" class="form-label custom-label">Año</label>
           <select id="yearSelect" class="form-select" [(ngModel)]="selectedYear" name="year">
             <option *ngFor="let year of years" [value]="year">{{ year }}</option>
           </select>
         </div>
-  
-        <div class="col-md-4 mb-3">
+
+        <div class="col-md-4 mb-3 campus">
           <label for="campusSelect" class="form-label custom-label">Campus</label>
           <select id="campusSelect" class="form-select" [(ngModel)]="selectedCampus" name="campus">
             <option *ngFor="let campus of campuses" [value]="campus">{{ campus }}</option>
           </select>
         </div>
-  
-        <div class="col-md-4 mb-3">
+
+        <div class="col-md-4 mb-3 sesion">
           <label for="sessionSelect" class="form-label custom-label">Sesión</label>
           <select id="sessionSelect" class="form-select" [(ngModel)]="selectedSession" name="session">
             <option *ngFor="let session of sessions" [value]="session">{{ session }}</option>
@@ -23,10 +30,9 @@
         </div>
 
         <div class="mb-3 btn-filtro-coleccion">
-          <button type="button" class="btn btn-primary" (click)="filtrarColeccion()">Filtrar Graduados</button>
+          <button type="button" (click)="closeFiltro()" class="btn btn-primary" (click)="filtrarColeccion()">Filtrar Colección</button>
         </div>
-
       </div>
     </form>
   </div>
-  
+</div>

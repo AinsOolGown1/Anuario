@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { ColeccionGraduacion } from 'src/app/model/Coleccion_Fotos/interfaceColeccionfotos';
 import { ColeccionFotosGraduacionesService } from 'src/app/Servicios/coleccionfotos.service';
 
@@ -7,10 +7,12 @@ import { ColeccionFotosGraduacionesService } from 'src/app/Servicios/coleccionfo
   templateUrl: './filtro-coleccion-fotos.component.html',
   styleUrls: ['./filtro-coleccion-fotos.component.scss']
 })
-export class FiltroColeccionFotosComponent {
+export class FiltroColeccionFotosComponent implements OnInit {
   years: number[] = [2024, 2023];
   campuses: string[] = ['Central', 'Doral', 'Jinotepe', 'Extensión Estelí'];
   sessions: number[] = [1, 2];
+
+  mostrarFiltros = false;  // Controla la visibilidad en pantallas pequeñas
 
   selectedYear: number | null = null;
   selectedCampus: string | null = null;
@@ -19,6 +21,35 @@ export class FiltroColeccionFotosComponent {
   constructor (private _filtrarColeccionService: ColeccionFotosGraduacionesService){}
 
   @Output() graduacionesFiltrados = new EventEmitter<ColeccionGraduacion[]>(); //Emitir graduado filtrado
+
+
+  ngOnInit(): void {
+    this.checkScreenSize();
+  }
+
+  // Alternar visibilidad de los filtros
+  toggleFiltros() {
+    this.mostrarFiltros = !this.mostrarFiltros;
+  }
+
+  // Detectar el cambio de tamaño de pantalla
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  // Verificar el tamaño de la pantalla
+  checkScreenSize() {
+    if (window.innerWidth >= 768) {
+      this.mostrarFiltros = true; // Siempre mostrar filtros en pantallas grandes
+    } else {
+      this.mostrarFiltros = false; // Ocultar filtros en pantallas pequeñas
+    }
+  }
+
+  closeFiltro() {
+    this.mostrarFiltros = false;
+  }
 
   // Método para filtrar graduados
   filtrarColeccion(): void {

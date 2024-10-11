@@ -1,25 +1,81 @@
+.row {
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
 .form-select {
-    width: fit-content;
+  width: 100%;
 }
 
-.yearSelect, .campusSelect{
-  
+#campusSelect {
+  width: fit-content;
 }
 
-  /* Estilo personalizado para los labels */
+.year, .campus, .sesion {
+  width: 190px;
+}
+
+.btn-filtro-coleccion {
+  width: 200px;
+  margin-top: 3rem;
+}
+
+/* Estilo personalizado para los labels */
 .custom-label {
-    font-size: 1rem;
-    margin-top: 20px;
-    font-weight: bold;
-    color:#00A558; /* Cambiar el color del texto (ajustar según el diseño) */
-    margin-bottom: 0.5rem; /* Ajustar el margen inferior si es necesario */
-    display: block; /* Asegurarse de que el label esté en bloque para un mejor espaciado */
+  font-size: 1.1rem;
+  margin-top: 20px;
+  color: #FFB011;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Estilos para el overlay de los filtros */
+.filters-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.726); /* Puedes cambiar el fondo si lo deseas */
+  z-index: -1; /* Inicialmente por detrás */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, z-index 0.3s ease;
+}
+
+.filters-overlay {
+  z-index: 1000; /* Se pone delante del contenido */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Para dispositivos móviles */
+@media (max-width: 768px) {
+  .custom-label {
+    font-size: 0.9rem;
   }
-  
-  /* Opcional: Estilos adicionales para la etiqueta en dispositivos móviles */
-  @media (max-width: 768px) {
-    .custom-label {
-      font-size: 0.9rem; /* Reducir el tamaño del texto en pantallas más pequeñas */
-    }
+
+  .d-md-none {
+    display: block; /* Mostrar el botón en pantallas pequeñas */
   }
-  
+
+  /* Cambiar la disposición en pantallas pequeñas */
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .year, .campus, .sesion {
+    width: 100%; /* Tomar el ancho completo en pantallas pequeñas */
+  }
+
+  .btn-filtro-coleccion {
+    width: 100%;
+  }
+}
+
+/* Para pantallas más grandes */
+@media (min-width: 769px) {
+  .d-md-none {
+    display: none; /* Ocultar el botón en pantallas grandes */
+  }
+}
