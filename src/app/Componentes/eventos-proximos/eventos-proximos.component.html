@@ -1,10 +1,11 @@
-<div class="slider-container">
-    <button class="anterior" (click)="prevSlide()">&#10094;</button>
-    
+<div class="container">
+  <div class="slider-container">
+    <button class="anterior" (click)="prevSlide()"><mat-icon class="icon-anterior">keyboard_arrow_left</mat-icon></button>
+      
     <div *ngIf="listEventos.length > 0">
       <img [src]="listEventos[currentIndex].ruta_fotos" alt="Evento">
     </div>
-    
-    <button class="siguiente" (click)="nextSlide()">&#10095;</button>
+      <button class="siguiente" (click)="nextSlide()"><mat-icon class="icon-siguiente">keyboard_arrow_right</mat-icon></button>
   </div>
+</div>
   

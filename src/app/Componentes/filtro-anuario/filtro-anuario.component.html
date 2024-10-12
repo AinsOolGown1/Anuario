@@ -1,38 +1,48 @@
 <div class="container">
-  <form>
-    <div class="row">
-      <div class="col-md-3 mb-3 year">
-        <label for="yearSelect" class="form-label custom-label">Año</label>
-        <select id="yearSelect" class="form-select" [(ngModel)]="selectedYear" name="year">
-          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-        </select>
-      </div>
+  <!-- Botón para mostrar/ocultar filtros en pantallas pequeñas -->
+  <button type="button" class="btn btn-primary btn-s d-md-none" (click)="toggleFiltros()">
+    {{ 'Mostrar Filtros' }}
+  </button>
+  <div [ngClass]="{'filters-overlay': mostrarFiltros, 'filters-hidden': !mostrarFiltros}" class="filters-container">
+    <form class="filtro">
+      <div class="row">
+        <div class="col-md-3 mb-3 year">
+          <label for="yearSelect" class="form-label custom-label">Año</label>
+          <select id="yearSelect" class="form-select" [(ngModel)]="selectedYear" name="year">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-3 mb-3 campus">
+          <label for="campusSelect" class="form-label custom-label">Campus</label>
+          <select id="campusSelect" class="form-select" [(ngModel)]="selectedCampus" name="campus">
+            <option *ngFor="let campus of campus" [value]="campus">{{ campus }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-3 mb-3">
+          <label for="facultadSelect" class="form-label custom-label">Facultad</label>
+          <select id="facultadSelect" class="form-select" [(ngModel)]="selectedFacultad" name="facultad" (change)="onFacultadChange($event)" required>
+            <option value="" disabled selected>Seleccione una facultad</option> <!-- Opción por defecto -->
+            <option *ngFor="let facultad of facultades" [value]="facultad.name">{{ facultad.name }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-3 mb-3">
+          <label for="carreraSelect" class="form-label custom-label">Carrera</label>
+          <select id="carreraSelect" class="form-select" [(ngModel)]="selectedCarrera" name="carrera" (change)="onSelectCarrera($event)" required>
+            <option *ngFor="let carrera of carreras" [value]="carrera.name">{{ carrera.name }}</option>
+          </select>
+        </div>
+  
+        <div class="mb-3 btn-filtro">
+          <button type="button" class="btn btn-primary" (click)="filtrarGraduados()" (click)="closeFiltro()">Filtrar Graduados</button>
+        </div>
 
-      <div class="col-md-3 mb-3 campus">
-        <label for="campusSelect" class="form-label custom-label">Campus</label>
-        <select id="campusSelect" class="form-select" [(ngModel)]="selectedCampus" name="campus">
-          <option *ngFor="let campus of campus" [value]="campus">{{ campus }}</option>
-        </select>
+        <div>
+          <button (click)="closeFiltro()" class="close-filtro"><mat-icon>close</mat-icon></button>
+        </div>
       </div>
-
-      <div class="col-md-3 mb-3">
-        <label for="facultadSelect" class="form-label custom-label">Facultad</label>
-        <select id="facultadSelect" class="form-select" [(ngModel)]="selectedFacultad" name="facultad" (change)="onFacultadChange($event)" required>
-          <option value="" disabled selected>Seleccione una facultad</option> <!-- Opción por defecto -->
-          <option *ngFor="let facultad of facultades" [value]="facultad.name">{{ facultad.name }}</option>
-        </select>
-      </div>
-
-      <div class="col-md-3 mb-3">
-        <label for="carreraSelect" class="form-label custom-label">Carrera</label>
-        <select id="carreraSelect" class="form-select" [(ngModel)]="selectedCarrera" name="carrera" (change)="onSelectCarrera($event)" required>
-          <option *ngFor="let carrera of carreras" [value]="carrera.name">{{ carrera.name }}</option>
-        </select>
-      </div>
-
-      <div class="mb-3 btn-filtro">
-        <button type="button" class="btn btn-primary" (click)="filtrarGraduados()">Filtrar Graduados</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

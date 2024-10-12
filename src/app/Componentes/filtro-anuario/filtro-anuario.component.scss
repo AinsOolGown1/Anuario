@@ -1,10 +1,19 @@
+/* Estilos para cuando los filtros están ocultos en pantallas pequeñas */
+.filters-hidden {
+  display: none; /* Inicialmente oculto */
+}
+
+.filters-overlay {
+  display: block; /* Mostrar los filtros cuando se hace clic */
+}
+
 .row{
   flex-wrap: nowrap;
   align-items: center;
   justify-content:space-between;
 }
 .form-select {
-  width: 100%;
+  width: 250px;
 }
 
 #campusSelect,
@@ -29,15 +38,103 @@
 .custom-label {
     font-size: 1.1rem;
     margin-top: 20px;
-    color:#FFB011; /* Cambiar el color del texto (ajustar según el diseño) */
-    margin-bottom: 0.5rem; /* Ajustar el margen inferior si es necesario */
-    display: block; /* Asegurarse de que el label esté en bloque para un mejor espaciado */
+    color:#FFB011; 
+    margin-bottom: 0.5rem; 
+    display: block; 
   }
   
-  /* Opcional: Estilos adicionales para la etiqueta en dispositivos móviles */
-  @media (max-width: 768px) {
-    .custom-label {
-      font-size: 0.9rem; /* Reducir el tamaño del texto en pantallas más pequeñas */
-    }
+ /* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  .filtro{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
   }
+  /* Botón visible solo en pantallas pequeñas */
+  .d-md-none {
+    display: block;
+    margin-top: 1rem;
+    color: white;
+  }
+
+  /* Filtros ocultos inicialmente */
+  .filters-hidden {
+    display: none;
+  }
+
+  /* Cuando se muestra, los filtros ocupan toda la fila (una columna) */
+  .filters-overlay {
+
+    .btn-filtro-coleccion {
+      width: 200px; /* Botón toma todo el ancho en pantallas pequeñas */
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    #campusSelect,
+    #yearSelect{
+      width: 100%;
+    }
+
+    .year, .campus{
+      width: 100%;
+    }
+    
+    width: 100%;
+    display: flex;
+    position: absolute;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.651);
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    left: 0px;
+    top: 0px
+  }
+  .close-filtro {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 999;
+  }
+
+  /* Cambiamos los filtros a columna en pantallas pequeñas */
+  .row {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+  }
+}
+
+/* En pantallas grandes, los filtros siempre están visibles */
+@media (min-width: 769px) {
+  .d-md-none {
+    display: none; /* Ocultar el botón en pantallas grandes */
+  }
+
+  .filters-container {
+    position: relative; /* No se superponen, solo están visibles */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .btn-filtro-coleccion {
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+  }
+  .close-filtro{
+    display: none;
+  }
+}
+
   

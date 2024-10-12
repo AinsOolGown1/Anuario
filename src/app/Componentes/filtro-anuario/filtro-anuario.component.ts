@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Facultad } from 'src/app/model/Seleccion_carreras_facultad/Interfaz_Facultad';
 import { Carreras } from 'src/app/model/Seleccion_carreras_facultad/Interfaz_Carreras';
 import { GraduadosService } from 'src/app/Servicios/graduados.service';
@@ -10,7 +10,7 @@ import { IGraduado } from 'src/app/model/AnuarioGraduados/interfaces';
   templateUrl: './filtro-anuario.component.html',
   styleUrls: ['./filtro-anuario.component.scss']
 })
-export class FiltroAnuarioComponent {
+export class FiltroAnuarioComponent implements OnInit {
   years: number[] = [2023, 2024];
   campus: string[] = ['Central', 'Doral', 'Jinotepe', 'Extensión Estelí'];
   facultades: Facultad[] = [
@@ -49,11 +49,40 @@ export class FiltroAnuarioComponent {
   selectedCarrera: string | null = null; 
   carreras: Carreras[] = [];
 
+  mostrarFiltros = false;  // Controla la visibilidad en pantallas pequeñas
+
   constructor(
     private _filtroGraduadoService: GraduadosService
   ) {}
 
   @Output() graduadosFiltrados = new EventEmitter<IGraduado[]>(); //Emitir graduado filtrado
+
+  ngOnInit(): void {
+    this.checkScreenSize();
+  }
+  // Alternar visibilidad de los filtros
+  toggleFiltros() {
+    this.mostrarFiltros = !this.mostrarFiltros;
+  }
+
+  // Detectar el cambio de tamaño de pantalla
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  // Verificar el tamaño de la pantalla
+  checkScreenSize() {
+    if (window.innerWidth >= 768) {
+      this.mostrarFiltros = true; // Siempre mostrar filtros en pantallas grandes
+    } else {
+      this.mostrarFiltros = false; // Ocultar filtros en pantallas pequeñas
+    }
+  }
+
+  closeFiltro() {
+    this.mostrarFiltros = false;
+  }
 
   // Método para filtrar graduados
   filtrarGraduados(): void {
