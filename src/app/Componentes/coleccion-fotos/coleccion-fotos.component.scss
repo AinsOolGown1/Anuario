@@ -1,59 +1,37 @@
-.container {
+.container{
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-
 .gallery-container {
   display: flex;
   flex-direction: column-reverse;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 10px;
+  flex-wrap: wrap; /* Esto permite que las imágenes se distribuyan en varias filas si es necesario */
+  justify-content: flex-start; /* Alinea los elementos horizontalmente */
+  gap: 10px; /* Añade un espacio de 10px entre cada imagen */
   padding: 10px;
 }
 
 .gallery-item {
-  flex: 1 1 calc(33.333% - 20px); /* Cada imagen ocupará un tercio del espacio en pantallas grandes, con espacio entre ellas */
-  max-width: 200px;
-  min-width: 150px; /* Establece un ancho mínimo para mantener el diseño coherente */
+  flex: 1 1 150px; /* Cada imagen ocupará un mínimo de 150px de ancho y se ajustará según el espacio disponible */
+  max-width: 200px; /* Tamaño máximo de la imagen */
 }
-
-.titulos {
+.titulos{
   display: flex;
+  
 }
-
 .gallery-item img {
   width: 100%;
-  height: auto;
+  height: auto; /* Mantén la proporción de las imágenes */
   object-fit: cover;
 }
 
-.fotosGraduacion {
+.fotosGraduacion{
   display: flex;
   justify-content: flex-start;
 }
 
 /* Clase para imágenes altas */
 .tall-image {
-  height: 300px;
-}
-
-/* Media queries para hacer el diseño más responsivo */
-@media (max-width: 1024px) {
-  .gallery-item {
-    flex: 1 1 calc(50% - 20px); /* En pantallas medianas, las imágenes ocuparán el 50% del ancho */
-  }
-}
-
-@media (max-width: 768px) {
-  .gallery-item {
-    flex: 1 1 calc(100% - 20px); /* En pantallas pequeñas, las imágenes ocuparán el 100% del ancho */
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery-item {
-    flex: 1 1 calc(100% - 10px); /* En pantallas muy pequeñas, ajusta el espacio entre imágenes */
-  }
+  height: 300px; /* Ajusta la altura de las imágenes que necesitan ocupar más espacio vertical */
 }
