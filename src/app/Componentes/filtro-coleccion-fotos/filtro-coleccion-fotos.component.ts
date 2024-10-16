@@ -24,27 +24,29 @@ export class FiltroColeccionFotosComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.checkScreenSize();
+    // this.checkScreenSize();
   }
   // Alternar visibilidad de los filtros
   toggleFiltros() {
     this.mostrarFiltros = !this.mostrarFiltros;
   }
 
-  // Detectar el cambio de tamaño de pantalla
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkScreenSize();
-  }
+  //Detectar el cambio de tamaño de pantalla
+
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event: any) {
+  //   this.checkScreenSize();
+  // }
 
   // Verificar el tamaño de la pantalla
-  checkScreenSize() {
-    if (window.innerWidth >= 768) {
-      this.mostrarFiltros = true; // Siempre mostrar filtros en pantallas grandes
-    } else {
-      this.mostrarFiltros = false; // Ocultar filtros en pantallas pequeñas
-    }
-  }
+
+  // checkScreenSize() {
+  //   if (window.innerWidth >= 769) {
+  //     this.mostrarFiltros = true; // Siempre mostrar filtros en pantallas grandes
+  //   } else {
+  //     this.mostrarFiltros = false; // Ocultar filtros en pantallas pequeñas
+  //   }
+  // }
 
   closeFiltro() {
     this.mostrarFiltros = false;

@@ -39,8 +39,34 @@
   display: block;
 }
 
-/* Para pantallas pequeñas */
-@media (max-width: 768px) {
+/* En pantallas grandes, los filtros siempre están visibles */
+@media (min-width: 1020px) {
+  .d-md-none {
+    display: none; /* Ocultar el botón en pantallas grandes */
+  }
+
+  .filters-container {
+    position: relative; /* No se superponen, solo están visibles */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .year, .campus, .sesion {
+    width: 190px; /* Mantener los filtros en fila en pantallas grandes */
+  }
+  
+  .btn-filtro-coleccion {
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+  }
+  .close-filtro{
+    display: none;
+  }
+}
+
+@media (max-width: 820px) {
   .filtro{
     display: flex;
     justify-content: flex-start;
@@ -48,7 +74,7 @@
   }
   /* Botón visible solo en pantallas pequeñas */
   .d-md-none {
-    display: block;
+    display: block !important;
     margin-top: 1rem;
     color: white;
   }
@@ -60,6 +86,7 @@
 
   /* Cuando se muestra, los filtros ocupan toda la fila (una columna) */
   .filters-overlay {
+    display: block;
 
     .btn-filtro-coleccion {
       width: 200px; /* Botón toma todo el ancho en pantallas pequeñas */
@@ -100,29 +127,64 @@
   }
 }
 
-/* En pantallas grandes, los filtros siempre están visibles */
-@media (min-width: 769px) {
-  .d-md-none {
-    display: none; /* Ocultar el botón en pantallas grandes */
-  }
-
-  .filters-container {
-    position: relative; /* No se superponen, solo están visibles */
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  .filtro{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  /* Botón visible solo en pantallas pequeñas */
+  .d-md-none {
+    display: block !important;
+    margin-top: 1rem;
+    color: white;
   }
 
-  .year, .campus, .sesion {
-    width: 190px; /* Mantener los filtros en fila en pantallas grandes */
-  }
-
-  .btn-filtro-coleccion {
-    width: 200px;
-    align-items: center;
-    justify-content: center;
-  }
-  .close-filtro{
+  /* Filtros ocultos inicialmente */
+  .filters-hidden {
     display: none;
+  }
+
+  /* Cuando se muestra, los filtros ocupan toda la fila (una columna) */
+  .filters-overlay {
+    display: block;
+
+    .btn-filtro-coleccion {
+      width: 200px; /* Botón toma todo el ancho en pantallas pequeñas */
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+    width: 100%;
+    display: flex;
+    position: absolute;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.651);
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    left: 0px;
+    top: 0px
+  }
+  .close-filtro {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 999;
+  }
+
+  /* Cambiamos los filtros a columna en pantallas pequeñas */
+  .row {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
   }
 }

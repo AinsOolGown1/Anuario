@@ -58,7 +58,7 @@ export class FiltroAnuarioComponent implements OnInit {
   @Output() graduadosFiltrados = new EventEmitter<IGraduado[]>(); //Emitir graduado filtrado
 
   ngOnInit(): void {
-    this.checkScreenSize();
+    // this.checkScreenSize();
   }
   // Alternar visibilidad de los filtros
   toggleFiltros() {
@@ -66,19 +66,21 @@ export class FiltroAnuarioComponent implements OnInit {
   }
 
   // Detectar el cambio de tamaño de pantalla
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkScreenSize();
-  }
+
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event: any) {
+  //   this.checkScreenSize();
+  // }
 
   // Verificar el tamaño de la pantalla
-  checkScreenSize() {
-    if (window.innerWidth >= 768) {
-      this.mostrarFiltros = true; // Siempre mostrar filtros en pantallas grandes
-    } else {
-      this.mostrarFiltros = false; // Ocultar filtros en pantallas pequeñas
-    }
-  }
+
+  // checkScreenSize() {
+  //   if (window.innerWidth >= 769) {
+  //     this.mostrarFiltros = true; // Siempre mostrar filtros en pantallas grandes
+  //   } else {
+  //     this.mostrarFiltros = false; // Ocultar filtros en pantallas pequeñas
+  //   }
+  // }
 
   closeFiltro() {
     this.mostrarFiltros = false;
@@ -119,6 +121,6 @@ export class FiltroAnuarioComponent implements OnInit {
   onSelectCarrera(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedCarrera = selectElement.value;
-    console.log('Selected Carrera:', this.selectedCarrera);  // Debug
+    //console.log('Selected Carrera:', this.selectedCarrera);  // Debug
   }
 }

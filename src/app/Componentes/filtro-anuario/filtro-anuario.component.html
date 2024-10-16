@@ -3,7 +3,7 @@
   <button type="button" class="btn btn-primary btn-s d-md-none" (click)="toggleFiltros()">
     {{ 'Mostrar Filtros' }}
   </button>
-  <div [ngClass]="{'filters-overlay': mostrarFiltros, 'filters-hidden': !mostrarFiltros}" class="filters-container">
+  <div (click)="closeFiltro()"  [ngClass]="{'filters-overlay': mostrarFiltros, 'filters-hidden': !mostrarFiltros}" class="filters-container">
     <form class="filtro">
       <div class="row">
         <div class="col-md-3 mb-3 year">
@@ -33,15 +33,14 @@
           <select id="carreraSelect" class="form-select" [(ngModel)]="selectedCarrera" name="carrera" (change)="onSelectCarrera($event)" required>
             <option *ngFor="let carrera of carreras" [value]="carrera.name">{{ carrera.name }}</option>
           </select>
-        </div>
-  
-        <div class="mb-3 btn-filtro">
-          <button type="button" class="btn btn-primary" (click)="filtrarGraduados()" (click)="closeFiltro()">Filtrar Graduados</button>
-        </div>
+        </div>        
+      </div>      
+      <div class="mb-3 btn-filtro">
+        <button type="button" class="btn btn-primary" (click)="filtrarGraduados()" (click)="closeFiltro()">Filtrar Graduados</button>
+      </div>
 
-        <div>
-          <button (click)="closeFiltro()" class="close-filtro"><mat-icon>close</mat-icon></button>
-        </div>
+      <div>
+        <button (click)="closeFiltro()" class="close-filtro"><mat-icon>close</mat-icon></button>
       </div>
     </form>
   </div>

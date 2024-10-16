@@ -55,6 +55,18 @@ a {
   display: flex;
   margin-top: 10px;
 }
+.close-modal-anuario {
+  background: none;
+  border: none;
+  color: #474747;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  position: absolute;
+  top: -0.7rem;
+  right: 0rem;
+  z-index: 100;
+}
 
 /* Estilos responsivos */
 
@@ -71,34 +83,11 @@ a {
   .card_body {
     margin-right: 10px; 
   }
-}
 
-@media(max-width: 375px){
-  .card {
-    grid-template-columns: 1fr;
-    width: 100%; 
-    height: auto; 
-  }
-
-  .card_image {
-    width: 100%;
-  }
-
-  .titulo_contenido {
-    font-size: 16px; 
-  }
-
-  .contenido_graduado {
-    font-size: 14px; 
-  }
-
-  a {
-    font-size: 16px; 
-  }
-  .qrCode_graduado{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .close-modal-anuario{
+    background: none;
+    border: none;
+    color: white;    
   }
 }
 
@@ -129,4 +118,44 @@ a {
     justify-content: center;
     align-items: center;
   }
+  .close-modal-anuario{
+    background: none;
+    border: none;
+    color: white;    
+  }
 }
+
+@media(max-width: 375px){
+  .card {
+    grid-template-columns: 1fr;
+    width: 100%; 
+    height: auto; 
+  }
+
+  .card_image {
+    width: 100%;
+  }
+
+  .titulo_contenido {
+    font-size: 16px; 
+  }
+
+  .contenido_graduado {
+    font-size: 14px; 
+  }
+
+  a {
+    font-size: 16px; 
+  }
+  .qrCode_graduado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .close-modal-anuario{
+    background: none;
+    border: none;
+    color: white;    
+  }
+}
+

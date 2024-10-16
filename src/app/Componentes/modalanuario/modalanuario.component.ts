@@ -30,6 +30,10 @@ export class ModalanuarioComponent implements OnInit {
     }
   }
 
+  closeModalAnuario(): void {
+    this._matDialogRef.close();
+  }
+
   vistaAnuario(carnet: string): void {
     this._graduadoService.obtenerEstudiantePorCarnet(carnet).subscribe({
       next: (estudiante: IngresarGraduados) => {
