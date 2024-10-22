@@ -80,4 +80,7 @@ export class ColeccionFotosComponent implements OnInit {
   isTallImage(src: string): boolean {
     return this.tallImages.has(src);
   }
+
+  
+
 }
