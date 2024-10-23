@@ -6,6 +6,7 @@ import { IngresarColecFotosComponent } from '../ingresar-colec-fotos/ingresar-co
 import { VerListaGraduadosComponent } from '../ver-lista-graduados/ver-lista-graduados.component';
 import { SubirExcelComponent } from '../subir-excel/subir-excel.component';
 import { IngresarEventosComponent } from '../ingresar-eventos/ingresar-eventos.component';
+import { ImagenesMasivasComponent } from '../imagenes-masivas/imagenes-masivas.component';
 
 const routes: Routes = [
   {path:'', component:InicioAdminComponent, children:[
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path:'editar-graduado/:carnet', component:IngresarGraduadosComponent},
     {path:'ingresar-colec-fotos', component:IngresarColecFotosComponent},
     {path: 'subir-excel', component:SubirExcelComponent},
-    {path: 'ingresar-eventos', component:IngresarEventosComponent}
+    {path: 'ingresar-eventos', component:IngresarEventosComponent},
+    {path: 'imagenes-masivas', component:ImagenesMasivasComponent}
   ]}
 ];
 

@@ -52,6 +52,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { QRCodeModule } from 'angularx-qrcode';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
+import { ImagenesMasivasComponent } from './Admin/componentes-admin/imagenes-masivas/imagenes-masivas.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { MatSelectModule } from '@angular/material/select';
     FiltroAnuarioComponent,
     FiltroColeccionFotosComponent,
     EventosProximosComponent,
-    ModalEditarGraduadoComponent
+    ModalEditarGraduadoComponent,
+    ImagenesMasivasComponent
   ],
   imports: [
     BrowserModule,

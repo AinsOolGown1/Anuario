@@ -136,8 +136,8 @@ export class AnuariovistaComponent implements OnInit {
   }
   
 
-  onImageError(event: Event): void {
-    const imgElement = event.target as HTMLImageElement;
-    imgElement.src = this.imagenPordefecto;
-  }
+  // onImageError(event: Event): void {
+  //   const imgElement = event.target as HTMLImageElement;
+  //   imgElement.src = this.imagenPordefecto;
+  // }
 }
